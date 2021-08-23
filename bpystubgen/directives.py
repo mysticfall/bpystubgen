@@ -181,6 +181,10 @@ class FunctionDirective(APIMemberDirective):
 
         for match in matches:
             name = match.group(1)
+
+            if name == "self":
+                continue
+
             arg = Argument(name=name)
             key = f"type {arg.name}"
 
