@@ -1,7 +1,7 @@
 from inspect import cleandoc
 
 from docutils.frontend import OptionParser
-from docutils.nodes import document
+from docutils.nodes import document, field_list
 from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture
@@ -89,12 +89,21 @@ def test_parse_constructor(parser: Parser, document: document):
 
     (docstring, ctor, meth) = cls.children
 
+    assert docstring.astext() == "For Python access to GPU functions requiring a pointer."
+
     assert isinstance(docstring, DocString)
     assert isinstance(ctor, Function)
     assert isinstance(meth, Function)
 
     assert ctor.name == "__init__"
     assert ctor.type == "None"
+
+    docstring = ctor.children[0]
+
+    assert isinstance(docstring, DocString)
+
+    assert len(docstring.children) == 1
+    assert isinstance(docstring.children[0], field_list)
 
     args = ctor.arguments
 

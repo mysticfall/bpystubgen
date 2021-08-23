@@ -258,8 +258,13 @@ class ClassDirective(APIMemberDirective):
 
             ctor = Function(name="__init__", type="None")
 
+            ctor.scope = FunctionScope.Instance
+
             if ds.fields_list:
-                ctor += DocString(children=(ds.fields_list,))
+                docstring = DocString()
+                docstring += ds.fields_list
+
+                ctor += docstring
 
             for arg in args.values():
                 ctor += arg
