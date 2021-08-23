@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+docutils = "0.17.1"
+sphinxcontrib-restbuilder = "0.3"
+
+[dev-packages]
+pytest = "*"
+docutils-stubs = "==0.0.21"
+
+[requires]
+python_version = "3.9"
