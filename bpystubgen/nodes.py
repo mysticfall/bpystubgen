@@ -34,7 +34,7 @@ class Typed(Element, Referencing, ABC):
 
         rtype = self.type
 
-        if rtype:
+        if rtype and rtype != "None":
             references.add(rtype)
 
         return references
