@@ -60,7 +60,7 @@ def parse_primitive(text: str) -> Optional[str]:
     return None
 
 
-def parse_type(text: str) -> Optional[str]:
+def parse_type(text: str, default: Optional[str] = None) -> Optional[str]:
     result = _container_pattern1.search(text)
 
     if not result:
@@ -105,4 +105,4 @@ def parse_type(text: str) -> Optional[str]:
     if result:
         return parse_primitive(result.group(1))
 
-    return None
+    return default
