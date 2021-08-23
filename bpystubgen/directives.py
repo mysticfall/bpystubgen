@@ -1,18 +1,16 @@
 import re
 from abc import ABC
-from typing import Any, Dict, Final, List, Optional
+from dataclasses import dataclass
+from typing import Any, Final, List, Mapping, Optional, OrderedDict, Sequence, cast
 
 from docutils import nodes
-from docutils.nodes import Element, Node, paragraph
+from docutils.nodes import Element, Node, field_list, paragraph
 from docutils.parsers.rst import Directive
-from docutils.statemachine import StringList
 from docutils.transforms import Transform
 
-from bpystubgen.nodes import APIMember, Argument, Class, Data, DocString, Documentable, Function, FunctionScope, \
-    Import, Module, Typed
+from bpystubgen.nodes import APIMember, Argument, Class, Data, DocString, Function, FunctionScope, \
+    Import, Module
 from bpystubgen.parser import known_data_types, parse_type
-
-_option_pattern: Final = re.compile("^\\s*:([a-zA-Z0-9_]+)(\\s+([a-zA-Z0-9_]+))?:\\s+([^$]+)\\s*$")
 
 _func_sig_pattern: Final = re.compile("^\\s*([a-zA-Z0-9_]+)\\(([^)]*)\\)\\s*$")
 
@@ -106,23 +104,46 @@ class ModuleDirective(Directive):
         return [pending, elem]
 
 
+@dataclass
+class DocStringInfo:
+    docstring: DocString
+
+    fields: Mapping[str, str]
+
+    fields_list: Optional[field_list]
+
+    remainder: Sequence[APIMember]
+
+
 class APIMemberDirective(Directive, ABC):
 
-    # noinspection PyMethodMayBeStatic
-    def set_type(self, elem: Typed, type_info: Optional[str]) -> None:
-        elem.type = type_info if type_info and any(type_info) else "typing.Any"
+    def parse_docstring(self) -> DocStringInfo:
+        docstring = DocString()
+        members = []
 
-    def parse_docstring(self, elem: Documentable, content: StringList) -> None:
-        self.state.nested_parse(content, self.content_offset, elem)
+        self.state.nested_parse(self.content, self.content_offset, docstring)
 
-        if any(elem.children):
-            docstring = DocString()
+        for member in tuple(filter(lambda c: isinstance(c, APIMember), docstring.children)):
+            members.append(cast(APIMember, member))
+            docstring.remove(member)
 
-            for child in tuple(filter(lambda c: not isinstance(c, APIMember), elem.children)):
-                elem.remove(child)
-                docstring += child
+        fields = dict()
+        fields_elem: Optional[field_list] = None
 
-            elem.insert(0, docstring)
+        if any(docstring.children):
+            last = docstring.children[-1]
+
+            if isinstance(last, field_list):
+                fields_elem = last
+
+                for field in fields_elem.children:
+                    (f_name, f_body) = cast(Element, field).children
+
+                    fields[f_name.astext().strip()] = f_body.astext().strip()
+
+                docstring.remove(fields_elem)
+
+        return DocStringInfo(docstring, fields, fields_elem, members)
 
 
 class DataDirective(APIMemberDirective):
@@ -131,23 +152,16 @@ class DataDirective(APIMemberDirective):
     required_arguments = 1
 
     def run(self) -> List[Node]:
+        ds = self.parse_docstring()
+
         elem = Data(name=self.arguments[0].strip())
 
-        comments = []
+        if any(ds.docstring.children):
+            elem.insert(0, ds.docstring)
 
-        for line in self.content.data:
-            result = _option_pattern.match(line)
-
-            if result:
-                if result.group(1) == "type":
-                    type_info = parse_type(result.group(4))
-                    self.set_type(elem, type_info)
-            else:
-                comments.append(line.strip())
-
-        self.parse_docstring(elem, StringList(comments))
-
-        if not elem.type:
+        if "type" in ds.fields:
+            elem.type = parse_type(ds.fields["type"], "typing.Any")
+        else:
             elem.type = "typing.Any"
 
         return [elem]
@@ -160,8 +174,24 @@ class FunctionDirective(APIMemberDirective):
 
     final_argument_whitespace = True
 
+    @classmethod
+    def parse_args(cls, text: str, fields: Mapping[str, str]) -> OrderedDict[str, Argument]:
+        args = OrderedDict[str, Argument]()
+        matches = filter(lambda a: a, map(_func_arg_pattern.match, text.split(",")))
+
+        for match in matches:
+            name = match.group(1)
+            arg = Argument(name=name)
+            key = f"type {arg.name}"
+
+            if key in fields:
+                arg.type = parse_type(fields[key], "typing.Any")
+
+            args[name] = arg
+
+        return args
+
     def run(self) -> List[Node]:
-        # noinspection DuplicatedCode
         document = self.state_machine.document
         reporter = document.reporter
 
@@ -175,11 +205,7 @@ class FunctionDirective(APIMemberDirective):
 
         name = result.group(1)
 
-        args_texts = result.group(2).split(",")
-        args: Dict[str, Argument] = {}
-
         elem = Function(name=name)
-        comments = []
 
         if self.name == "classmethod":
             elem.scope = FunctionScope.Class
@@ -188,41 +214,18 @@ class FunctionDirective(APIMemberDirective):
         else:
             elem.scope = FunctionScope.Module
 
-        arg_matches = filter(lambda a: a, map(_func_arg_pattern.match, args_texts))
+        ds = self.parse_docstring()
 
-        for match in arg_matches:
-            name = match.group(1)
-            arg = Argument(name=name)
+        if "rtype" in ds.fields:
+            elem.type = parse_type(ds.fields["rtype"], "typing.Any")
 
-            args[name] = arg
+        if "return" in ds.fields:
+            elem.returns = ds.fields["return"]
 
-        for line in self.content.data:
-            result = _option_pattern.match(line)
-            option = result.group(1) if result else None
+        if any(ds.docstring.children):
+            elem.insert(0, ds.docstring)
 
-            if not option:
-                comments.append(line.strip())
-            elif option == "rtype":
-                type_info = parse_type(result.group(4))
-
-                self.set_type(elem, type_info)
-            elif option == "return":
-                elem.returns = result.group(4)
-            elif option == "arg":
-                name = result.group(3)
-
-                if name in args:
-                    arg = args[name]
-
-                    self.parse_docstring(arg, StringList(result.group(4).split("\n")))
-            elif option == "type":
-                name = result.group(3)
-
-                if name in args:
-                    arg = args[name]
-                    arg.type = parse_type(result.group(4))
-
-        self.parse_docstring(elem, self.content)
+        args = self.parse_args(result.group(2), ds.fields)
 
         for arg in args.values():
             elem += arg
@@ -238,21 +241,37 @@ class ClassDirective(APIMemberDirective):
     final_argument_whitespace = True
 
     def run(self) -> List[Node]:
-        # noinspection DuplicatedCode
-        document = self.state_machine.document
-        reporter = document.reporter
-
         signature = self.arguments[0]
         result = _func_sig_pattern.match(signature)
 
-        if not result:
-            msg = reporter.error(f"Invalid class signature: {signature}", base_node=document)
+        ds = self.parse_docstring()
 
-            return [msg]
+        if result:
+            name = result.group(1)
+            elem = Class(name=name)
 
-        name = result.group(1)
-        elem = Class(name=name)
+            args = FunctionDirective.parse_args(result.group(2), ds.fields)
 
-        self.parse_docstring(elem, self.content)
+            ctor = Function(name="__init__", type="None")
+
+            if ds.fields_list:
+                ctor += DocString(children=(ds.fields_list,))
+
+            for arg in args.values():
+                ctor += arg
+
+            elem.insert(0, ctor)
+
+            if any(ds.docstring.children):
+                elem.insert(0, ds.docstring)
+        else:
+            name = signature.strip()
+            elem = Class(name=name)
+
+            if any(ds.docstring.children):
+                elem.insert(0, ds.docstring)
+
+        for member in ds.remainder:
+            elem += member
 
         return [elem]

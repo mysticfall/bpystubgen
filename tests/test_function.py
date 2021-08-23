@@ -102,18 +102,12 @@ def test_parse_with_args(parser: Parser, document: document):
 
     assert args[0].name == "name"
     assert args[0].type == "str"
-    assert args[0].docstring and args[0].docstring.astext() == \
-           "A unique library name used for removal later"
 
     assert args[1].name == "type"
     assert args[1].type == "str"
-    assert args[1].docstring and args[1].docstring.astext() == \
-           "The datablock type (currently only \"Mesh\" is supported)"
 
     assert args[2].name == "data"
     assert args[2].type == "typing.List[str]"
-    assert args[2].docstring and args[2].docstring.astext() == \
-           "A list of names of the datablocks to load"
 
 
 def test_signature():

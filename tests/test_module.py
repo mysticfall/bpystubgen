@@ -6,7 +6,7 @@ from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture
 
-from bpystubgen.nodes import Data, DataRef, DocString, Function, Import, Module
+from bpystubgen.nodes import Class, Data, DataRef, DocString, Function, Import, Module
 
 
 @fixture
@@ -68,6 +68,12 @@ def test_transform(parser: Parser, document: document):
         .. data:: mouse
 
            The current mouse wrapped in an :class:`~bge.types.SCA_PythonMouse` object.
+
+        .. class:: Buffer
+
+           For Python access to GPU functions requiring a pointer.
+
+           .. attribute:: dimensions
     """)
 
     parser.parse(source, document)
@@ -78,13 +84,14 @@ def test_transform(parser: Parser, document: document):
     module = document.children[0]
 
     assert isinstance(module, Module)
-    assert len(module.children) == 3
+    assert len(module.children) == 4
 
-    (docstring, imp, data) = module.children
+    (docstring, imp, data, cls) = module.children
 
     assert isinstance(docstring, DocString)
     assert isinstance(imp, Import)
     assert isinstance(data, Data)
+    assert isinstance(cls, Class)
 
     assert module.name == "bge.logic"
 
@@ -94,9 +101,9 @@ def test_transform(parser: Parser, document: document):
 
     assert isinstance(s, section)
 
-    assert len(s.children) == 3
+    assert len(s.children) == 4
 
-    (t, p, r) = s.children
+    (t, p, r, c) = s.children
 
     assert isinstance(t, title)
     assert isinstance(p, paragraph)
@@ -120,3 +127,14 @@ def test_transform(parser: Parser, document: document):
 
     assert isinstance(ref, DataRef)
     assert ref.astext() == ":data:`mouse`"
+
+    assert cls.name == "Buffer"
+
+    assert len(cls.children) == 2
+
+    (d, a) = cls.children
+
+    assert isinstance(d, DocString)
+    assert isinstance(a, Data)
+
+    assert a.name == "dimensions"

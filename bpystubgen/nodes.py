@@ -296,7 +296,7 @@ class Import(TextElement):
     tagname = "import"
 
 
-class Argument(Typed, Named, Documentable, Element):
+class Argument(Typed, Named, Element):
     tagname = "argument"
 
 

@@ -52,7 +52,7 @@ def test_typed(node_type: Type[Typed]):
     assert not node.type
 
 
-@mark.parametrize("node_type", (Module, Data, Function, Argument))
+@mark.parametrize("node_type", (Module, Data, Function))
 def test_docstring(node_type: Type[Documentable]):
     node = node_type()
 
