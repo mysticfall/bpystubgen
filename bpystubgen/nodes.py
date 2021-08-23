@@ -110,12 +110,15 @@ class APIMember(Documentable, Referencable, Typed, Element, ABC):
         pass
 
 
-class Module(Referencable, Referencing, Documentable):
-    tagname = "module"
+class APICollection(Element, ABC):
 
     @property
     def members(self) -> Sequence[APIMember]:
-        return tuple(self.traverse(APIMember, ascend=False))
+        return tuple(self.traverse(APIMember, include_self=False, ascend=False))
+
+
+class Module(Referencable, Referencing, Documentable, APICollection):
+    tagname = "module"
 
     def create_ref(self, simple: bool = False) -> Optional[Reference]:
         name = self.name
@@ -191,7 +194,7 @@ class FunctionLike(APIMember, ABC):
         return references
 
 
-class Class(FunctionLike):
+class Class(FunctionLike, APICollection):
     tagname = "class"
 
     @property

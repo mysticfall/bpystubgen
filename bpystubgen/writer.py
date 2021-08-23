@@ -95,6 +95,9 @@ class StubTranslator(RstTranslator):
         self.visit_APIMember(node)
 
     def depart_Class(self, node: Class) -> None:
+        if not any(node.members):
+            self.add_text("...")
+
         self.depart_APIMember(node)
 
     def visit_Argument(self, node: Argument) -> None:
