@@ -124,7 +124,7 @@ def test_signature():
     assert func.signature == "def my_func() -> str:"
 
     func.scope = FunctionScope.Class
-    assert func.signature == "@classmethod\ndef my_func() -> str:"
+    assert func.signature == "@classmethod\ndef my_func(cls) -> str:"
 
     func.scope = FunctionScope.Instance
     assert func.signature == "def my_func(self) -> str:"

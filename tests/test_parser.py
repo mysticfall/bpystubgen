@@ -1,4 +1,4 @@
-from bpystubgen.types import parse_type
+from bpystubgen.parser import parse_type
 
 
 def test_parse_empty():
