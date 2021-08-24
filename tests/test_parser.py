@@ -52,3 +52,4 @@ def test_parse_class():
     assert parse_type("class:`bge.types.KX_GameObject`") == "bge.types.KX_GameObject"
     assert parse_type("class:`~bge.types.KX_GameObject`") == "bge.types.KX_GameObject"
     assert parse_type("class:`!bge.types.KX_GameObject`") == "bge.types.KX_GameObject"
+    assert parse_type(":class:`ImBuf`") == "ImBuf"

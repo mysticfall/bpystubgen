@@ -7,7 +7,7 @@ _container_pattern2: Final = re.compile("^\\s*([a-z0-9-:`]+)\\s*\\[\\s*([^]\\s]+
 
 _simple_type_pattern: Final = re.compile("^\\s*([a-z]+)([,\\s][^a-zA-Z0-9_]+)?")
 
-_reference_type_pattern: Final = re.compile("^\\s*class:`[~!]?([a-zA-Z_0-9.]+)`[,.]?\\s*$")
+_reference_type_pattern: Final = re.compile("\\s*class:`[~!]?([a-zA-Z_0-9.]+)`")
 
 _primitive_type_pattern: Final = re.compile("^\\s*([a-z]+)[,.]?\\s*$")
 
