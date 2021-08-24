@@ -288,3 +288,12 @@ class ClassDirective(APIMemberDirective):
             elem += member
 
         return [elem]
+
+
+class CurrentModuleDirective(Directive):
+    has_content = True
+
+    required_arguments = 1
+
+    def run(self) -> List[Node]:
+        return []
