@@ -12,10 +12,9 @@ from bpystubgen.nodes import APIMember, Argument, Class, Data, DocString, Functi
     Import, Module
 from bpystubgen.parser import known_data_types, parse_type
 
-_func_sig_pattern: Final = re.compile("^\\s*([a-zA-Z0-9_]+)\\(([^)]*)\\)\\s*$")
+_func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\((.*)\\)\\s*$")
 
-_func_arg_pattern: Final = re.compile(
-    "^\\s*([a-zA-Z0-9_]+)(\\s*:\\s*([a-zA-Z0-9_:`~]+))?(\\s*=\\s*([a-zA-Z0-9_(),.:`~]+))?\\s*$")
+_func_arg_pattern: Final = re.compile("(\\w+)((?:\\s*=\\s*([\\w\\s,.()\\[\\]'\"]+))?)+")
 
 
 class ModuleTransform(Transform):
@@ -177,21 +176,26 @@ class FunctionDirective(APIMemberDirective):
     @classmethod
     def parse_args(cls, text: str, fields: Mapping[str, str]) -> OrderedDict[str, Argument]:
         args = OrderedDict[str, Argument]()
-        matches = filter(lambda a: a, map(_func_arg_pattern.match, text.split(",")))
+        match = _func_arg_pattern.search(text)
 
-        for match in matches:
+        while match:
             name = match.group(1)
 
-            if name == "self":
-                continue
+            if name != "self":
+                arg = Argument(name=name)
+                key = f"type {arg.name}"
 
-            arg = Argument(name=name)
-            key = f"type {arg.name}"
+                if key in fields:
+                    arg.type = parse_type(fields[key], "typing.Any")
 
-            if key in fields:
-                arg.type = parse_type(fields[key], "typing.Any")
+                default = match.group(3)
 
-            args[name] = arg
+                if default:
+                    arg.default = default
+
+                args[name] = arg
+
+            match = _func_arg_pattern.search(text, pos=match.end() + 1)
 
         return args
 

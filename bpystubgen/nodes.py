@@ -268,7 +268,7 @@ class Function(FunctionLike):
         args = self.arguments
 
         for arg in args:
-            arg_text.append(f"{arg.name}: {arg.type if arg.type else 'typing.Any'}")
+            arg_text.append(arg.astext())
 
         if any(arg_text):
             out.write(", ".join(arg_text))
@@ -301,6 +301,33 @@ class Import(TextElement):
 
 class Argument(Typed, Named, Element):
     tagname = "argument"
+
+    @property
+    def default(self) -> Optional[str]:
+        return self.attributes["default"] if self.hasattr("default") else None
+
+    @default.setter
+    def default(self, value: Optional[str]) -> None:
+        if value:
+            self.attributes["default"] = value
+        elif "default" in self.attributes:
+            del self.attributes["default"]
+
+    def astext(self) -> str:
+        buffer = [self.name]
+
+        type_info = self.type
+
+        buffer.append(": ")
+        buffer.append(type_info if type_info else "typing.Any")
+
+        default = self.default
+
+        if default:
+            buffer.append(" = ")
+            buffer.append(default)
+
+        return "".join(buffer)
 
 
 class Reference(Inline, TextElement, ABC):

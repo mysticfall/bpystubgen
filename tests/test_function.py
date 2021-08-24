@@ -4,7 +4,7 @@ from docutils.frontend import OptionParser
 from docutils.nodes import document
 from docutils.parsers.rst import Parser
 from docutils.utils import new_document
-from pytest import fixture
+from pytest import fixture, mark
 
 from bpystubgen.nodes import Argument, Function, FunctionScope
 
@@ -110,6 +110,31 @@ def test_parse_with_args(parser: Parser, document: document):
     assert args[2].type == "typing.List[str]"
 
 
+@mark.parametrize("default", [
+    "None",
+    "'value'",
+    "\"value\"",
+    "image.filepath",
+    "list()",
+    "[(1, 2, 3)]"])
+def test_arg_default_value(parser: Parser, document: document, default):
+    source = f".. function:: init(name, value = {default})"
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    func = document.children[0]
+
+    assert isinstance(func, Function)
+
+    args = func.arguments
+
+    assert len(args) == 2
+
+    assert args[1].name == "value"
+    assert args[1].default == default
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"
@@ -133,7 +158,7 @@ def test_signature():
 
     arg1.type = "int"
 
-    arg2 = Argument(name="arg2", type="str")
+    arg2 = Argument(name="arg2", type="str", default="None")
     func += arg2
 
-    assert func.signature == "def my_func(arg1: int, arg2: str) -> str:"
+    assert func.signature == "def my_func(arg1: int, arg2: str = None) -> str:"
