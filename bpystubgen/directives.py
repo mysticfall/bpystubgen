@@ -14,7 +14,7 @@ from bpystubgen.parser import known_data_types, parse_type
 
 _func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\((.*)\\)\\s*$")
 
-_func_arg_pattern: Final = re.compile("(\\w+)((?:\\s*=\\s*([\\w\\s,.()\\[\\]'\"]+))?)+")
+_func_arg_pattern: Final = re.compile("(\\w+)((?:\\s*=\\s*(.+))?)+")
 
 
 class ModuleTransform(Transform):
@@ -56,11 +56,18 @@ class ModuleTransform(Transform):
                 module += member
 
             referred_types = filter(lambda t: t not in known_data_types, module.referred_types)
-            types_to_import = set(map(lambda t: t.split(".")[0], referred_types))
-            imports = map(lambda t: Import(text=t), types_to_import)
+            types_to_imports = set()
 
-            for i in imports:
-                module.insert(0, i)
+            for tpe in referred_types:
+                name = tpe.replace('"', "")
+
+                if not name[0].islower():
+                    continue
+
+                types_to_imports.add(name.split(".")[0])
+
+            for tpe in types_to_imports:
+                module.insert(0, Import(text=tpe))
 
             self.startnode.parent.remove(self.startnode)
 
