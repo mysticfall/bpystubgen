@@ -2,7 +2,8 @@ from typing import Type
 
 from pytest import mark
 
-from bpystubgen.nodes import Argument, Data, DocString, Documentable, Function, Import, Module, Named, Typed
+from bpystubgen.nodes import Argument, ClassRef, Data, DocString, Documentable, Function, Import, Module, ModuleRef, \
+    Named, Typed
 
 
 @mark.parametrize("node_type", (Module, Data, Function, Argument))
@@ -80,3 +81,21 @@ def test_import():
     assert i.attributes["types"] == "Camera, Object"
 
     assert i.astext() == "from bpy.types import Camera, Object"
+
+
+def test_references():
+    assert ModuleRef(text="bpy.types").target == "bpy.types"
+    assert ModuleRef(text="~bpy.types").target == "bpy.types"
+    assert ModuleRef(text="!bpy.types").target == "bpy.types"
+
+    assert ModuleRef(text="bpy.types").astext() == ":mod:`bpy.types`"
+    assert ModuleRef(text="~bpy.types").astext() == ":mod:`types <bpy.types>`"
+    assert ModuleRef(text="!bpy.types").astext() == "bpy.types"
+
+    assert ClassRef(text="bpy.types.Object").target == "bpy.types.Object"
+    assert ClassRef(text="~bpy.types.Object").target == "bpy.types.Object"
+    assert ClassRef(text="!bpy.types.Object").target == "bpy.types.Object"
+
+    assert ClassRef(text="bpy.types.Object").astext() == ":class:`bpy.types.Object`"
+    assert ClassRef(text="~bpy.types.Object").astext() == ":class:`Object <bpy.types.Object>`"
+    assert ClassRef(text="!bpy.types.Object").astext() == "bpy.types.Object"

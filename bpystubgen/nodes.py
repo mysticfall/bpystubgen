@@ -399,6 +399,19 @@ class Argument(Typed, Named, Element):
 
 class Reference(Inline, TextElement, ABC):
 
+    @property
+    def target(self) -> str:
+        name = super().astext()
+
+        if name.startswith("~"):
+            target = name[1:]
+
+            return target
+        elif name.startswith("!"):
+            return name[1:]
+
+        return name
+
     def astext(self) -> str:
         name = super().astext()
         ref_type = self.tagname[:-3]
@@ -408,10 +421,10 @@ class Reference(Inline, TextElement, ABC):
             target = name[1:]
 
             return "".join([":", ref_type, ":`", title, " <", target, ">`"])
-        elif not name.startswith("!"):
-            return "".join([":", ref_type, ":`", name, "`"])
+        elif name.startswith("!"):
+            return name[1:]
 
-        return name
+        return "".join([":", ref_type, ":`", name, "`"])
 
 
 class ClassRef(Reference):
