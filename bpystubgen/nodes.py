@@ -112,6 +112,18 @@ class APIMember(Documentable, Referencable, Typed, Element, ABC):
     def has_body(self) -> bool:
         pass
 
+    @property
+    def module(self) -> Optional[Module]:
+        parent = self.parent
+
+        while parent:
+            if isinstance(parent, Module):
+                return parent
+
+            parent = parent.parent
+
+        return None
+
 
 class APICollection(Element, ABC):
 

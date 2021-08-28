@@ -2,8 +2,8 @@ from typing import Type
 
 from pytest import mark
 
-from bpystubgen.nodes import Argument, ClassRef, Data, DocString, Documentable, Function, Import, Module, ModuleRef, \
-    Named, Typed
+from bpystubgen.nodes import Argument, Class, ClassRef, Data, DocString, Documentable, Function, Import, Module, \
+    ModuleRef, Named, Typed
 
 
 @mark.parametrize("node_type", (Module, Data, Function, Argument))
@@ -65,6 +65,27 @@ def test_docstring(node_type: Type[Documentable]):
     node += docstring
 
     assert node.docstring == docstring
+
+
+def test_module():
+    module = Module(name="mymodule")
+
+    func = Function("myfunc")
+    cls = Class(name="MyClass")
+    attr = Data(name="attr")
+
+    assert not func.module
+    assert not cls.module
+    assert not attr.module
+
+    cls += attr
+
+    module += func
+    module += cls
+
+    assert func.module == module
+    assert cls.module == module
+    assert attr.module == module
 
 
 def test_import():
