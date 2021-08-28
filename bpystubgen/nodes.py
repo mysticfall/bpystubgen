@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from enum import Enum
+from graphlib import TopologicalSorter
 from io import StringIO
-from typing import Final, Optional, Sequence, Set, cast
+from typing import Final, Mapping, Optional, Sequence, Set, Tuple, cast
 
 from docutils.nodes import Element, Inline, TextElement
 
@@ -170,6 +171,39 @@ class Module(Referencable, Referencing, Documentable, APICollection):
 
         for tpe in types_to_imports:
             self.insert(index, Import(module=tpe))
+
+    def sort_members(self) -> None:
+        classes = tuple(filter(lambda m: isinstance(m, Class), self.members))
+
+        if not any(classes):
+            return
+
+        local_types: Mapping[str, Class] = dict(map(lambda cl: (cl.name, cl), classes))
+
+        def collect_deps(tpe: str, deps: Set[str], add_self: bool = True) -> Set[str]:
+            if tpe in local_types:
+                if add_self:
+                    deps.add(tpe)
+
+                for r in local_types[tpe].referred_types:
+                    deps = deps.union(collect_deps(r, deps))
+
+            return deps
+
+        def create_entry(m: APIMember) -> Tuple[str, Set[str]]:
+            return m.name, set(filter(lambda t: t in local_types, m.referred_types))
+
+        graph = dict(map(create_entry, classes))
+        ordered = TopologicalSorter(graph).static_order()
+
+        pos = self.children.index(classes[0])
+
+        for ch in classes:
+            ch.parent.remove(ch)
+
+        for name in ordered:
+            self.insert(pos, local_types[name])
+            pos += 1
 
 
 class Data(APIMember):

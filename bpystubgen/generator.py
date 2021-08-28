@@ -154,6 +154,7 @@ class Task:
                                 module += node
 
                         module.import_types()
+                        module.sort_members()
 
                         output_path = str(target)
                         fout = FileOutput(destination_path=output_path)

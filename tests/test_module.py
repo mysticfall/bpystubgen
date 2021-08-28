@@ -189,3 +189,25 @@ def test_import():
     assert ordered[0] == "import bge"
     assert ordered[1] == "import bpy"
     assert ordered[2] == "import typing"
+
+
+def test_sort_members():
+    module = Module(name="mymodule")
+
+    def define_class(name, base_types):
+        cls = Class(name=name)
+        cls.base_types = base_types
+
+        return cls
+
+    module += define_class("TypeA", {"TypeC", "TypeB"})
+    module += define_class("TypeB", {"bpy.types.Object"})
+    module += define_class("TypeC", {"TypeB"})
+    module += define_class("TypeD", {"TypeA"})
+    module += define_class("TypeE", {})
+
+    module.sort_members()
+
+    members = tuple(map(lambda m: m.name, module.members))
+
+    assert members == ("TypeB", "TypeE", "TypeC", "TypeA", "TypeD")
