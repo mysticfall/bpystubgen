@@ -158,7 +158,7 @@ class Module(Referencable, Referencing, Documentable, APICollection):
                     .replace("!", "") \
                     .replace("~", "")
 
-            if not name[0].islower() or name in known_data_types:
+            if not name[0].islower() or name in known_data_types or name.startswith(self.name):
                 continue
 
             types_to_imports.add(name.split(".")[0])

@@ -172,6 +172,11 @@ def test_import():
 
     module += func1
 
+    var3 = Data(name="var3")
+    var3.type = "class:`myproject.LocalClass`"
+
+    module += var3
+
     module.import_types()
 
     imports = module.imports
