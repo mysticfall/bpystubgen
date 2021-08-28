@@ -13,7 +13,8 @@ parser.add_argument("input", type=str,
                     help="Source directory where *.rst files are located")
 parser.add_argument("output", type=str, default=".",
                     help="Output directory where generated modules will be saved")
-parser.add_argument("--debug", default=False, action="store_true", help="Print debug messages")
+parser.add_argument("--verbose", default=False, action="store_true", help="Print debug messages")
+parser.add_argument("--quiet", default=False, action="store_true", help="Print only error messages")
 
 args = parser.parse_args()
 
@@ -29,4 +30,11 @@ if dest.exists():
 else:
     dest.mkdir(parents=True)
 
-generate(source, dest, logging.DEBUG if args.debug else logging.INFO)
+if args.quiet:
+    log_level = logging.WARNING
+elif args.verbose:
+    log_level = logging.DEBUG
+else:
+    log_level = logging.INFO
+
+generate(source, dest, log_level)
