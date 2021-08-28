@@ -141,3 +141,50 @@ def test_parse_non_constructor(parser: Parser, document: document):
 
     assert len(cls.children) == 1
     assert isinstance(cls.children[0], DocString)
+
+
+def test_parse_base_type(parser: Parser, document: document):
+    source = cleandoc("""
+        .. class:: Camera(ID)
+    """)
+
+    # noinspection DuplicatedCode
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    cls = document.children[0]
+
+    assert isinstance(cls, Class)
+    assert cls.base_types == ("ID",)
+
+
+def test_parse_explicit_base_types(parser: Parser, document: document):
+    source = cleandoc("""
+        base classes --- :class:`bpy_struct`, :class:`ID`
+
+        .. class:: Camera(ID)
+    """)
+
+    # noinspection DuplicatedCode
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 2
+
+    cls = document.children[-1]
+
+    assert isinstance(cls, Class)
+    assert sorted(list(cls.base_types)) == ["ID", "bpy_struct"]
+
+
+def test_signature():
+    cls = Class(name="Camera")
+    assert cls.signature == "class Camera:"
+
+    cls.base_types = ("ID",)
+    assert cls.signature == "class Camera(ID):"
+
+    cls.base_types = ("ID", "bpy_struct")
+    assert cls.signature == "class Camera(ID, bpy_struct):"

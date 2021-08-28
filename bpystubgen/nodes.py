@@ -229,13 +229,38 @@ class Class(FunctionLike, APICollection):
     tagname = "class"
 
     @property
+    def base_types(self) -> Sequence[str]:
+        if not self.hasattr("base_types"):
+            return ()
+
+        value = str(self.attributes["base_types"]).split(",")
+
+        return tuple(map(lambda v: v.strip(), value))
+
+    @base_types.setter
+    def base_types(self, value: Sequence[str]) -> None:
+        if value and any(value):
+            self.attributes["base_types"] = ", ".join(value)
+        elif "base_types" in self.attributes:
+            del self.attributes["base_types"]
+
+    @property
+    def referred_types(self) -> Set[str]:
+        return super().referred_types.union(self.base_types)
+
+    @property
     def signature(self) -> str:
         name = self.name
 
         if not name or not any(name):
             raise ValueError("Class node does not have a name.")
 
-        return "".join(["class ", name, ":"])
+        base_types = self.base_types
+
+        if any(base_types):
+            return "".join(["class ", name, "(", ", ".join(base_types), "):"])
+        else:
+            return "".join(["class ", name, ":"])
 
     def create_ref(self, simple: bool = False) -> Optional[Reference]:
         name = self.full_name

@@ -8,7 +8,7 @@ from docutils.nodes import Element, Node, field_list, paragraph
 from docutils.parsers.rst import Directive
 from docutils.transforms import Transform
 
-from bpystubgen.nodes import APIMember, Argument, Class, Data, DocString, Function, FunctionScope, \
+from bpystubgen.nodes import APIMember, Argument, Class, ClassRef, Data, DocString, Function, FunctionScope, \
     Module
 from bpystubgen.parser import parse_type
 
@@ -251,6 +251,15 @@ class ClassDirective(APIMemberDirective):
             name = result.group(1)
             elem = Class(name=name)
 
+            parent = cast(Element, self.state.parent)
+
+            if any(parent.children):
+                last_sibling = parent.children[-1]
+
+                if last_sibling and last_sibling.astext().startswith("base class"):
+                    base_types = set(map(lambda t: t.target, last_sibling.traverse(ClassRef, descend=True)))
+                    elem.base_types = base_types
+
             args = FunctionDirective.parse_args(result.group(2), ds.fields)
 
             # Ignore when base classes are used instead of constructor arguments.
@@ -269,6 +278,8 @@ class ClassDirective(APIMemberDirective):
                     ctor += arg
 
                 elem.insert(0, ctor)
+            elif any(args) and not any(elem.base_types):
+                elem.base_types = set(args)
 
             if any(ds.docstring.children):
                 elem.insert(0, ds.docstring)
