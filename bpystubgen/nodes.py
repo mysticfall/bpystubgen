@@ -124,6 +124,11 @@ class APIMember(Documentable, Referencable, Typed, Element, ABC):
 
         return None
 
+    def localise_name(self, name: str) -> str:
+        module = self.module
+
+        return module.localise_name(name) if module else name
+
 
 class APICollection(Element, ABC):
 
@@ -184,6 +189,14 @@ class Module(Referencable, Referencing, Documentable, APICollection):
         for tpe in types_to_imports:
             self.insert(index, Import(module=tpe))
 
+    def localise_name(self, name: str) -> str:
+        segments = name.split(".")
+
+        if len(segments) > 1 and ".".join(segments[:-1]) == self.name:
+            return segments[-1]
+
+        return name
+
     def sort_members(self) -> None:
         classes = tuple(filter(lambda m: isinstance(m, Class), self.members))
 
@@ -198,7 +211,8 @@ class Module(Referencable, Referencing, Documentable, APICollection):
                     deps.add(tpe)
 
                 for r in local_types[tpe].referred_types:
-                    deps = deps.union(collect_deps(r, deps))
+                    local_name = self.localise_name(r)
+                    deps = deps.union(collect_deps(local_name, deps))
 
             return deps
 
@@ -233,7 +247,9 @@ class Data(APIMember):
         if not name or not any(name):
             raise ValueError("Data node does not have a name.")
 
-        return f"{name}: {type_info if type_info else 'typing.Any'} = ..."
+        type_info = self.localise_name(type_info) if type_info else "typing.Any"
+
+        return f"{name}: {type_info} = ..."
 
     def create_ref(self, simple: bool = False) -> Optional[Reference]:
         name = self.full_name
@@ -304,7 +320,9 @@ class Class(FunctionLike, APICollection):
         base_types = self.base_types
 
         if any(base_types):
-            return "".join(["class ", name, "(", ", ".join(base_types), "):"])
+            parents = ", ".join(map(self.localise_name, base_types))
+
+            return "".join(["class ", name, "(", parents, "):"])
         else:
             return "".join(["class ", name, ":"])
 
@@ -370,13 +388,26 @@ class Function(FunctionLike):
         args = self.arguments
 
         for arg in args:
-            arg_text.append(arg.astext())
+            buffer = [arg.name]
+
+            arg_type = arg.type
+
+            buffer.append(": ")
+            buffer.append(self.localise_name(arg_type) if arg_type else "typing.Any")
+
+            default = arg.default
+
+            if default:
+                buffer.append(" = ")
+                buffer.append(default)
+
+            arg_text.append("".join(buffer))
 
         if any(arg_text):
             out.write(", ".join(arg_text))
 
         out.write(") -> ")
-        out.write(type_info if type_info else "None")
+        out.write(self.localise_name(type_info) if type_info else "None")
         out.write(":")
 
         return out.getvalue()
@@ -450,22 +481,6 @@ class Argument(Typed, Named, Element):
             self.attributes["default"] = value
         elif "default" in self.attributes:
             del self.attributes["default"]
-
-    def astext(self) -> str:
-        buffer = [self.name]
-
-        type_info = self.type
-
-        buffer.append(": ")
-        buffer.append(type_info if type_info else "typing.Any")
-
-        default = self.default
-
-        if default:
-            buffer.append(" = ")
-            buffer.append(default)
-
-        return "".join(buffer)
 
 
 class Reference(Inline, TextElement, ABC):

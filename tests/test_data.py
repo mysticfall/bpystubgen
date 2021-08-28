@@ -6,7 +6,7 @@ from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture
 
-from bpystubgen.nodes import Data, DocString
+from bpystubgen.nodes import Class, Data, DocString, Module
 
 
 @fixture
@@ -88,3 +88,22 @@ def test_signature():
 
     data.type = "str"
     assert data.signature == "value: str = ..."
+
+
+def test_type_resolution():
+    data1 = Data(name="data1", type="mymodule.LocalClass1")
+    data2 = Data(name="data2", type="mymodule.LocalClass2")
+    data3 = Data(name="data3", type="other.ExternalClass")
+
+    module = Module(name="mymodule")
+
+    module += Class(name="LocalClass1")
+    module += Class(name="LocalClass2")
+
+    module += data1
+    module += data2
+    module += data3
+
+    assert data1.signature == "data1: LocalClass1 = ..."
+    assert data2.signature == "data2: LocalClass2 = ..."
+    assert data3.signature == "data3: other.ExternalClass = ..."

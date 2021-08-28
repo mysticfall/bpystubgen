@@ -6,7 +6,7 @@ from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture, mark
 
-from bpystubgen.nodes import Argument, Function, FunctionScope
+from bpystubgen.nodes import Argument, Class, Function, FunctionScope, Module
 
 
 @fixture
@@ -162,3 +162,21 @@ def test_signature():
     func += arg2
 
     assert func.signature == "def my_func(arg1: int, arg2: str = None) -> str:"
+
+
+def test_type_resolution():
+    func = Function(name="my_func")
+    func.type = "mymodule.LocalClass1"
+
+    func += Argument(name="arg1", type="mymodule.LocalClass2")
+    func += Argument(name="arg2", type="other.ExternalClass")
+
+    module = Module(name="mymodule")
+
+    module += Class(name="LocalClass1")
+    module += Class(name="LocalClass2")
+
+    module += func
+
+    assert func.signature == \
+           "def my_func(arg1: LocalClass2, arg2: other.ExternalClass) -> LocalClass1:"

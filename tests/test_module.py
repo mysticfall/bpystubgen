@@ -211,3 +211,11 @@ def test_sort_members():
     members = tuple(map(lambda m: m.name, module.members))
 
     assert members == ("TypeB", "TypeE", "TypeC", "TypeA", "TypeD")
+
+
+def test_localise_name():
+    module = Module(name="bpy.types")
+
+    assert module.localise_name("Object") == "Object"
+    assert module.localise_name("bpy.Object") == "bpy.Object"
+    assert module.localise_name("bpy.types.Object") == "Object"
