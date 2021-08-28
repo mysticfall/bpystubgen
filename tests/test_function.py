@@ -45,6 +45,29 @@ def test_parse_simple(parser: Parser, document: document):
            "Loads :class:`globalDict <bge.logic.globalDict>` from a file."
 
 
+@mark.parametrize("signature", (
+        ".. function:: glBlendFunc(sfactor, dfactor)  ",
+        ".. function::   glBlendFunc(sfactor, dfactor)",
+        ".. function:: glBlendFunc(sfactor, dfactor):",
+        ".. function:: glBlendFunc  (sfactor, dfactor) : "))
+def test_parse_with_spaces(parser: Parser, document: document, signature: str):
+    parser.parse(signature, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    func = document.children[0]
+
+    assert isinstance(func, Function)
+
+    assert func.name == "glBlendFunc"
+    assert not func.type
+
+    assert len(func.arguments) == 2
+    assert func.arguments[0].name == "sfactor"
+    assert func.arguments[1].name == "dfactor"
+
+
 # noinspection DuplicatedCode
 def test_parse_with_rtype(parser: Parser, document: document):
     source = cleandoc("""

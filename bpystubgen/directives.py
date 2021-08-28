@@ -12,7 +12,7 @@ from bpystubgen.nodes import APIMember, Argument, Class, ClassRef, Data, DocStri
     Module
 from bpystubgen.parser import parse_type
 
-_func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\((.*)\\)\\s*$")
+_func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\s*\\((.*)\\)\\s*:?\\s*$")
 
 _func_arg_pattern: Final = re.compile("(\\w+)((?:\\s*=\\s*(.+))?)+")
 
