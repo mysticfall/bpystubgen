@@ -6,7 +6,7 @@ from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture
 
-from bpystubgen.nodes import Class, Data, DataRef, DocString, Function, Import, Module
+from bpystubgen.nodes import Argument, Class, Data, DataRef, DocString, Function, Module
 
 
 @fixture
@@ -84,12 +84,14 @@ def test_transform(parser: Parser, document: document):
     module = document.children[0]
 
     assert isinstance(module, Module)
+
+    module.import_types()
+
     assert len(module.children) == 4
 
     (docstring, imp, data, cls) = module.children
 
     assert isinstance(docstring, DocString)
-    assert isinstance(imp, Import)
     assert isinstance(data, Data)
     assert isinstance(cls, Class)
 
@@ -114,7 +116,7 @@ def test_transform(parser: Parser, document: document):
            "Module to access logic functions, imported automatically " \
            "into the python controllers namespace."
 
-    assert imp.astext() == "typing"
+    assert imp.astext() == "import typing"
 
     assert data.name == "mouse"
     assert data.docstring and data.docstring.astext() == \
@@ -138,3 +140,47 @@ def test_transform(parser: Parser, document: document):
     assert isinstance(a, Data)
 
     assert a.name == "dimensions"
+
+
+def test_import():
+    module = Module(name="myproject")
+
+    module += DocString(text="My Module")
+
+    var1 = Data(name="var1")
+    var1.type = "class:`bge.types.KX_GameObject`"
+
+    module += var1
+
+    var2 = Data(name="var2")
+    var2.type = "class:`~bge.types.KX_Camera`"
+
+    module += var2
+
+    cls = Class(name="LocalClass")
+
+    module += cls
+
+    func1 = Function(name="func1")
+    func1.type = "str"
+
+    arg1 = Argument(name="obj", type="class:`bpy.types.Object`")
+    arg2 = Argument(name="value", type="class:`LocalClass`")
+
+    func1 += arg1
+    func1 += arg2
+
+    module += func1
+
+    module.import_types()
+
+    imports = module.imports
+
+    assert isinstance(module.children[0], DocString)
+    assert imports and len(imports) == 3
+
+    ordered = sorted(map(lambda i: i.astext(), imports))
+
+    assert ordered[0] == "import bge"
+    assert ordered[1] == "import bpy"
+    assert ordered[2] == "import typing"

@@ -98,7 +98,7 @@ def parse_type(text: str, default: Optional[str] = None) -> Optional[str]:
     result = _reference_type_pattern.search(text)
 
     if result:
-        return result.group(1)
+        return "".join(['"', result.group(1), '"'])
 
     result = _simple_type_pattern.search(text)
 

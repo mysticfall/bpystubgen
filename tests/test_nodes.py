@@ -2,7 +2,7 @@ from typing import Type
 
 from pytest import mark
 
-from bpystubgen.nodes import Argument, Data, DocString, Documentable, Function, Module, Named, Typed
+from bpystubgen.nodes import Argument, Data, DocString, Documentable, Function, Import, Module, Named, Typed
 
 
 @mark.parametrize("node_type", (Module, Data, Function, Argument))
@@ -64,3 +64,19 @@ def test_docstring(node_type: Type[Documentable]):
     node += docstring
 
     assert node.docstring == docstring
+
+
+def test_import():
+    assert Import(module="bpy").astext() == "import bpy"
+    assert Import(module="bpy.types", types="Camera").astext() == "from bpy.types import Camera"
+    assert Import(module="bpy.types", types="Camera, Object").astext() == "from bpy.types import Camera, Object"
+    assert Import(module="bpy.types", types="Camera,Object").astext() == "from bpy.types import Camera, Object"
+
+    i = Import()
+    i.module = "bpy.types"
+    i.types = ("Camera", "Object")
+
+    assert i.attributes["module"] == "bpy.types"
+    assert i.attributes["types"] == "Camera, Object"
+
+    assert i.astext() == "from bpy.types import Camera, Object"

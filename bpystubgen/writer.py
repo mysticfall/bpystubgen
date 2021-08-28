@@ -43,7 +43,7 @@ class StubTranslator(RstTranslator):
 
     def visit_Import(self, node: Import) -> None:
         self.new_state(0)
-        self.add_text(" ".join(["import", node.astext()]))
+        self.add_text(node.astext())
         self.end_state()
 
         raise SkipNode

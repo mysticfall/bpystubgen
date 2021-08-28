@@ -153,6 +153,8 @@ class Task:
                                 node.parent.remove(node)
                                 module += node
 
+                        module.import_types()
+
                         output_path = str(target)
                         fout = FileOutput(destination_path=output_path)
 
@@ -190,7 +192,7 @@ def generate(src_dir: Path, dest_dir: Path, log_level: int = logging.INFO) -> No
     # noinspection DuplicatedCode
     components = (Parser,)
 
-    app = Sphinx(srcdir=".", confdir=None, outdir="output", doctreedir=".", buildername="text")
+    app = Sphinx(srcdir=".", confdir=None, outdir=str(dest_dir), doctreedir=".", buildername="text")
 
     settings = OptionParser(components=components).get_default_values()
 

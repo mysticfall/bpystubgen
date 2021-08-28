@@ -7,6 +7,8 @@ from typing import Final, Optional, Sequence, Set, cast
 
 from docutils.nodes import Element, Inline, TextElement
 
+from bpystubgen.parser import known_data_types
+
 
 class Referencing(ABC):
 
@@ -139,6 +141,35 @@ class Module(Referencable, Referencing, Documentable, APICollection):
             references = references.union(member.referred_types)
 
         return references
+
+    @property
+    def imports(self) -> Sequence[Import]:
+        return tuple(self.traverse(Import, include_self=False, ascend=False))
+
+    def import_types(self):
+        types_to_imports = set()
+
+        for tpe in self.referred_types:
+            name = tpe.replace('"', "")
+
+            if name.startswith("class:"):
+                name = name.split(":")[1] \
+                    .replace("`", "") \
+                    .replace("!", "") \
+                    .replace("~", "")
+
+            if not name[0].islower() or name in known_data_types:
+                continue
+
+            types_to_imports.add(name.split(".")[0])
+
+        for i in self.imports:
+            i.parent.remove(i)
+
+        index = 1 if self.docstring else 0
+
+        for tpe in types_to_imports:
+            self.insert(index, Import(module=tpe))
 
 
 class Data(APIMember):
@@ -297,6 +328,42 @@ class DocString(TextElement):
 
 class Import(TextElement):
     tagname = "import"
+
+    @property
+    def module(self) -> Optional[str]:
+        return self.attributes["module"] if self.hasattr("module") else None
+
+    @module.setter
+    def module(self, value: Optional[str]) -> None:
+        if value:
+            self.attributes["module"] = value
+        elif "module" in self.attributes:
+            del self.attributes["module"]
+
+    @property
+    def types(self) -> Sequence[str]:
+        if not self.hasattr("types"):
+            return ()
+
+        value = str(self.attributes["types"]).split(",")
+
+        return tuple(map(lambda v: v.strip(), value))
+
+    @types.setter
+    def types(self, value: Sequence[str]) -> None:
+        if value and any(value):
+            self.attributes["types"] = ", ".join(value)
+        elif "types" in self.attributes:
+            del self.attributes["types"]
+
+    def astext(self) -> str:
+        module = self.module
+        types = self.types
+
+        if any(types):
+            return f"from {module} import {', '.join(types)}"
+        else:
+            return " ".join(("import", module))
 
 
 class Argument(Typed, Named, Element):

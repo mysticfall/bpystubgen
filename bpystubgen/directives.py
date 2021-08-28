@@ -9,8 +9,8 @@ from docutils.parsers.rst import Directive
 from docutils.transforms import Transform
 
 from bpystubgen.nodes import APIMember, Argument, Class, Data, DocString, Function, FunctionScope, \
-    Import, Module
-from bpystubgen.parser import known_data_types, parse_type
+    Module
+from bpystubgen.parser import parse_type
 
 _func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\((.*)\\)\\s*$")
 
@@ -54,20 +54,6 @@ class ModuleTransform(Transform):
                     member.parent.remove(member)
 
                 module += member
-
-            referred_types = filter(lambda t: t not in known_data_types, module.referred_types)
-            types_to_imports = set()
-
-            for tpe in referred_types:
-                name = tpe.replace('"', "")
-
-                if not name[0].islower():
-                    continue
-
-                types_to_imports.add(name.split(".")[0])
-
-            for tpe in types_to_imports:
-                module.insert(0, Import(text=tpe))
 
             self.startnode.parent.remove(self.startnode)
 
