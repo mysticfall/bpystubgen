@@ -120,3 +120,24 @@ def test_parse_constructor(parser: Parser, document: document):
 
     assert meth.name == "draw"
     assert meth.scope == FunctionScope.Instance
+
+
+def test_parse_non_constructor(parser: Parser, document: document):
+    source = cleandoc("""
+        .. class:: KX_Camera(KX_GameObject)
+
+           A Camera object.
+    """)
+
+    # noinspection DuplicatedCode
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    cls = document.children[0]
+
+    assert isinstance(cls, Class)
+
+    assert len(cls.children) == 1
+    assert isinstance(cls.children[0], DocString)

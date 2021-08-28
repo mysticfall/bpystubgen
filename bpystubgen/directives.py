@@ -253,20 +253,22 @@ class ClassDirective(APIMemberDirective):
 
             args = FunctionDirective.parse_args(result.group(2), ds.fields)
 
-            ctor = Function(name="__init__", type="None")
+            # Ignore when base classes are used instead of constructor arguments.
+            if any(ds.fields):
+                ctor = Function(name="__init__", type="None")
 
-            ctor.scope = FunctionScope.Instance
+                ctor.scope = FunctionScope.Instance
 
-            if ds.fields_list:
-                docstring = DocString()
-                docstring += ds.fields_list
+                if ds.fields_list:
+                    docstring = DocString()
+                    docstring += ds.fields_list
 
-                ctor += docstring
+                    ctor += docstring
 
-            for arg in args.values():
-                ctor += arg
+                for arg in args.values():
+                    ctor += arg
 
-            elem.insert(0, ctor)
+                elem.insert(0, ctor)
 
             if any(ds.docstring.children):
                 elem.insert(0, ds.docstring)
