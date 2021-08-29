@@ -1,7 +1,8 @@
-import re
+import ast
 from abc import ABC
+from ast import FunctionDef, arguments
 from dataclasses import dataclass
-from typing import Any, Final, List, Mapping, Match, Optional, OrderedDict, Sequence, cast
+from typing import Any, List, Mapping, Optional, OrderedDict, Sequence, cast
 
 from docutils import nodes
 from docutils.nodes import Element, Node, field_list, paragraph
@@ -11,11 +12,6 @@ from docutils.transforms import Transform
 from bpystubgen.nodes import APIMember, Argument, Class, ClassRef, Data, DocString, Function, FunctionScope, \
     Module
 from bpystubgen.parser import parse_type
-
-_func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\s*\\((.*)\\)\\s*:?\\s*$")
-
-_func_arg_pattern: Final = re.compile(
-    "(\\w+)(?:\\s*=\\s*(\\w*\\([\\w\\s,'\"+\\-.]*\\)|\\w*\\[[\\w\\s,'\"+\\-.]*]|[\\w\\s'\"+\\-.]+))?")
 
 
 class ModuleTransform(Transform):
@@ -168,77 +164,79 @@ class FunctionDirective(APIMemberDirective):
     final_argument_whitespace = True
 
     @classmethod
-    def parse_args(cls, text: str, fields: Mapping[str, str]) -> OrderedDict[str, Argument]:
-        args = OrderedDict[str, Argument]()
-        match = _func_arg_pattern.search(text)
+    def parse_args(cls, args: arguments, fields: Mapping[str, str]) -> OrderedDict[str, Argument]:
+        elems = OrderedDict[str, Argument]()
 
-        while match:
-            name = match.group(1)
+        count = len(args.args)
+        offset = count - len(args.defaults)
 
-            if name != "self":
-                arg = Argument(name=name)
-                key = f"type {arg.name}"
+        for i in range(count):
+            arg = args.args[i]
+            default = args.defaults[i - offset] if i >= offset else None
 
-                if key in fields:
-                    arg.type = parse_type(fields[key], "typing.Any")
+            if arg.arg == "self":
+                continue
 
-                default = match.group(2)
+            elem = Argument(name=arg.arg)
 
-                if default:
-                    arg.default = default
+            key = f"type {elem.name}"
 
-                args[name] = arg
+            if key in fields:
+                elem.type = parse_type(fields[key], "typing.Any")
 
-            match = _func_arg_pattern.search(text, pos=match.end() + 1)
+            if default:
+                elem.default = ast.unparse(default)
 
-        return args
+            elems[elem.name] = elem
+
+        return elems
 
     def run(self) -> List[Node]:
-        document = self.state_machine.document
-        reporter = document.reporter
         ds = self.parse_docstring()
-
-        def create_elem(m: Match[str]) -> Function:
-            name = m.group(1)
-            elem = Function(name=name)
-
-            if self.name == "classmethod":
-                elem.scope = FunctionScope.Class
-            elif self.name == "staticmethod":
-                elem.scope = FunctionScope.Static
-            elif self.name == "method":
-                elem.scope = FunctionScope.Instance
-            else:
-                elem.scope = FunctionScope.Module
-
-            if "rtype" in ds.fields:
-                elem.type = parse_type(ds.fields["rtype"], "typing.Any")
-
-            if "return" in ds.fields:
-                elem.returns = ds.fields["return"]
-
-            if any(ds.docstring.children):
-                elem.insert(0, ds.docstring)
-
-            args = self.parse_args(m.group(2), ds.fields)
-
-            for arg in args.values():
-                elem += arg
-
-            return elem
 
         elems = []
 
-        for signature in filter(any, self.arguments[0].replace("\\\n", " ").split("\n")):
-            result = _func_sig_pattern.match(str(signature))
+        for line in filter(any, self.arguments[0].replace("\\\n", " ").split("\n")):
+            line = str(line).strip()
 
-            if not result:
-                msg = reporter.warning(f"Invalid function signature: {signature}", base_node=document)
+            source = "".join(["def ", line, "\n" if line.endswith(":") else ":\n", "   ...\n"])
+
+            try:
+                tree = ast.parse(source)
+                func = cast(FunctionDef, tree.body[0])
+
+                elem = Function(name=func.name)
+
+                if self.name == "classmethod":
+                    elem.scope = FunctionScope.Class
+                elif self.name == "staticmethod":
+                    elem.scope = FunctionScope.Static
+                elif self.name == "method":
+                    elem.scope = FunctionScope.Instance
+                else:
+                    elem.scope = FunctionScope.Module
+
+                if "rtype" in ds.fields:
+                    elem.type = parse_type(ds.fields["rtype"], "typing.Any")
+
+                if "return" in ds.fields:
+                    elem.returns = ds.fields["return"]
+
+                if any(ds.docstring.children):
+                    elem.insert(0, ds.docstring)
+
+                args = self.parse_args(func.args, ds.fields)
+
+                for arg in args.values():
+                    elem += arg
+
+                elems.append(elem)
+            except SyntaxError:
+                document = self.state_machine.document
+                reporter = document.reporter
+
+                msg = reporter.error(f"Invalid function signature: {line}", base_node=self.state.parent)
                 elems.append(msg)
-
-                continue
-
-            elems.append(create_elem(result))
 
         return elems
 
@@ -251,47 +249,57 @@ class ClassDirective(APIMemberDirective):
     final_argument_whitespace = True
 
     def run(self) -> List[Node]:
-        signature = self.arguments[0]
-        result = _func_sig_pattern.match(signature)
+        signature = self.arguments[0].strip()
 
         ds = self.parse_docstring()
 
-        if result:
-            name = result.group(1)
-            elem = Class(name=name)
-
+        if "(" in signature:
             parent = cast(Element, self.state.parent)
+            source = "".join(["def ", signature, "\n" if signature.endswith(":") else ":\n", "   ...\n"])
 
-            if any(parent.children):
-                last_sibling = parent.children[-1]
+            try:
+                tree = ast.parse(source)
+                func = cast(FunctionDef, tree.body[0])
 
-                if last_sibling and last_sibling.astext().startswith("base class"):
-                    base_types = set(map(lambda t: t.target, last_sibling.traverse(ClassRef, descend=True)))
-                    elem.base_types = base_types
+                name = func.name
+                elem = Class(name=name)
 
-            args = FunctionDirective.parse_args(result.group(2), ds.fields)
+                if any(parent.children):
+                    last_sibling = parent.children[-1]
 
-            # Ignore when base classes are used instead of constructor arguments.
-            if any(ds.fields):
-                ctor = Function(name="__init__", type="None")
+                    if last_sibling and last_sibling.astext().startswith("base class"):
+                        base_types = set(map(lambda t: t.target, last_sibling.traverse(ClassRef, descend=True)))
+                        elem.base_types = base_types
 
-                ctor.scope = FunctionScope.Instance
+                args = FunctionDirective.parse_args(func.args, ds.fields)
 
-                if ds.fields_list:
-                    docstring = DocString()
-                    docstring += ds.fields_list
+                # Ignore when base classes are used instead of constructor arguments.
+                if any(ds.fields):
+                    ctor = Function(name="__init__", type="None")
 
-                    ctor += docstring
+                    ctor.scope = FunctionScope.Instance
 
-                for arg in args.values():
-                    ctor += arg
+                    if ds.fields_list:
+                        docstring = DocString()
+                        docstring += ds.fields_list
 
-                elem.insert(0, ctor)
-            elif any(args) and not any(elem.base_types):
-                elem.base_types = set(args)
+                        ctor += docstring
 
-            if any(ds.docstring.children):
-                elem.insert(0, ds.docstring)
+                    for arg in args.values():
+                        ctor += arg
+
+                    elem.insert(0, ctor)
+                elif any(args) and not any(elem.base_types):
+                    elem.base_types = set(args)
+
+                if any(ds.docstring.children):
+                    elem.insert(0, ds.docstring)
+            except SyntaxError:
+                document = self.state_machine.document
+                reporter = document.reporter
+
+                msg = reporter.error(f"Invalid class signature: {signature}", base_node=parent)
+                return [msg]
         else:
             name = signature.strip()
             elem = Class(name=name)
@@ -299,8 +307,9 @@ class ClassDirective(APIMemberDirective):
             if any(ds.docstring.children):
                 elem.insert(0, ds.docstring)
 
-        for member in ds.remainder:
-            elem += member
+        if elem:
+            for member in ds.remainder:
+                elem += member
 
         return [elem]
 

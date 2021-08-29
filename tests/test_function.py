@@ -136,7 +136,6 @@ def test_parse_with_args(parser: Parser, document: document):
 @mark.parametrize("default", [
     "None",
     "'value'",
-    "\"value\"",
     "image.filepath",
     "list()",
     "tuple(3, 4)",
