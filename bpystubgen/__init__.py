@@ -5,7 +5,7 @@ from bpystubgen.directives import ClassDirective, CurrentModuleDirective, DataDi
     ModuleDirective
 from bpystubgen.generator import generate
 from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, DocString, Function, FunctionRef, MethodRef, Module, \
-    ModuleRef
+    ModuleRef, Reference
 
 register_directive("module", ModuleDirective)
 register_directive("data", DataDirective)
@@ -17,9 +17,15 @@ register_directive("staticmethod", FunctionDirective)
 register_directive("class", ClassDirective)
 register_directive("currentmodule", CurrentModuleDirective)
 
-register_local_role("class", GenericRole("class", ClassRef))
-register_local_role("mod", GenericRole("mod", ModuleRef))
-register_local_role("func", GenericRole("func", FunctionRef))
-register_local_role("meth", GenericRole("meth", MethodRef))
-register_local_role("data", GenericRole("data", DataRef))
-register_local_role("attr", GenericRole("attr", AttributeRef))
+_known_roles = (
+    ("mod", ModuleRef),
+    ("class", ClassRef),
+    ("func", FunctionRef),
+    ("meth", MethodRef),
+    ("data", DataRef),
+    ("attr", AttributeRef)
+)
+
+for (name, cls) in _known_roles:
+    register_local_role(name, GenericRole(name, cls))
+    register_local_role("py:" + name, GenericRole("py:" + name, cls))
