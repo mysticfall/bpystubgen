@@ -1,7 +1,9 @@
 import ast
+import re
 from abc import ABC
 from ast import AST, FunctionDef, arguments
 from dataclasses import dataclass
+from itertools import chain
 from typing import Any, List, Mapping, Optional, OrderedDict, Sequence, cast
 
 from docutils import nodes
@@ -177,6 +179,29 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
 
     final_argument_whitespace = True
 
+    _optional_func_pattern = re.compile("^(\\w+)\\s*\\(\\s*\\[?([\\w\\s,]*)(\\[[^)]+])]?\\)$")
+
+    @classmethod
+    def parse_func(cls, line: str) -> FunctionDef:
+        line = str(line).strip()
+
+        match = cls._optional_func_pattern.match(line)
+
+        if match:
+            required = map(str, filter(any, map(lambda s: s.strip(), match.group(2).split(","))))
+            optional = map(
+                lambda a: a + "=None",
+                filter(any, map(lambda a: a.strip(), match.group(3).replace("[", "").replace("]", "").split(","))))
+
+            args = chain(required, optional)
+            line = "".join([match.group(1), "(", ", ".join(args), ")"])
+
+        source = "".join(["def ", line, "\n" if line.endswith(":") else ":\n", "   ...\n"])
+
+        tree = ast.parse(source)
+
+        return cast(FunctionDef, tree.body[0])
+
     def parse_args(self, args: arguments, fields: Mapping[str, str]) -> (OrderedDict[str, Argument], Sequence[Node]):
         elems = OrderedDict[str, Argument]()
         messages = []
@@ -228,13 +253,8 @@ class FunctionDirective(FunctionLikeDirective):
         elems = []
 
         for line in filter(any, self.arguments[0].replace("\\\n", " ").split("\n")):
-            line = str(line).strip()
-
-            source = "".join(["def ", line, "\n" if line.endswith(":") else ":\n", "   ...\n"])
-
             try:
-                tree = ast.parse(source)
-                func = cast(FunctionDef, tree.body[0])
+                func = self.parse_func(str(line))
 
                 elem = Function(name=func.name)
 
@@ -293,11 +313,9 @@ class ClassDirective(FunctionLikeDirective):
 
         if "(" in signature:
             parent = cast(Element, self.state.parent)
-            source = "".join(["def ", signature, "\n" if signature.endswith(":") else ":\n", "   ...\n"])
 
             try:
-                tree = ast.parse(source)
-                func = cast(FunctionDef, tree.body[0])
+                func = self.parse_func(signature)
 
                 name = func.name
                 elem = Class(name=name)

@@ -232,6 +232,41 @@ def test_parse_multiline(parser: Parser, document: document):
     assert len(func.arguments) == 8
 
 
+# isPlayingAction([layer])
+# setAngularVelocity(velocity[, local])
+# applyImpulse(point, impulse[, local])
+# Quaternion([seq, [angle]])
+@mark.parametrize("args", [
+    ("isPlayingAction([layer])", "isPlayingAction", {}, {"layer"}),
+    ("setAngularVelocity(velocity[, local])", "setAngularVelocity", {"velocity"}, {"local"}),
+    ("applyImpulse(point, impulse[, local])", "applyImpulse", {"point", "impulse"}, {"local"}),
+    ("Quaternion([seq, [angle]])", "Quaternion", {"seq"}, {"angle"})
+])
+def test_parse_optional_args(parser: Parser, document: document, args):
+    (signature, name, required, optional) = args
+
+    source = f".. function:: {signature}"
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    func = document.children[0]
+
+    assert isinstance(func, Function)
+
+    assert func.name == name
+    assert len(func.arguments) == len(required) + len(optional)
+
+    for arg in func.arguments:
+        if arg.name in required:
+            assert not arg.default
+        else:
+            assert arg.name in optional
+            assert arg.default == "None"
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"
