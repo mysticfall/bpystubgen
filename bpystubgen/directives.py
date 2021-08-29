@@ -1,6 +1,6 @@
 import ast
 from abc import ABC
-from ast import FunctionDef, arguments
+from ast import AST, FunctionDef, arguments
 from dataclasses import dataclass
 from typing import Any, List, Mapping, Optional, OrderedDict, Sequence, cast
 
@@ -186,7 +186,7 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
 
         for i in range(count):
             arg = args.args[i]
-            default = args.defaults[i - offset] if i >= offset else None
+            default: Optional[AST] = args.defaults[i - offset] if i >= offset else None
 
             if arg.arg == "self":
                 continue
