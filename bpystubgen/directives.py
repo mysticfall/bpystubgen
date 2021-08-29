@@ -123,10 +123,8 @@ class APIMemberDirective(Directive, ABC):
         fields_elem: Optional[field_list] = None
 
         if any(docstring.children):
-            last = docstring.children[-1]
-
-            if isinstance(last, field_list):
-                fields_elem = last
+            try:
+                fields_elem = next(iter(docstring.traverse(field_list, ascend=False)))
 
                 for field in fields_elem.children:
                     (f_name, f_body) = cast(Element, field).children
@@ -134,6 +132,8 @@ class APIMemberDirective(Directive, ABC):
                     fields[f_name.astext().strip()] = f_body.astext().strip()
 
                 docstring.remove(fields_elem)
+            except StopIteration:
+                pass
 
         return DocStringInfo(docstring, fields, fields_elem, members)
 
