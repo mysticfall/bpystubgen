@@ -1,7 +1,7 @@
 import re
 from abc import ABC
 from dataclasses import dataclass
-from typing import Any, Final, List, Mapping, Optional, OrderedDict, Sequence, cast
+from typing import Any, Final, List, Mapping, Match, Optional, OrderedDict, Sequence, cast
 
 from docutils import nodes
 from docutils.nodes import Element, Node, field_list, paragraph
@@ -195,45 +195,51 @@ class FunctionDirective(APIMemberDirective):
     def run(self) -> List[Node]:
         document = self.state_machine.document
         reporter = document.reporter
-
-        signature = self.arguments[0]
-        result = _func_sig_pattern.match(signature)
-
-        if not result:
-            msg = reporter.error(f"Invalid function signature: {signature}", base_node=document)
-
-            return [msg]
-
-        name = result.group(1)
-
-        elem = Function(name=name)
-
-        if self.name == "classmethod":
-            elem.scope = FunctionScope.Class
-        elif self.name == "staticmethod":
-            elem.scope = FunctionScope.Static
-        elif self.name == "method":
-            elem.scope = FunctionScope.Instance
-        else:
-            elem.scope = FunctionScope.Module
-
         ds = self.parse_docstring()
 
-        if "rtype" in ds.fields:
-            elem.type = parse_type(ds.fields["rtype"], "typing.Any")
+        def create_elem(m: Match[str]) -> Function:
+            name = m.group(1)
+            elem = Function(name=name)
 
-        if "return" in ds.fields:
-            elem.returns = ds.fields["return"]
+            if self.name == "classmethod":
+                elem.scope = FunctionScope.Class
+            elif self.name == "staticmethod":
+                elem.scope = FunctionScope.Static
+            elif self.name == "method":
+                elem.scope = FunctionScope.Instance
+            else:
+                elem.scope = FunctionScope.Module
 
-        if any(ds.docstring.children):
-            elem.insert(0, ds.docstring)
+            if "rtype" in ds.fields:
+                elem.type = parse_type(ds.fields["rtype"], "typing.Any")
 
-        args = self.parse_args(result.group(2), ds.fields)
+            if "return" in ds.fields:
+                elem.returns = ds.fields["return"]
 
-        for arg in args.values():
-            elem += arg
+            if any(ds.docstring.children):
+                elem.insert(0, ds.docstring)
 
-        return [elem]
+            args = self.parse_args(m.group(2), ds.fields)
+
+            for arg in args.values():
+                elem += arg
+
+            return elem
+
+        elems = []
+
+        for signature in filter(any, self.arguments[0].split("\n")):
+            result = _func_sig_pattern.match(str(signature))
+
+            if not result:
+                msg = reporter.warning(f"Invalid function signature: {signature}", base_node=document)
+                elems.append(msg)
+
+                continue
+
+            elems.append(create_elem(result))
+
+        return elems
 
 
 class ClassDirective(APIMemberDirective):

@@ -158,6 +158,47 @@ def test_arg_default_value(parser: Parser, document: document, default):
     assert args[1].default == default
 
 
+def test_parse_overloading(parser: Parser, document: document):
+    source = cleandoc("""
+       .. staticmethod:: chain(it, pred, modifier)
+                         chain(it, pred)
+
+          :arg it: The iterator on the ViewEdges of the ViewMap. It contains
+             the chaining rule.
+          :type it: :class:`ViewEdgeIterator`
+          :arg pred: The predicate on the ViewEdge that expresses the
+             stopping condition.
+          :type pred: :class:`UnaryPredicate1D`
+          :arg modifier: A function that takes a ViewEdge as argument and
+             that is used to modify the processed ViewEdge state (the
+             timestamp incrementation is a typical illustration of such a modifier).
+             If this argument is not given, the time stamp is automatically managed.
+          :type modifier: :class:`UnaryFunction1DVoid`
+    """)
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 2
+
+    (func1, func2) = document.children
+
+    assert isinstance(func1, Function)
+    assert isinstance(func2, Function)
+
+    assert func1.name == "chain"
+    assert func2.name == "chain"
+
+    assert not func1.type
+    assert not func2.type
+
+    assert len(func1.arguments) == 3
+    assert len(func2.arguments) == 2
+
+    assert tuple(map(lambda a: a.name, func1.arguments)) == ("it", "pred", "modifier")
+    assert tuple(map(lambda a: a.name, func2.arguments)) == ("it", "pred")
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"
