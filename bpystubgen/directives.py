@@ -14,7 +14,8 @@ from bpystubgen.parser import parse_type
 
 _func_sig_pattern: Final = re.compile("^\\s*(\\w+)\\s*\\((.*)\\)\\s*:?\\s*$")
 
-_func_arg_pattern: Final = re.compile("(\\w+)((?:\\s*=\\s*(.+))?)+")
+_func_arg_pattern: Final = re.compile(
+    "(\\w+)(?:\\s*=\\s*(\\w*\\([\\w\\s,'\"+\\-.]*\\)|\\w*\\[[\\w\\s,'\"+\\-.]*]|[\\w\\s'\"+\\-.]+))?")
 
 
 class ModuleTransform(Transform):
@@ -181,7 +182,7 @@ class FunctionDirective(APIMemberDirective):
                 if key in fields:
                     arg.type = parse_type(fields[key], "typing.Any")
 
-                default = match.group(3)
+                default = match.group(2)
 
                 if default:
                     arg.default = default

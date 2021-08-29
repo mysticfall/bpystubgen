@@ -139,9 +139,10 @@ def test_parse_with_args(parser: Parser, document: document):
     "\"value\"",
     "image.filepath",
     "list()",
-    "[(1, 2, 3)]"])
+    "tuple(3, 4)",
+    "['a', 'b', 'c']"])
 def test_arg_default_value(parser: Parser, document: document, default):
-    source = f".. function:: init(name, value = {default})"
+    source = f".. function:: init(name, arg1 = {default}, arg2=100)"
 
     parser.parse(source, document)
     document.transformer.apply_transforms()
@@ -152,10 +153,16 @@ def test_arg_default_value(parser: Parser, document: document, default):
 
     args = func.arguments
 
-    assert len(args) == 2
+    assert len(args) == 3
 
-    assert args[1].name == "value"
+    assert args[0].name == "name"
+    assert not args[0].default
+
+    assert args[1].name == "arg1"
     assert args[1].default == default
+
+    assert args[2].name == "arg2"
+    assert args[2].default == "100"
 
 
 def test_parse_overloading(parser: Parser, document: document):
