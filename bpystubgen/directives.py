@@ -229,7 +229,7 @@ class FunctionDirective(APIMemberDirective):
 
         elems = []
 
-        for signature in filter(any, self.arguments[0].split("\n")):
+        for signature in filter(any, self.arguments[0].replace("\\\n", " ").split("\n")):
             result = _func_sig_pattern.match(str(signature))
 
             if not result:

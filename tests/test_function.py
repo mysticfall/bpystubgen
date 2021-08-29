@@ -206,6 +206,33 @@ def test_parse_overloading(parser: Parser, document: document):
     assert tuple(map(lambda a: a.name, func2.arguments)) == ("it", "pred")
 
 
+def test_parse_multiline(parser: Parser, document: document):
+    source = """
+       .. method:: __init__(num_iterations=100, factor_point=0.1, \
+             factor_curvature=0.0, factor_curvature_difference=0.2, \
+             aniso_point=0.0, aniso_normal=0.0, aniso_curvature=0.0, \
+             carricature_factor=1.0)
+       
+          Builds a SmoothingShader object.
+    """.strip()
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    func = document.children[0]
+
+    assert isinstance(func, Function)
+
+    assert func.name == "__init__"
+    assert not func.type
+    assert func.docstring and func.docstring.astext() == \
+           "Builds a SmoothingShader object."
+
+    assert len(func.arguments) == 8
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"
