@@ -197,6 +197,7 @@ def generate(src_dir: Path, dest_dir: Path, log_level: int = logging.INFO) -> No
 
     settings = OptionParser(components=components).get_default_values()
 
+    settings.line_length_limit = 15000
     settings.traceback = True
     settings.env = app.env
 
