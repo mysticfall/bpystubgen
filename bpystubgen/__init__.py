@@ -13,6 +13,7 @@ register_directive("attribute", DataDirective)
 register_directive("function", FunctionDirective)
 register_directive("method", FunctionDirective)
 register_directive("classmethod", FunctionDirective)
+register_directive("staticmethod", FunctionDirective)
 register_directive("class", ClassDirective)
 register_directive("currentmodule", CurrentModuleDirective)
 

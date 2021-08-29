@@ -171,6 +171,9 @@ def test_signature():
     func.scope = FunctionScope.Instance
     assert func.signature == "def my_func(self) -> str:"
 
+    func.scope = FunctionScope.Static
+    assert func.signature == "@staticmethod\ndef my_func() -> str:"
+
     func.scope = FunctionScope.Module
     assert func.signature == "def my_func() -> str:"
 

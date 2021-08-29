@@ -210,6 +210,8 @@ class FunctionDirective(APIMemberDirective):
 
         if self.name == "classmethod":
             elem.scope = FunctionScope.Class
+        elif self.name == "staticmethod":
+            elem.scope = FunctionScope.Static
         elif self.name == "method":
             elem.scope = FunctionScope.Instance
         else:

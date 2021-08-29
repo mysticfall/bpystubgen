@@ -342,6 +342,7 @@ class FunctionScope(Enum):
     Module: Final = "module"
     Instance: Final = "instance"
     Class: Final = "class"
+    Static: Final = "static"
 
 
 class Function(FunctionLike):
@@ -373,6 +374,8 @@ class Function(FunctionLike):
 
         if scope == FunctionScope.Class:
             out.write("@classmethod\n")
+        elif scope == FunctionScope.Static:
+            out.write("@staticmethod\n")
 
         out.write("def ")
         out.write(name)
