@@ -12,6 +12,7 @@ _reference_type_pattern: Final = re.compile("\\s*class:`[~!]?([a-zA-Z_0-9.]+)`")
 _primitive_type_pattern: Final = re.compile("^\\s*([a-z]+)[,.]?\\s*$")
 
 known_data_types: Final = {
+    "any": "typing.Any",
     "str": "str",
     "strs": "str",
     "string": "str",
@@ -28,6 +29,14 @@ known_data_types: Final = {
     "bools": "bool",
     "boolean": "bool",
     "booleans": "bool",
+    "class": "typing.Type",
+    "type": "typing.Type",
+    "object": "bpy.types.Object",
+    "callable": "typing.Callable",
+    "function": "typing.Callable",
+    "dict": "typing.Dict[str, typing.Any]",
+    "set": "typing.Set[typing.Any]",
+    "sequence": "typing.Sequence[typing.Any]",
     "list": "typing.List[typing.Any]",
     "tuple": "typing.Tuple[typing.Any, ...]"
 }
@@ -37,6 +46,7 @@ known_container_types: Final = {
     "vector": "typing.List",
     "array": "typing.Tuple",
     "tuple": "typing.Tuple",
+    "pair": "typing.Tuple",
     "sequence": "typing.Sequence"
 }
 
@@ -61,6 +71,11 @@ def parse_primitive(text: str) -> Optional[str]:
 
 
 def parse_type(text: str) -> Optional[str]:
+    if "enum in" in text:
+        return "str"
+    elif "enum set in" in text:
+        return "typing.Set[str]"
+
     result = _container_pattern1.search(text)
 
     if not result:
