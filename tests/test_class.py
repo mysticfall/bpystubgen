@@ -1,7 +1,7 @@
 from inspect import cleandoc
 
 from docutils.frontend import OptionParser
-from docutils.nodes import document, field_list
+from docutils.nodes import document, field_list, system_message
 from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture
@@ -78,9 +78,12 @@ def test_parse_constructor(parser: Parser, document: document):
     parser.parse(source, document)
     document.transformer.apply_transforms()
 
-    assert len(document.children) == 1
+    assert len(document.children) == 2
 
-    cls = document.children[0]
+    (msg, cls) = document.children
+
+    assert isinstance(msg, system_message)
+    assert msg.astext() == ":12: (WARNING/2) Invalid argument type: (Unparseable string)"
 
     assert isinstance(cls, Class)
     assert cls.name == "Buffer"

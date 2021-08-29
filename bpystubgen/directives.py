@@ -144,28 +144,42 @@ class DataDirective(APIMemberDirective):
         ds = self.parse_docstring()
 
         elem = Data(name=self.arguments[0].strip())
+        elems = [elem]
 
         if any(ds.docstring.children):
             elem.insert(0, ds.docstring)
 
         if "type" in ds.fields:
-            elem.type = parse_type(ds.fields["type"], "typing.Any")
+            type_info = parse_type(ds.fields["type"])
+
+            if type_info:
+                elem.type = type_info
+            else:
+                elem.type = "typing.Any"
+
+                document = self.state_machine.document
+                reporter = document.reporter
+
+                msg = reporter.warning(
+                    f"Data {elem.name} has invalid type: {ds.fields['type']}", base_node=self.state.parent)
+
+                elems.append(msg)
         else:
             elem.type = "typing.Any"
 
-        return [elem]
+        return elems
 
 
-class FunctionDirective(APIMemberDirective):
+class FunctionLikeDirective(APIMemberDirective, ABC):
     has_content = True
 
     required_arguments = 1
 
     final_argument_whitespace = True
 
-    @classmethod
-    def parse_args(cls, args: arguments, fields: Mapping[str, str]) -> OrderedDict[str, Argument]:
+    def parse_args(self, args: arguments, fields: Mapping[str, str]) -> (OrderedDict[str, Argument], Sequence[Node]):
         elems = OrderedDict[str, Argument]()
+        messages = []
 
         count = len(args.args)
         offset = count - len(args.defaults)
@@ -182,16 +196,33 @@ class FunctionDirective(APIMemberDirective):
             key = f"type {elem.name}"
 
             if key in fields:
-                elem.type = parse_type(fields[key], "typing.Any")
+                type_info = parse_type(fields[key])
+
+                if type_info:
+                    elem.type = type_info
+                else:
+                    elem.type = "typing.Any"
+
+                    document = self.state_machine.document
+                    reporter = document.reporter
+
+                    msg = reporter.warning(f"Invalid argument type: {fields[key]}", base_node=self.state.parent)
+                    messages.append(msg)
 
             if default:
                 elem.default = ast.unparse(default)
 
             elems[elem.name] = elem
 
-        return elems
+        return elems, messages
+
+
+class FunctionDirective(FunctionLikeDirective):
 
     def run(self) -> List[Node]:
+        document = self.state_machine.document
+        reporter = document.reporter
+
         ds = self.parse_docstring()
 
         elems = []
@@ -217,7 +248,18 @@ class FunctionDirective(APIMemberDirective):
                     elem.scope = FunctionScope.Module
 
                 if "rtype" in ds.fields:
-                    elem.type = parse_type(ds.fields["rtype"], "typing.Any")
+                    type_info = parse_type(ds.fields["rtype"])
+
+                    if type_info:
+                        elem.type = type_info
+                    else:
+                        elem.type = "typing.Any"
+
+                        msg = reporter.warning(
+                            f"Function {func.name} has invalid return type: {ds.fields['rtype']}",
+                            base_node=self.state.parent)
+
+                        elems.append(msg)
 
                 if "return" in ds.fields:
                     elem.returns = ds.fields["return"]
@@ -225,33 +267,29 @@ class FunctionDirective(APIMemberDirective):
                 if any(ds.docstring.children):
                     elem.insert(0, ds.docstring)
 
-                args = self.parse_args(func.args, ds.fields)
+                (args, messages) = self.parse_args(func.args, ds.fields)
 
                 for arg in args.values():
                     elem += arg
 
                 elems.append(elem)
+                elems.extend(messages)
             except SyntaxError:
-                document = self.state_machine.document
-                reporter = document.reporter
-
                 msg = reporter.error(f"Invalid function signature: {line}", base_node=self.state.parent)
                 elems.append(msg)
 
         return elems
 
 
-class ClassDirective(APIMemberDirective):
-    has_content = True
-
-    required_arguments = 1
-
-    final_argument_whitespace = True
+class ClassDirective(FunctionLikeDirective):
 
     def run(self) -> List[Node]:
         signature = self.arguments[0].strip()
 
         ds = self.parse_docstring()
+
+        elem: Optional[Class] = None
+        elems = []
 
         if "(" in signature:
             parent = cast(Element, self.state.parent)
@@ -271,7 +309,9 @@ class ClassDirective(APIMemberDirective):
                         base_types = set(map(lambda t: t.target, last_sibling.traverse(ClassRef, descend=True)))
                         elem.base_types = base_types
 
-                args = FunctionDirective.parse_args(func.args, ds.fields)
+                (args, messages) = self.parse_args(func.args, ds.fields)
+
+                elems.extend(messages)
 
                 # Ignore when base classes are used instead of constructor arguments.
                 if any(ds.fields):
@@ -299,7 +339,8 @@ class ClassDirective(APIMemberDirective):
                 reporter = document.reporter
 
                 msg = reporter.error(f"Invalid class signature: {signature}", base_node=parent)
-                return [msg]
+
+                elems.append(msg)
         else:
             name = signature.strip()
             elem = Class(name=name)
@@ -308,10 +349,12 @@ class ClassDirective(APIMemberDirective):
                 elem.insert(0, ds.docstring)
 
         if elem:
+            elems.append(elem)
+
             for member in ds.remainder:
                 elem += member
 
-        return [elem]
+        return elems
 
 
 class CurrentModuleDirective(Directive):
