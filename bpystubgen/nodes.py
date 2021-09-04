@@ -263,6 +263,44 @@ class Data(APIMember):
         return DataRef(text=name)
 
 
+class Property(APIMember):
+    tagname = "data"
+
+    @property
+    def has_body(self) -> bool:
+        return True
+
+    @property
+    def signature(self) -> str:
+        name = self.name
+        type_info = self.type
+
+        if not name or not any(name):
+            raise ValueError("Property node does not have a name.")
+
+        out = StringIO()
+
+        out.write("@property\n")
+        out.write("def ")
+        out.write(name)
+        out.write("(self) -> ")
+        out.write(self.localise_name(type_info) if type_info else "typing.Any")
+        out.write(":")
+
+        return out.getvalue()
+
+    def create_ref(self, simple: bool = False) -> Optional[Reference]:
+        name = self.full_name
+
+        if not name:
+            return None
+
+        if simple:
+            name = "~" + name
+
+        return PropertyRef(text=name)
+
+
 class FunctionLike(APIMember, ABC):
 
     @property
@@ -530,6 +568,10 @@ class FunctionRef(Reference):
 
 class DataRef(Reference):
     tagname = "dataref"
+
+
+class PropertyRef(Reference):
+    tagname = "propref"
 
 
 class MethodRef(Reference):

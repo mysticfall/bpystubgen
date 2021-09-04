@@ -7,7 +7,7 @@ from sphinx.writers.text import MAXWIDTH
 from sphinxcontrib.writers.rst import RstTranslator, RstWriter
 
 from bpystubgen.nodes import APIMember, Argument, AttributeRef, Class, ClassRef, Data, DataRef, DocString, Function, \
-    FunctionRef, FunctionScope, Import, MethodRef, Module, ModuleRef, Reference
+    FunctionRef, FunctionScope, Import, MethodRef, Module, ModuleRef, Property, PropertyRef, Reference
 
 
 class StubWriter(RstWriter):
@@ -80,6 +80,13 @@ class StubTranslator(RstTranslator):
     def depart_Data(self, node: Data) -> None:
         self.depart_APIMember(node)
 
+    def visit_Property(self, node: Property) -> None:
+        self.visit_APIMember(node)
+
+    def depart_Property(self, node: Property) -> None:
+        self.add_text("...")
+        self.depart_APIMember(node)
+
     def visit_Function(self, node: Function) -> None:
         # Fix documentation errors.
         if isinstance(node.parent, Class) and node.scope == FunctionScope.Module:
@@ -139,6 +146,12 @@ class StubTranslator(RstTranslator):
         self.visit_Reference(node)
 
     def depart_AttributeRef(self, node: AttributeRef) -> None:
+        pass
+
+    def visit_PropertyRef(self, node: PropertyRef) -> None:
+        self.visit_Reference(node)
+
+    def depart_PropertyRef(self, node: PropertyRef) -> None:
         pass
 
     def visit_MethodRef(self, node: MethodRef) -> None:

@@ -3,10 +3,10 @@ from typing import Type
 from pytest import mark
 
 from bpystubgen.nodes import Argument, Class, ClassRef, Data, DocString, Documentable, Function, Import, Module, \
-    ModuleRef, Named, Typed
+    ModuleRef, Named, Property, Typed
 
 
-@mark.parametrize("node_type", (Module, Data, Function, Argument))
+@mark.parametrize("node_type", (Module, Data, Property, Function, Argument))
 def test_named(node_type: Type[Named]):
     node = node_type()
 
@@ -39,7 +39,7 @@ def test_full_name():
     assert data.full_name == "mymodule.mydata"
 
 
-@mark.parametrize("node_type", (Data, Function, Argument))
+@mark.parametrize("node_type", (Data, Property, Function, Argument))
 def test_typed(node_type: Type[Typed]):
     node = node_type()
 
@@ -53,7 +53,7 @@ def test_typed(node_type: Type[Typed]):
     assert not node.type
 
 
-@mark.parametrize("node_type", (Module, Data, Function))
+@mark.parametrize("node_type", (Module, Data, Property, Function))
 def test_docstring(node_type: Type[Documentable]):
     node = node_type()
 

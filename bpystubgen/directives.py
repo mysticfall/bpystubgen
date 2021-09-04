@@ -1,6 +1,6 @@
 import ast
 import re
-from abc import ABC
+from abc import ABC, abstractmethod
 from ast import AST, FunctionDef, arguments
 from dataclasses import dataclass
 from itertools import chain
@@ -12,7 +12,7 @@ from docutils.parsers.rst import Directive
 from docutils.transforms import Transform
 
 from bpystubgen.nodes import APIMember, Argument, Class, ClassRef, Data, DocString, Function, FunctionScope, \
-    Module
+    Module, Property
 from bpystubgen.parser import parse_type
 
 
@@ -137,15 +137,19 @@ class APIMemberDirective(Directive, ABC):
         return DocStringInfo(docstring, fields, fields_elem, members)
 
 
-class DataDirective(APIMemberDirective):
+class DataLikeDirective(APIMemberDirective, ABC):
     has_content = True
 
     required_arguments = 1
 
+    @abstractmethod
+    def create_elem(self, name: str) -> APIMember:
+        pass
+
     def run(self) -> List[Node]:
         ds = self.parse_docstring()
 
-        elem = Data(name=self.arguments[0].strip())
+        elem = self.create_elem(self.arguments[0].strip())
         elems = [elem]
 
         if any(ds.docstring.children):
@@ -170,6 +174,18 @@ class DataDirective(APIMemberDirective):
             elem.type = "typing.Any"
 
         return elems
+
+
+class DataDirective(DataLikeDirective):
+
+    def create_elem(self, name: str) -> APIMember:
+        return Data(name=name)
+
+
+class PropertyDirective(DataLikeDirective):
+
+    def create_elem(self, name: str) -> APIMember:
+        return Property(name=name)
 
 
 class FunctionLikeDirective(APIMemberDirective, ABC):

@@ -2,14 +2,15 @@ from docutils.parsers.rst.directives import register_directive
 from docutils.parsers.rst.roles import GenericRole, register_local_role
 
 from bpystubgen.directives import ClassDirective, CurrentModuleDirective, DataDirective, FunctionDirective, \
-    ModuleDirective
+    ModuleDirective, PropertyDirective
 from bpystubgen.generator import generate
-from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, DocString, Function, FunctionRef, MethodRef, Module, \
-    ModuleRef, Reference
+from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, PropertyRef, DocString, Function, FunctionRef, \
+    MethodRef, Module, ModuleRef, Reference
 
 register_directive("module", ModuleDirective)
 register_directive("data", DataDirective)
 register_directive("attribute", DataDirective)
+register_directive("property", PropertyDirective)
 register_directive("function", FunctionDirective)
 register_directive("method", FunctionDirective)
 register_directive("classmethod", FunctionDirective)
@@ -23,7 +24,8 @@ _known_roles = (
     ("func", FunctionRef),
     ("meth", MethodRef),
     ("data", DataRef),
-    ("attr", AttributeRef)
+    ("attr", AttributeRef),
+    ("property", PropertyRef)
 )
 
 for (name, cls) in _known_roles:
