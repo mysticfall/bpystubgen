@@ -2,9 +2,9 @@ name: pytest
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -26,4 +26,3 @@ jobs:
       - name: Test with pytest
         run: |
           pipenv run python -m pytest
-
