@@ -195,6 +195,11 @@ class Module(Referencable, Referencing, Documentable, APICollection):
         if len(segments) > 1 and ".".join(segments[:-1]) == self.name:
             return segments[-1]
 
+        # XXX: Hack to replace types in containers (e.g. typing.List[bge.types.KX_GameObject])
+        if self.name in name and "typing" in name:
+            for cls in filter(lambda m: isinstance(m, Class), self.members):
+                name = name.replace(cls.full_name, cls.name)
+
         return name
 
     def sort_members(self) -> None:
