@@ -56,12 +56,6 @@ optional arguments:
   --quiet     Print only error messages
 ```
 
-## Status ##
-
-While mostly working as intended, it still has a few missing features which better be implemented 
-before the official release. It will soon be published to the PyPi repository along with prebuilt 
-stub modules for Blender and UPBGE.
-
 ## License ##
 
 This project is provided under the terms of _[GNU General Public License v3 (GPL3)](LICENSE)_.
