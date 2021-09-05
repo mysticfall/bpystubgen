@@ -217,7 +217,9 @@ class Module(Referencable, Referencing, Documentable, APICollection):
             return deps
 
         def create_entry(m: APIMember) -> Tuple[str, Set[str]]:
-            return m.name, set(filter(lambda t: t in local_types, m.referred_types))
+            cls = cast(Class, m)
+            types = set(filter(lambda t: t in local_types and t != m.name, map(self.localise_name, cls.base_types)))
+            return m.name, types
 
         graph = dict(map(create_entry, classes))
         ordered = TopologicalSorter(graph).static_order()
