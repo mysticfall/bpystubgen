@@ -43,7 +43,7 @@ $ python -m bpystubgen -h
 
 usage: bpystubgen [-h] [--format] [--verbose] [--quiet] input output
 
-Generate Python API stubs from Blender's documentation.
+Generate Python API stubs from Blender documentation.
 
 positional arguments:
   input       Source directory where *.rst files are located
