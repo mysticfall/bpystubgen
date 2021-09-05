@@ -348,7 +348,14 @@ class Class(FunctionLike, APICollection):
 
     @property
     def referred_types(self) -> Set[str]:
-        return super().referred_types.union(self.base_types)
+        references = super().referred_types
+
+        for member in self.members:
+            references = references.union(member.referred_types)
+
+        references = references.union(self.base_types)
+
+        return references
 
     @property
     def signature(self) -> str:

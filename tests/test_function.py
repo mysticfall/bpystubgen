@@ -299,6 +299,16 @@ def test_signature():
     assert func.signature == "def my_func(arg1: int, arg2: str = None) -> str:"
 
 
+def test_referred_types():
+    func = Function(name="my_func")
+    func.type = "ClassA"
+
+    func += Argument(name="arg1", type="ClassB")
+    func += Argument(name="arg2", type="ClassC")
+
+    assert func.referred_types == {"typing", "ClassA", "ClassB", "ClassC"}
+
+
 def test_type_resolution():
     func = Function(name="my_func")
     func.type = "mymodule.LocalClass1"

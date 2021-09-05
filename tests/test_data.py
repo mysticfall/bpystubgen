@@ -90,6 +90,13 @@ def test_signature():
     assert data.signature == "value: str = ..."
 
 
+def test_referred_types():
+    data = Data(name="data")
+    data.type = "ClassA"
+
+    assert data.referred_types == {"typing", "ClassA"}
+
+
 def test_type_resolution():
     data1 = Data(name="data1", type="mymodule.LocalClass1")
     data2 = Data(name="data2", type="mymodule.LocalClass2")

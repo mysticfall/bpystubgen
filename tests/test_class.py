@@ -6,7 +6,7 @@ from docutils.parsers.rst import Parser
 from docutils.utils import new_document
 from pytest import fixture
 
-from bpystubgen.nodes import Class, Data, DocString, Function, FunctionScope
+from bpystubgen.nodes import Argument, Class, Data, DocString, Function, FunctionScope
 
 
 @fixture
@@ -180,6 +180,23 @@ def test_parse_explicit_base_types(parser: Parser, document: document):
 
     assert isinstance(cls, Class)
     assert sorted(list(cls.base_types)) == ["ID", "bpy_struct"]
+
+
+def test_referred_types():
+    func = Function(name="func")
+    func.type = "ClassA"
+
+    func += Argument(name="arg1", type="ClassB")
+
+    data = Data(name="data")
+    data.type = "ClassC"
+
+    cls = Class(name="MyClass")
+
+    cls += func
+    cls += data
+
+    assert cls.referred_types == {"typing", "ClassA", "ClassB", "ClassC"}
 
 
 def test_signature():

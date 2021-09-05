@@ -219,3 +219,29 @@ def test_localise_name():
     assert module.localise_name("Object") == "Object"
     assert module.localise_name("bpy.Object") == "bpy.Object"
     assert module.localise_name("bpy.types.Object") == "Object"
+
+
+# noinspection DuplicatedCode
+def test_referred_types():
+    func = Function(name="func")
+    func.type = "ClassA"
+
+    func += Argument(name="arg1", type="ClassB")
+
+    data = Data(name="data")
+    data.type = "ClassC"
+
+    cls = Class(name="MyClass")
+
+    cls += func
+    cls += data
+
+    module = Module(name="MyModule")
+
+    data2 = Data(name="data2")
+    data2.type = "ClassD"
+
+    module += cls
+    module += data2
+
+    assert module.referred_types == {"typing", "ClassA", "ClassB", "ClassC", "ClassD"}
