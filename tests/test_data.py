@@ -82,6 +82,36 @@ def test_parse_missing_type(parser: Parser, document: document):
            "The current mouse wrapped in an :class:`bge.types.SCA_PythonMouse` object."
 
 
+def test_parse_complex_type(parser: Parser, document: document):
+    source = cleandoc("""
+        .. data:: meshes
+
+            a list meshes for this object.
+
+            :type: list of :class:`~bge.types.KX_MeshProxy`
+    """)
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    data = document.children[0]
+
+    assert isinstance(data, Data)
+
+    assert data.name == "meshes"
+    assert data.type == "typing.List[bge.types.KX_MeshProxy]"
+
+    assert len(data.children) > 0
+
+    docstring = data.children[0]
+
+    assert isinstance(docstring, DocString)
+    assert len(docstring.children) > 0
+    assert docstring.children[0].astext() == "a list meshes for this object."
+
+
 def test_signature():
     data = Data(name="value")
     assert data.signature == "value: typing.Any = ..."
