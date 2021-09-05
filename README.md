@@ -18,7 +18,7 @@ to this project.
 However, _bpystubgen_ has a few advantages over the others:
 
  * It's very fast - Some of those tools may take over an hour to generate the entire stubs 
-   for Blender. But _bpystubgen_ can do it under 30 seconds (1,593 source documents).
+   for Blender. But _bpystubgen_ can do it under a minute (1,593 source documents).
  * The generated stub modules preserve most of the source documentation, so you can use them 
    as a manual as well.
  * It generates _PEP-561_ compliant stub modules, so it's safe to include them in your runtime 
