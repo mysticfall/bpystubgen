@@ -1,0 +1,35 @@
+name: pypi
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+      
+    runs-on: ubuntu-latest
+        
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install pipenv
+        uses: dschep/install-pipenv-action@v1
+      - name: Install dependencies
+        run: |
+          pip3 install pipenv --upgrade
+          pip install setuptools wheel
+          pipenv install --dev
+      - name: Test with pytest
+        run: |
+          pipenv run python -m pytest
+      - name: Build distribution
+        run: |
+          pipenv run python setup.py sdist bdist_wheel
+      - name: Publish distribution
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_PASSWORD }}

@@ -1,3 +1,6 @@
+![pytest](https://github.com/mysticfall/bpystubgen/workflows/pytest/badge.svg)
+[![PyPI version](https://badge.fury.io/py/bpystubgen.svg)](https://badge.fury.io/py/bpystubgen)
+
 BPY Stub Generator
 ==================
 
@@ -25,6 +28,13 @@ However, _bpystubgen_ has a few advantages over the others:
    module path.
  * Along with its fast execution speed, the project also provides well-organised API and test 
    suites to make it easier to fix bugs or improve the output quality. 
+
+## Installation ##
+
+The library can be installed using `pip` as follows:
+```bash
+$ pip install bpystubgen
+```
 
 ## Usage ##
 
