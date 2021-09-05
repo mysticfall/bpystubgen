@@ -8,7 +8,7 @@ from typing import Final, Mapping, Optional, Sequence, Set, Tuple, cast
 
 from docutils.nodes import Element, Inline, TextElement
 
-from bpystubgen.parser import known_data_types
+from bpystubgen.parser import _known_types
 
 
 class Referencing(ABC):
@@ -176,7 +176,7 @@ class Module(Referencable, Referencing, Documentable, APICollection):
                     .replace("!", "") \
                     .replace("~", "")
 
-            if not name[0].islower() or name in known_data_types or name.startswith(self.name):
+            if not name[0].islower() or name in _known_types or name.startswith(self.name):
                 continue
 
             types_to_imports.add(name.split(".")[0])
