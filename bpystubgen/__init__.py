@@ -5,7 +5,7 @@ from bpystubgen.directives import ClassDirective, CurrentModuleDirective, DataDi
     ModuleDirective, PropertyDirective
 from bpystubgen.generator import generate
 from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, PropertyRef, DocString, Function, FunctionRef, \
-    MethodRef, Module, ModuleRef, Reference
+    MethodRef, Module, ModuleRef, PythonRef, Reference
 
 register_directive("module", ModuleDirective)
 register_directive("data", DataDirective)
@@ -19,6 +19,7 @@ register_directive("class", ClassDirective)
 register_directive("currentmodule", CurrentModuleDirective)
 
 _known_roles = (
+    ("ref", Reference),
     ("mod", ModuleRef),
     ("class", ClassRef),
     ("func", FunctionRef),
@@ -30,4 +31,6 @@ _known_roles = (
 
 for (name, cls) in _known_roles:
     register_local_role(name, GenericRole(name, cls))
-    register_local_role("py:" + name, GenericRole("py:" + name, cls))
+
+    if issubclass(cls, PythonRef):
+        register_local_role("py:" + name, GenericRole("py:" + name, cls))

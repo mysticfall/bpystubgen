@@ -533,7 +533,8 @@ class Argument(Typed, Named, Element):
             del self.attributes["default"]
 
 
-class Reference(Inline, TextElement, ABC):
+class Reference(Inline, TextElement):
+    tagname = "ref"
 
     @property
     def target(self) -> str:
@@ -563,29 +564,33 @@ class Reference(Inline, TextElement, ABC):
         return "".join([":", ref_type, ":`", name, "`"])
 
 
-class ClassRef(Reference):
+class PythonRef(Reference, ABC):
+    pass
+
+
+class ClassRef(PythonRef):
     tagname = "classref"
 
 
-class ModuleRef(Reference):
+class ModuleRef(PythonRef):
     tagname = "modref"
 
 
-class FunctionRef(Reference):
+class FunctionRef(PythonRef):
     tagname = "funcref"
 
 
-class DataRef(Reference):
+class DataRef(PythonRef):
     tagname = "dataref"
 
 
-class PropertyRef(Reference):
+class PropertyRef(PythonRef):
     tagname = "propref"
 
 
-class MethodRef(Reference):
+class MethodRef(PythonRef):
     tagname = "methref"
 
 
-class AttributeRef(Reference):
+class AttributeRef(PythonRef):
     tagname = "attrref"
