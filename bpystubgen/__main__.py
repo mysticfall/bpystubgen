@@ -13,6 +13,7 @@ parser.add_argument("input", type=str,
                     help="Source directory where *.rst files are located")
 parser.add_argument("output", type=str, default=".",
                     help="Output directory where generated modules will be saved")
+parser.add_argument("--format", default=False, action="store_true", help="Format generated source files")
 parser.add_argument("--verbose", default=False, action="store_true", help="Print debug messages")
 parser.add_argument("--quiet", default=False, action="store_true", help="Print only error messages")
 
@@ -37,4 +38,4 @@ elif args.verbose:
 else:
     log_level = logging.INFO
 
-generate(source, dest, log_level)
+generate(source, dest, args.format, log_level)

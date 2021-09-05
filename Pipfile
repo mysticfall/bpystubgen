@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 docutils = "0.17.1"
 sphinxcontrib-restbuilder = "0.3"
+black = "21.8b0"
 
 [dev-packages]
 pytest = "*"
@@ -13,3 +14,6 @@ docutils-stubs = "==0.0.21"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

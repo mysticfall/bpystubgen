@@ -31,7 +31,7 @@ However, _bpystubgen_ has a few advantages over the others:
 ```bash
 $ python -m bpystubgen -h
 
-usage: bpystubgen [-h] [--debug] input output
+usage: bpystubgen [-h] [--format] [--verbose] [--quiet] input output
 
 Generate Python API stubs from Blender's documentation.
 
@@ -41,7 +41,9 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
-  --debug     Print debug messages
+  --format    Format generated source files
+  --verbose   Print debug messages
+  --quiet     Print only error messages
 ```
 
 ## Status ##
