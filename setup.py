@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setup(
     name="bpystubgen",
-    version="0.1.0",
+    version="0.1.1",
     author="Xavier Cho",
     author_email="mysticfallband@gmail.com",
     description="A utility to generate Python API stubs from documentation files in reStructuredText format.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mysticfall/bpystubgen",
-    packages=find_namespace_packages(include=["bpystubgen.*"]),
+    packages=["bpystubgen"],
     install_requires=["docutils==0.17.1", "sphinxcontrib-restbuilder==0.3", "black==21.8b0"],
     classifiers=[
         "Programming Language :: Python :: 3",
