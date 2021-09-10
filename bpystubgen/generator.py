@@ -120,16 +120,11 @@ class Task:
         try:
             target: Optional[Path] = None
 
-            if self.is_module:
-                if any(filter(lambda c: c.is_module, self.children.values())):
-                    parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
-                    target = parent_dir / "__init__.pyi"
-                else:
-                    target = Path(context.dest_dir, "/".join(self.full_name.split(".")) + ".pyi").resolve()
+            if self.is_module and (self.source or any(self.children)):
+                parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
+                target = parent_dir / "__init__.pyi"
 
                 context.logger.debug("Generating module: %s", target)
-
-                target.parent.mkdir(parents=True, exist_ok=True)
 
             if self.source:
                 source_path = str(self.source)
@@ -158,6 +153,8 @@ class Task:
 
                         module.import_types()
                         module.sort_members()
+
+                        target.parent.mkdir(parents=True, exist_ok=True)
 
                         output_path = str(target)
                         fout = FileOutput(destination_path=output_path)
