@@ -159,6 +159,11 @@ class Task:
                         output_path = str(target)
                         fout = FileOutput(destination_path=output_path)
 
+                        marker = target.parent / "py.typed"
+
+                        with open(marker, "w"):
+                            pass
+
                         context.logger.debug("Generating stub file: %s", output_path)
 
                         context.writer.write(self.doctree, fout)
