@@ -3,11 +3,11 @@ import os
 
 from setuptools import setup
 
-app_name = os.environ["APP_NAME"] if "APP_NAME" in os.environ else "Blender"
-app_version = os.environ["APP_VERSION"] if "APP_VERSION" in os.environ else "3.0.dev"
-module_version = os.environ["MODULE_VERSION"] if "MODULE_VERSION" in os.environ else "0.1.4"
+app_name = "#APP_NAME#"
+app_version = "#APP_VERSION#"
+build_number = "#BUILD_NUMBER#"
 
-build_number = os.environ["BUILD_NUMBER"] if "BUILD_NUMBER" in os.environ else None
+module_version = "0.1.4"
 
 name = f"{app_name.lower()}-stubs"
 
