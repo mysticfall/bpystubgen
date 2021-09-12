@@ -1,6 +1,5 @@
 import glob
 import os
-from datetime import datetime
 
 from setuptools import setup
 
@@ -8,13 +7,14 @@ app_name = os.environ["APP_NAME"] if "APP_NAME" in os.environ else "Blender"
 app_version = os.environ["APP_VERSION"] if "APP_VERSION" in os.environ else "3.0.dev"
 module_version = os.environ["MODULE_VERSION"] if "MODULE_VERSION" in os.environ else "0.1.3"
 
+build_number = os.environ["BUILD_NUMBER"] if "BUILD_NUMBER" in os.environ else None
+
 name = f"{app_name.lower()}-stubs"
 
 module_version = str(sum([int(n) * 10 ** (2 - i) for i, n in enumerate(module_version.split("."))]))
 
-if app_version.endswith("dev"):
-    timestamp = datetime.today().strftime("%Y%m%d%H%M")
-    version = "".join((".".join((app_version[:3], module_version)), "dev", timestamp))
+if build_number:
+    version = "".join((".".join((app_version[:3], module_version)), "dev", build_number))
 else:
     version = ".".join((app_version, module_version))
 
