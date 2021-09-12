@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="bpystubgen",
-    version="0.1.2",
+    version="0.1.3",
     author="Xavier Cho",
     author_email="mysticfallband@gmail.com",
     description="A utility to generate Python API stubs from documentation files in reStructuredText format.",
