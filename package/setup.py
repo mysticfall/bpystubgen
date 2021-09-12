@@ -10,9 +10,11 @@ module_version = os.environ["MODULE_VERSION"] if "MODULE_VERSION" in os.environ 
 
 name = f"{app_name.lower()}-stubs"
 
+module_version = str(sum([int(n) * 10 ** (2 - i) for i, n in enumerate(module_version.split("."))]))
+
 if app_version.endswith("dev"):
     timestamp = datetime.today().strftime("%Y%m%d%H%M")
-    version = ".".join((app_version, module_version, timestamp))
+    version = "".join((".".join((app_version[:3], module_version)), "dev", timestamp))
 else:
     version = ".".join((app_version, module_version))
 
