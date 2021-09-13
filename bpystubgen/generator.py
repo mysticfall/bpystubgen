@@ -8,8 +8,6 @@ from logging import Logger
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Sequence
 
-import black
-from black import Mode, TargetVersion
 from docutils.core import publish_doctree
 from docutils.frontend import OptionParser, Values
 from docutils.io import FileInput, FileOutput
@@ -30,7 +28,6 @@ class TaskContext:
     writer: Writer
     settings: Values
     logger: Logger
-    format: bool
     total: int
     successful: int = 0
     failed: int = 0
@@ -168,17 +165,6 @@ class Task:
 
                         context.writer.write(self.doctree, fout)
                         context.writer.assemble_parts()
-
-                        if context.format:
-                            mode = Mode(
-                                target_versions={TargetVersion.PY39},
-                                line_length=100,
-                                string_normalization=True,
-                                is_pyi=True,
-                                experimental_string_processing=True
-                            )
-
-                            black.format_file_in_place(target, True, mode, black.WriteBack.YES)
                     except StopIteration:
                         context.logger.warning("Parsed doctree does not contain any module: %s", self.full_name)
 
@@ -189,7 +175,7 @@ class Task:
             context.logger.error("Failed to process task %s", self.name, exc_info=e)
 
 
-def generate(src_dir: Path, dest_dir: Path, format_source: bool = False, log_level: int = logging.INFO) -> None:
+def generate(src_dir: Path, dest_dir: Path, log_level: int = logging.INFO) -> None:
     logging.basicConfig(level=log_level, format="[%(levelname)s] %(name)s - %(message)s")
 
     logger = logging.getLogger("bpystubgen")
@@ -223,7 +209,7 @@ def generate(src_dir: Path, dest_dir: Path, format_source: bool = False, log_lev
 
     writer = StubWriter(builder)
 
-    context = TaskContext(dest_dir, writer, settings, logger, format_source, root.total)
+    context = TaskContext(dest_dir, writer, settings, logger, root.total)
 
     root.run(context)
 

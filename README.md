@@ -41,7 +41,7 @@ $ pip install bpystubgen
 ```bash
 $ python -m bpystubgen -h
 
-usage: bpystubgen [-h] [--format] [--verbose] [--quiet] input output
+usage: bpystubgen [-h] [--verbose] [--quiet] input output
 
 Generate Python API stubs from Blender documentation.
 
@@ -51,7 +51,6 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
-  --format    Format generated source files
   --verbose   Print debug messages
   --quiet     Print only error messages
 ```

@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 docutils = "0.17.1"
 sphinxcontrib-restbuilder = "0.3"
-black = "21.8b0"
 
 [dev-packages]
 pytest = "*"
