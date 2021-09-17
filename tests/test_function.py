@@ -263,6 +263,29 @@ def test_parse_optional_args(parser: Parser, document: document, args):
             assert arg.default == "None"
 
 
+def test_parse_bpy_prop_collection(parser: Parser, document: document):
+    source = """
+       .. function:: open(files=None)
+
+           :arg files: A collection of files.
+           :type files: :class:`bpy_prop_collection` of :class:`OperatorFileListElement`, (optional)
+    """.strip()
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    assert len(document.children) == 1
+
+    func = document.children[0]
+
+    assert isinstance(func, Function)
+
+    assert len(func.arguments) == 1
+    assert func.arguments[0].type == "typing.Union[" \
+                                     "typing.Sequence[OperatorFileListElement], " \
+                                     "typing.Mapping[str, OperatorFileListElement]]"
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"

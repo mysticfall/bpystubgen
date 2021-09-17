@@ -123,6 +123,11 @@ def test_parse_list(args):
     assert parse_type(text) == f"typing.List[{expected}]"
 
 
+def test_bpy_prop_collection():
+    result = parse_type(":class:`bpy_prop_collection` of :class:`LodLevel`")
+    assert result == f"typing.Union[typing.Sequence[LodLevel], typing.Mapping[str, LodLevel]]"
+
+
 @mark.parametrize("args", (
         ("int array of 4 items", "int, int, int, int"),
         ("boolean array of 3 items, default (False, False, False)", "bool, bool, bool"),
