@@ -232,10 +232,6 @@ def test_parse_multiline(parser: Parser, document: document):
     assert len(func.arguments) == 8
 
 
-# isPlayingAction([layer])
-# setAngularVelocity(velocity[, local])
-# applyImpulse(point, impulse[, local])
-# Quaternion([seq, [angle]])
 @mark.parametrize("args", [
     ("isPlayingAction([layer])", "isPlayingAction", {}, {"layer"}),
     ("setAngularVelocity(velocity[, local])", "setAngularVelocity", {"velocity"}, {"local"}),
