@@ -13,12 +13,13 @@ from docutils.frontend import OptionParser, Values
 from docutils.io import FileInput, FileOutput
 from docutils.nodes import document
 from docutils.parsers.rst import Parser
+from docutils.utils import new_document
 from docutils.writers import Writer
 from sphinx.application import Sphinx
 from sphinx.environment import BuildEnvironment
 from sphinxcontrib.builders.rst import RstBuilder
 
-from bpystubgen.nodes import Class, Module
+from bpystubgen.nodes import Class, Import, Module
 from bpystubgen.writer import StubWriter
 
 
@@ -75,7 +76,7 @@ class Task:
 
     @property
     def is_module(self) -> bool:
-        return self.source and not self.is_class
+        return not self.is_class
 
     @property
     def is_class(self) -> bool:
@@ -115,14 +116,6 @@ class Task:
         context.logger.info("Processing %s (%d of %d)", self.full_name, context.done + 1, context.total)
 
         try:
-            target: Optional[Path] = None
-
-            if self.is_module and (self.source or any(self.children)):
-                parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
-                target = parent_dir / "__init__.pyi"
-
-                context.logger.debug("Generating module: %s", target)
-
             if self.source:
                 source_path = str(self.source)
 
@@ -138,35 +131,53 @@ class Task:
                     source_class=FileInput,
                     source_path=source_path,
                     settings=context.settings)
+            elif self.is_module:
+                components = (Parser,)
+                settings = OptionParser(components=components).get_default_values()
 
-                if self.is_module and target:
-                    try:
-                        module = next(iter(self.doctree.traverse(Module)))
+                self.doctree = new_document("", settings=settings)
+                self.doctree += Module(name=self.name)
 
-                        for child in filter(lambda c: c.is_class and c.doctree, self.children.values()):
-                            for node in child.doctree.traverse(Class):
-                                node.parent.remove(node)
-                                module += node
+            if not self.is_module or not (self.source or any(self.doctree.children)):
+                return
 
-                        module.import_types()
-                        module.sort_members()
+            parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
+            target = parent_dir / "__init__.pyi"
 
-                        target.parent.mkdir(parents=True, exist_ok=True)
+            context.logger.debug("Generating module: %s", target)
 
-                        output_path = str(target)
-                        fout = FileOutput(destination_path=output_path)
+            try:
+                module = next(iter(self.doctree.traverse(Module)))
 
-                        marker = target.parent / "py.typed"
+                for child in filter(lambda c: c.is_class, self.children.values()):
+                    for node in child.doctree.traverse(Class):
+                        node.parent.remove(node)
+                        module += node
 
-                        with open(marker, "w"):
-                            pass
+                module.import_types()
+                module.sort_members()
 
-                        context.logger.debug("Generating stub file: %s", output_path)
+                index = 1 if module.docstring else 0
 
-                        context.writer.write(self.doctree, fout)
-                        context.writer.assemble_parts()
-                    except StopIteration:
-                        context.logger.warning("Parsed doctree does not contain any module: %s", self.full_name)
+                for child in filter(lambda c: c.is_module, self.children.values()):
+                    for node in child.doctree.traverse(Module):
+                        module.insert(index, Import(module=".", types=module.localise_name(node.name)))
+
+                target.parent.mkdir(parents=True, exist_ok=True)
+
+                output_path = str(target)
+
+                context.logger.debug("Generating stub file: %s", output_path)
+
+                marker = target.parent / "py.typed"
+
+                with open(marker, "w"):
+                    pass
+
+                context.writer.write(self.doctree, FileOutput(destination_path=output_path))
+                context.writer.assemble_parts()
+            except StopIteration:
+                context.logger.warning("Parsed doctree does not contain any module: %s", self.full_name)
 
             context.successful += 1
         except BaseException as e:
