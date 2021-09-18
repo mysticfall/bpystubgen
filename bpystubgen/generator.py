@@ -111,6 +111,7 @@ class Task:
             child.run(context)
 
         if not self.parent:
+            context.successful += 1
             return
 
         context.logger.info("Processing %s (%d of %d)", self.full_name, context.done + 1, context.total)
@@ -139,6 +140,7 @@ class Task:
                 self.doctree += Module(name=self.name)
 
             if not self.is_module or not (self.source or any(self.doctree.children)):
+                context.successful += 1
                 return
 
             if any(self.children):
