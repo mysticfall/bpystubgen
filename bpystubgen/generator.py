@@ -141,8 +141,12 @@ class Task:
             if not self.is_module or not (self.source or any(self.doctree.children)):
                 return
 
-            parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
-            target = parent_dir / "__init__.pyi"
+            if any(self.children):
+                parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
+                target = parent_dir / "__init__.pyi"
+            else:
+                parent_dir = Path(context.dest_dir, "/".join(self.full_name.split(".")[:-1])).resolve()
+                target = parent_dir / (self.name + ".pyi")
 
             context.logger.debug("Generating module: %s", target)
 
