@@ -190,13 +190,13 @@ class Module(Referencable, Referencing, Documentable, APICollection):
             self.insert(index, Import(module=tpe))
 
     def localise_name(self, name: str) -> str:
-        segments = name.split(".")
+        prefix = self.name + "."
 
-        if len(segments) > 1 and ".".join(segments[:-1]) == self.name:
-            return segments[-1]
+        if name.startswith(prefix):
+            return name[len(prefix):]
 
         # XXX: Hack to replace types in containers (e.g. typing.List[bge.types.KX_GameObject])
-        if self.name in name and "typing" in name:
+        if prefix in name and "typing" in name:
             for cls in filter(lambda m: isinstance(m, Class), self.members):
                 name = name.replace(cls.full_name, cls.name)
 

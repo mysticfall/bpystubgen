@@ -214,11 +214,17 @@ def test_sort_members():
 
 
 def test_localise_name():
-    module = Module(name="bpy.types")
+    module = Module(name="bpy")
 
     assert module.localise_name("Object") == "Object"
-    assert module.localise_name("bpy.Object") == "bpy.Object"
-    assert module.localise_name("bpy.types.Object") == "Object"
+    assert module.localise_name("bpy.Object") == "Object"
+    assert module.localise_name("bpy.types.Object") == "types.Object"
+
+    submodule = Module(name="bpy.types")
+
+    assert submodule.localise_name("Object") == "Object"
+    assert submodule.localise_name("bpy.Object") == "bpy.Object"
+    assert submodule.localise_name("bpy.types.Object") == "Object"
 
 
 # noinspection DuplicatedCode
