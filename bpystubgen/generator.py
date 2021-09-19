@@ -3,7 +3,6 @@ from __future__ import annotations
 import logging
 import time
 from dataclasses import dataclass
-from itertools import chain
 from logging import Logger
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Sequence
@@ -77,9 +76,8 @@ class Task:
     @property
     def ancestors(self) -> Iterable[Task]:
         if self.parent:
-            return chain(self.parent.ancestors, (self.parent,))
-        else:
-            return iter(())
+            yield from self.parent.ancestors
+            yield self.parent
 
     @property
     def is_module(self) -> bool:
