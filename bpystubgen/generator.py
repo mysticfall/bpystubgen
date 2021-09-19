@@ -83,6 +83,10 @@ class Task:
         return self.source and str.isupper(self.name[0])
 
     @property
+    def is_root(self) -> bool:
+        return not self.parent
+
+    @property
     def has_submodule(self) -> bool:
         return any(filter(lambda c: c.is_module, self.children))
 
@@ -139,11 +143,11 @@ class Task:
                 self.doctree = new_document("", settings=settings)
                 self.doctree += Module(name=self.name)
 
-            if not self.is_module or not (self.source or any(self.doctree.children)):
+            if not self.is_module or not (self.source or any(self.children)):
                 context.successful += 1
                 return
 
-            if any(self.children):
+            if self.parent.is_root or any(filter(lambda c: c.is_module, self.children.values())):
                 parent_dir = Path(context.dest_dir, "/".join(self.full_name.split("."))).resolve()
                 target = parent_dir / "__init__.pyi"
             else:
