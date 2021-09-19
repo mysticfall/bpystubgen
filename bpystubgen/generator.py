@@ -56,12 +56,19 @@ class Task:
         self.source: Optional[Path] = None
         self.doctree: Optional[document] = None
 
+        if parent:
+            parent.children[self.name] = self
+
+            segments = list(filter(any, map(lambda a: a.name, self.ancestors)))
+            segments.append(self.name)
+
+            self._full_name = ".".join(segments)
+        else:
+            self._full_name = name
+
     @property
     def full_name(self) -> str:
-        segments = list(filter(any, map(lambda a: a.name, self.ancestors)))
-        segments.append(self.name)
-
-        return ".".join(segments)
+        return self._full_name
 
     @property
     def total(self) -> int:
