@@ -1,3 +1,5 @@
+from typing import Final
+
 from docutils.parsers.rst.directives import register_directive
 from docutils.parsers.rst.roles import GenericRole, register_local_role
 
@@ -5,6 +7,14 @@ from bpystubgen.directives import ClassDirective, CurrentModuleDirective, DataDi
     ModuleDirective, PropertyDirective
 from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, DocString, Function, FunctionRef, MethodRef, Module, \
     ModuleRef, PropertyRef, PythonRef, Reference
+
+lowercase_class_names: Final = {
+    "bpy.types.bpy_prop_collection",
+    "bpy.types.bpy_struct",
+    "bpy.types.wmOwnerID",
+    "bpy.types.wmOwnerIDs",
+    "bpy.types.wmTools"
+}
 
 register_directive("module", ModuleDirective)
 register_directive("data", DataDirective)

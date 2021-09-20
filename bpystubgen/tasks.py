@@ -11,6 +11,7 @@ from docutils.utils import new_document
 from docutils.writers import Writer
 from sphinx.environment import BuildEnvironment
 
+import bpystubgen
 from bpystubgen.nodes import Class, Import, Module
 
 
@@ -29,10 +30,13 @@ class Task:
 
             if name in context.keys():
                 child = context[name]
-            elif name[0].islower():
-                child = ModuleTask(name, parent=context)
             else:
-                child = ClassTask(name, parent=context)
+                full_name = ".".join((context.full_name, name))
+
+                if name[0].isupper() or full_name in bpystubgen.lowercase_class_names:
+                    child = ClassTask(name, parent=context)
+                else:
+                    child = ModuleTask(name, parent=context)
 
             if count == 1:
                 return child

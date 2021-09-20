@@ -167,6 +167,8 @@ class Module(Referencable, Referencing, Documentable, APICollection):
     def import_types(self):
         types_to_imports = set()
 
+        local_types = set(map(lambda c: c.name, filter(lambda m: isinstance(m, Class), self.members)))
+
         for tpe in self.referred_types:
             name = tpe.replace('"', "")
 
@@ -176,7 +178,10 @@ class Module(Referencable, Referencing, Documentable, APICollection):
                     .replace("!", "") \
                     .replace("~", "")
 
-            if not name[0].islower() or name in _known_types or name.startswith(self.name):
+            if name[0].isupper() or \
+                    name in _known_types or \
+                    name in local_types or \
+                    name.startswith(self.name):
                 continue
 
             types_to_imports.add(name.split(".")[0])

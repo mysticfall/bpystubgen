@@ -161,14 +161,20 @@ def test_import():
 
     module += cls
 
+    cls_lc = Class(name="local_class")
+
+    module += cls_lc
+
     func1 = Function(name="func1")
     func1.type = "str"
 
     arg1 = Argument(name="obj", type="class:`bpy.types.Object`")
-    arg2 = Argument(name="value", type="class:`LocalClass`")
+    arg2 = Argument(name="value1", type="class:`LocalClass`")
+    arg3 = Argument(name="value2", type="class:`local_class`")
 
     func1 += arg1
     func1 += arg2
+    func1 += arg3
 
     module += func1
 
@@ -176,6 +182,21 @@ def test_import():
     var3.type = "class:`myproject.LocalClass`"
 
     module += var3
+
+    var4 = Data(name="var4")
+    var4.type = "class:`LocalClass`"
+
+    module += var4
+
+    var5 = Data(name="var5")
+    var5.type = "class:`myproject.local_class`"
+
+    module += var5
+
+    var6 = Data(name="var6")
+    var6.type = "class:`local_class`"
+
+    module += var6
 
     module.import_types()
 
