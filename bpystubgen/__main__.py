@@ -6,6 +6,7 @@ from pathlib import Path
 
 from docutils.frontend import OptionParser
 from docutils.parsers.rst import Parser
+from pkg_resources import resource_string
 from sphinx.application import Sphinx
 from sphinxcontrib.builders.rst import RstBuilder
 
@@ -73,10 +74,17 @@ writer = StubWriter(builder)
 total = len(tuple(root))
 done = 0
 
+blacklist = set(map(lambda b: b.decode("UTF-8"),
+                    resource_string(__name__, "patch/blacklist.txt").splitlines()))
+
 for task in root:
     done += 1
 
     logger.info("Processing %s (%d of %d)", task.full_name, done, total)
+
+    if task.full_name in blacklist:
+        logger.info("Skipping blacklisted file: %s.", task)
+        continue
 
     try:
         if isinstance(task, ParserTask):
