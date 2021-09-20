@@ -196,9 +196,10 @@ class ModuleTask(ParserTask):
 
         fout = FileOutput(destination_path=str(target))
 
-        writer.write(self.doctree, fout)
-        writer.assemble_parts()
-
-        fout.close()
+        try:
+            writer.write(self.doctree, fout)
+            writer.assemble_parts()
+        finally:
+            fout.close()
 
         return target
