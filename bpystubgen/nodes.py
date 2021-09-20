@@ -81,6 +81,30 @@ class Named(Element, ABC):
         elif "name" in self.attributes:
             del self.attributes["name"]
 
+    @property
+    def full_name(self) -> Optional[str]:
+        name = self.name
+
+        if not name:
+            return None
+
+        identifiers = [name]
+        parent = self.parent
+
+        while isinstance(parent, Named):
+            name = parent.name
+
+            if name:
+                identifiers.append(name)
+            else:
+                return None
+
+            parent = parent.parent
+
+        identifiers.reverse()
+
+        return ".".join(identifiers)
+
 
 class Documentable(Element, ABC):
 
@@ -107,30 +131,6 @@ class APIMember(Documentable, Referencable, Typed, Element, ABC):
     @abstractmethod
     def signature(self) -> str:
         pass
-
-    @property
-    def full_name(self) -> Optional[str]:
-        name = self.name
-
-        if not name:
-            return None
-
-        identifiers = [name]
-        parent = self.parent
-
-        while isinstance(parent, Named):
-            name = parent.name
-
-            if name:
-                identifiers.append(name)
-            else:
-                return None
-
-            parent = parent.parent
-
-        identifiers.reverse()
-
-        return ".".join(identifiers)
 
     @property
     @abstractmethod
