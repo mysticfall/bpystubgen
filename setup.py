@@ -14,7 +14,7 @@ setup(
     url="https://github.com/mysticfall/bpystubgen",
     packages=["bpystubgen"],
     package_data={"bpystubgen": ["patch/*.txt"]},
-    install_requires=["docutils==0.17.1", "sphinxcontrib-restbuilder==0.3", "black==21.8b0"],
+    install_requires=["docutils==0.17.1", "sphinxcontrib-restbuilder==0.3"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
