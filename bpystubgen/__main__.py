@@ -1,9 +1,16 @@
 import logging
 import sys
+import time
 from argparse import ArgumentParser
 from pathlib import Path
 
-from bpystubgen.generator import generate
+from docutils.frontend import OptionParser
+from docutils.parsers.rst import Parser
+from sphinx.application import Sphinx
+from sphinxcontrib.builders.rst import RstBuilder
+
+from bpystubgen.tasks import ModuleTask, ParserTask, Task
+from bpystubgen.writer import StubWriter
 
 parser = ArgumentParser(
     prog="bpystubgen",
@@ -37,4 +44,49 @@ elif args.verbose:
 else:
     log_level = logging.INFO
 
-generate(source, dest, log_level)
+logging.basicConfig(level=log_level, format="[%(levelname)s] %(name)s - %(message)s")
+logger = logging.getLogger("bpystubgen")
+
+logger.info("Reading *.rst files from the source location: %s", source)
+
+started = time.perf_counter()
+
+root = Task.create(source)
+
+# noinspection DuplicatedCode
+components = (Parser,)
+
+app = Sphinx(srcdir=".", confdir=None, outdir=str(dest), doctreedir=".", buildername="text")
+
+settings = OptionParser(components=components).get_default_values()
+
+settings.line_length_limit = 15000
+settings.report_level = 5
+settings.traceback = True
+settings.env = app.env
+
+builder = RstBuilder(app)
+builder.config.rst_indent = 2
+
+writer = StubWriter(builder)
+
+total = len(tuple(root))
+done = 0
+
+for task in root:
+    done += 1
+
+    logger.info("Processing %s (%d of %d)", task.full_name, done, total)
+
+    try:
+        if isinstance(task, ParserTask):
+            task.parse(settings, app.env)
+
+        if isinstance(task, ModuleTask):
+            task.generate(dest, writer)
+    except BaseException as e:
+        logger.error("Failed to process task: %s", task, exc_info=e)
+
+elapsed = time.perf_counter() - started
+
+logger.info("Finished processing %d entries in %d seconds.", total, elapsed)

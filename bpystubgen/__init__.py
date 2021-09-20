@@ -3,9 +3,8 @@ from docutils.parsers.rst.roles import GenericRole, register_local_role
 
 from bpystubgen.directives import ClassDirective, CurrentModuleDirective, DataDirective, FunctionDirective, \
     ModuleDirective, PropertyDirective
-from bpystubgen.generator import generate
-from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, PropertyRef, DocString, Function, FunctionRef, \
-    MethodRef, Module, ModuleRef, PythonRef, Reference
+from bpystubgen.nodes import AttributeRef, ClassRef, DataRef, DocString, Function, FunctionRef, MethodRef, Module, \
+    ModuleRef, PropertyRef, PythonRef, Reference
 
 register_directive("module", ModuleDirective)
 register_directive("data", DataDirective)
