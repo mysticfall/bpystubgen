@@ -1,9 +1,69 @@
+import shutil
+import tempfile
+from pathlib import Path
 from typing import Type
 
-from pytest import mark
+from docutils.frontend import OptionParser, Values
+from docutils.parsers import Parser
+from pytest import fixture, mark
+from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
 
+from bpystubgen import nodes
 from bpystubgen.nodes import Argument, Class, ClassRef, Data, DocString, Documentable, Function, Import, Module, \
     ModuleRef, Named, Property, Typed
+
+
+@fixture
+def env() -> BuildEnvironment:
+    dest_path = Path(tempfile.tempdir) / "bpystubgen-test"
+    app = Sphinx(srcdir=".", confdir=None, outdir=str(dest_path), doctreedir=".", buildername="text")
+
+    yield app.env
+
+    shutil.rmtree(dest_path)
+
+
+@fixture
+def settings(env: BuildEnvironment) -> Values:
+    components = (Parser,)
+    settings = OptionParser(components=components).get_default_values()
+
+    settings.line_length_limit = 15000
+    settings.report_level = 5
+    settings.traceback = True
+    settings.env = env
+    settings.pep_references = None
+    settings.rfc_references = None
+
+    return settings
+
+
+@fixture
+def rst_path() -> Path:
+    return Path(__file__).parent / "fixtures" / "rst"
+
+
+# noinspection DuplicatedCode
+def test_from_path(rst_path: Path, settings: Values, env: BuildEnvironment):
+    source = rst_path / "bge.types.KX_GameObject.rst"
+
+    doc = nodes.from_path(source, settings, env)
+
+    assert doc
+
+    cls = next(iter(doc.traverse(Class)))
+
+    assert cls.name == "KX_GameObject"
+    assert cls.docstring
+    assert cls.docstring.astext().startswith("All game objects")
+    assert len(cls.docstring.astext()) == 4129
+
+    members = dict(map(lambda m: (m.name, m), cls.members))
+
+    assert len(members) == 106
+    assert isinstance(members["name"], Data)
+    assert isinstance(members["applyForce"], Function)
 
 
 @mark.parametrize("node_type", (Module, Data, Property, Function, Argument))

@@ -4,11 +4,36 @@ from abc import ABC, abstractmethod
 from enum import Enum
 from graphlib import TopologicalSorter
 from io import StringIO
+from pathlib import Path
 from typing import Final, Mapping, Optional, Sequence, Set, Tuple, cast
 
-from docutils.nodes import Element, Inline, TextElement
+from docutils.core import publish_doctree
+from docutils.frontend import Values
+from docutils.io import FileInput
+from docutils.nodes import Element, Inline, TextElement, document
+from sphinx.environment import BuildEnvironment
 
 from bpystubgen.parser import _known_types
+
+
+def from_path(source: Path, settings: Values, env: BuildEnvironment) -> Optional[document]:
+    source_path = str(source)
+
+    env.project.docnames.add(source_path)
+    env.prepare_settings(source_path)
+
+    fin = FileInput(source_path=source_path)
+
+    try:
+        doctree = publish_doctree(
+            fin,
+            source_class=FileInput,
+            source_path=source_path,
+            settings=settings)
+    finally:
+        fin.close()
+
+    return doctree
 
 
 class Referencing(ABC):

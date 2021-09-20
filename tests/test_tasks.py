@@ -151,6 +151,7 @@ def test_iter(rst_path: Path):
                      "mathutils")
 
 
+# noinspection DuplicatedCode
 def test_parse(rst_path: Path, settings: Values, app: Sphinx):
     modules = Task.create(rst_path, "bge.types.KX_GameObject.rst")
     obj = modules["bge"]["types"]["KX_GameObject"]

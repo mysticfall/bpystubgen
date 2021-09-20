@@ -3,15 +3,15 @@ from __future__ import annotations
 from pathlib import Path
 from typing import AbstractSet, Iterable, MutableMapping, Optional, Sequence, ValuesView, cast
 
-from docutils.core import publish_doctree
 from docutils.frontend import Values
-from docutils.io import FileInput, FileOutput
+from docutils.io import FileOutput
 from docutils.nodes import document
 from docutils.utils import new_document
 from docutils.writers import Writer
 from sphinx.environment import BuildEnvironment
 
 import bpystubgen
+from bpystubgen import nodes
 from bpystubgen.nodes import Class, Import, Module
 
 
@@ -117,23 +117,7 @@ class ParserTask(Task):
         self.doctree: Optional[document] = None
 
     def parse(self, settings: Values, env: BuildEnvironment) -> Optional[document]:
-        if self.source:
-            source_path = str(self.source)
-
-            env.project.docnames.add(source_path)
-            env.prepare_settings(source_path)
-
-            fin = FileInput(source_path=source_path)
-
-            self.doctree = publish_doctree(
-                fin,
-                source_class=FileInput,
-                source_path=source_path,
-                settings=settings)
-
-            fin.close()
-        else:
-            self.doctree = None
+        self.doctree = nodes.from_path(self.source, settings, env) if self.source else None
 
         return self.doctree
 
