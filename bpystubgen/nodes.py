@@ -134,7 +134,7 @@ class APICollection(Element, ABC):
 
     @property
     def members(self) -> Sequence[APIMember]:
-        return tuple(self.traverse(APIMember, include_self=False, ascend=False))
+        return tuple(map(lambda m: cast(APIMember, m), filter(lambda c: isinstance(c, APIMember), self.children)))
 
 
 class Module(Referencable, Referencing, Documentable, APICollection):

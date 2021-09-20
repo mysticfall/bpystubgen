@@ -104,6 +104,32 @@ def test_import():
     assert i.astext() == "from bpy.types import Camera, Object"
 
 
+def test_members():
+    bge = Module(name="bge")
+    types = Module(name="types")
+    game_obj = Class(name="KX_GameObject")
+    scene = Class(name="KX_Scene")
+
+    bge += types
+    types += game_obj
+    types += scene
+
+    name = Data(name="name")
+    apply_force = Function(name="applyForce")
+
+    game_obj += name
+    game_obj += apply_force
+
+    add_object = Function(name="addObject")
+
+    scene += add_object
+
+    assert not any(bge.members)
+    assert set(types.members) == {game_obj, scene}
+    assert set(game_obj.members) == {name, apply_force}
+    assert set(scene.members) == {add_object}
+
+
 def test_references():
     assert ModuleRef(text="bpy.types").target == "bpy.types"
     assert ModuleRef(text="~bpy.types").target == "bpy.types"
