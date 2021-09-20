@@ -186,7 +186,7 @@ class Module(Referencable, Referencing, Documentable, APICollection):
 
         index = 1 if self.docstring else 0
 
-        for tpe in types_to_imports:
+        for tpe in sorted(types_to_imports):
             self.insert(index, Import(module=tpe))
 
     def localise_name(self, name: str) -> str:
