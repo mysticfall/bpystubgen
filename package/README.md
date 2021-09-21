@@ -26,6 +26,28 @@ As for UPBGE, stubs are available for the upcoming 0.3 release, which you can in
 $ pip install upbge-stubs==0.3.*
 ```
 
+You can also install it using `Pipenv`. Note that it is required to set `allow_preleases` option 
+in case the target application has no stable release (i.e. UPBGE 0.3 branch). You can use the 
+following content as a template for your `Pipfile`:
+
+```toml
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+"upbge-stubs" = "==0.3.*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
+```
+Also, it would be more correct to use `[dev-packages]` instead of `[packages]`, in which 
+case you can install or update the stubs using the `-d` flag like `pipenv update -d`.  
+
 ## License ##
 
 This project is provided under the terms of 
