@@ -35,13 +35,13 @@ def apply(name: str, target: Element, settings: Values, env: BuildEnvironment) -
             continue
 
         index = target.index(member)
-        target.insert(index, patch[member.name].copy())
+        target.insert(index, patch[member.name].deepcopy())
 
         member.parent.remove(member)
 
     names_to_add = set(patch.keys()).difference(members.keys())
 
     for key in filter(lambda k: k in names_to_add, patch.keys()):
-        target += patch[key].copy()
+        target += patch[key].deepcopy()
 
     return target
