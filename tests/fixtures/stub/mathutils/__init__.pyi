@@ -852,6 +852,86 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
   """
 
+  def __add__(self, other: Matrix) -> Matrix:
+
+    """
+
+    Add another matrix to this one.
+
+    """
+
+    ...
+
+  def __sub__(self, other: Matrix) -> Matrix:
+
+    """
+
+    Subtract another matrix from this one.
+
+    """
+
+    ...
+
+  def __mul__(self, other: typing.Union[Matrix, float]) -> Matrix:
+
+    """
+
+    Multiply this matrix by another one or a scala value.
+
+    """
+
+    ...
+
+  def __rmul__(self, other: float) -> Matrix:
+
+    """
+
+    Multiply this matrix by a scala value.
+
+    """
+
+    ...
+
+  def __imul__(self, other: typing.Union[Matrix, float]) -> Matrix:
+
+    """
+
+    Multiply this matrix by another one or a scala value.
+
+    """
+
+    ...
+
+  def __matmul__(self, other: typing.Union[Matrix, Vector, Quaternion]) -> typing.Union[Matrix, Vector, Quaternion]:
+
+    """
+
+    Multiply this matrix by another one.
+
+    """
+
+    ...
+
+  def __imatmul__(self, other: typing.Union[Matrix, Vector, Quaternion]) -> typing.Union[Matrix, Vector, Quaternion]:
+
+    """
+
+    Multiply this matrix by another one.
+
+    """
+
+    ...
+
+  def __invert__(self) -> Matrix:
+
+    """
+
+    Invert this matrix.
+
+    """
+
+    ...
+
 class Quaternion:
 
   """
@@ -1207,6 +1287,76 @@ axis fixed at zero, and the remaining twist rotation angle.
   Quaternion axis value.
 
   """
+
+  def __add__(self, other: Quaternion) -> Quaternion:
+
+    """
+
+    Add another quaternion to this one.
+
+    """
+
+    ...
+
+  def __sub__(self, other: Quaternion) -> Quaternion:
+
+    """
+
+    Subtract another quaternion from this one.
+
+    """
+
+    ...
+
+  def __mul__(self, other: typing.Union[Quaternion, float]) -> Quaternion:
+
+    """
+
+    Multiply this quaternion by another one or a scala value.
+
+    """
+
+    ...
+
+  def __rmul__(self, other: float) -> Quaternion:
+
+    """
+
+    Multiply this quaternion by a scala value.
+
+    """
+
+    ...
+
+  def __imul__(self, other: typing.Union[Quaternion, float]) -> Quaternion:
+
+    """
+
+    Multiply this quaternion by another one or a scala value.
+
+    """
+
+    ...
+
+  def __matmul__(self, other: typing.Union[Quaternion, Vector]) -> typing.Union[Quaternion, Vector]:
+
+    """
+
+    Multiply with another quaternion or a vector.
+
+    """
+
+    ...
+
+  def __imatmul__(self, other: typing.Union[Quaternion, Vector]) -> typing.Union[Quaternion, Vector]:
+
+    """
+
+    Multiply with another quaternion or a vector.
+
+    """
+
+    ...
 
 class Vector:
 
@@ -4342,3 +4492,73 @@ vector and another.
   Undocumented, consider `contributing <https://developer.blender.org/T51061>`_.
 
   """
+
+  def __add__(self, other: Vector) -> Vector:
+
+    """
+
+    Add another vector to this one.
+
+    """
+
+    ...
+
+  def __sub__(self, other: Vector) -> Vector:
+
+    """
+
+    Subtract another vector from this one.
+
+    """
+
+    ...
+
+  def __mul__(self, other: typing.Union[Vector, float]) -> Vector:
+
+    """
+
+    Multiply this vector by another one or a scala value.
+
+    """
+
+    ...
+
+  def __rmul__(self, other: float) -> Vector:
+
+    """
+
+    Multiply this vector by a scala value.
+
+    """
+
+    ...
+
+  def __imul__(self, other: typing.Union[Vector, float]) -> Vector:
+
+    """
+
+    Multiply this vector by another one or a scala value.
+
+    """
+
+    ...
+
+  def __matmul__(self, other: Vector) -> float:
+
+    """
+
+    Scala product with another vector.
+
+    """
+
+    ...
+
+  def __imatmul__(self, other: Vector) -> float:
+
+    """
+
+    Scala product with another vector.
+
+    """
+
+    ...
