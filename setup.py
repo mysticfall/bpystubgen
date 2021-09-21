@@ -13,7 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/mysticfall/bpystubgen",
     packages=["bpystubgen"],
-    package_data={"bpystubgen": ["patch/*.txt"]},
+    package_data={"bpystubgen": ["patches/*.txt", "patches/*.rst"]},
     install_requires=["docutils==0.17.1", "sphinxcontrib-restbuilder==0.3"],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -11,7 +11,7 @@ from docutils.writers import Writer
 from sphinx.environment import BuildEnvironment
 
 import bpystubgen
-from bpystubgen import nodes
+from bpystubgen import nodes, patches
 from bpystubgen.nodes import Class, Import, Module
 
 
@@ -45,6 +45,9 @@ class Task:
 
         for file in sorted(src_dir.rglob(pattern)):
             segments = file.name.split(".")[:-1]
+
+            if ".".join(segments) in patches.blacklist:
+                continue
 
             task = resolve(segments, root)
             task.source = file
@@ -117,7 +120,12 @@ class ParserTask(Task):
         self.doctree: Optional[document] = None
 
     def parse(self, settings: Values, env: BuildEnvironment) -> Optional[document]:
-        self.doctree = nodes.from_path(self.source, settings, env) if self.source else None
+        if self.source:
+            doc = nodes.from_path(self.source, settings, env)
+
+            self.doctree = patches.apply(self.name, doc, settings, env)
+        else:
+            self.doctree = None
 
         return self.doctree
 
@@ -133,13 +141,13 @@ class ModuleTask(ParserTask):
 
         if not doctree:
             doctree = new_document("", settings=settings)
-            doctree += Module(name=self.name)
+            doctree += patches.apply(self.name, Module(name=self.name), settings, env)
 
         self.doctree = doctree
 
         module = next(iter(doctree.traverse(Module)))
-        classes = filter(lambda c: isinstance(c, ClassTask), self.values())
-        submodules = filter(lambda c: isinstance(c, ModuleTask), self.values())
+        classes = filter(lambda c: isinstance(c, ClassTask) and c.doctree, self.values())
+        submodules = filter(lambda c: isinstance(c, ModuleTask) and c.doctree, self.values())
 
         for child in classes:
             for node in cast(ClassTask, child).doctree.traverse(Class):

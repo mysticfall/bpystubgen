@@ -14,6 +14,7 @@ from bpystubgen.nodes import Argument, Class, ClassRef, Data, DocString, Documen
     ModuleRef, Named, Property, Typed
 
 
+# noinspection DuplicatedCode
 @fixture
 def env() -> BuildEnvironment:
     dest_path = Path(tempfile.tempdir) / "bpystubgen-test"

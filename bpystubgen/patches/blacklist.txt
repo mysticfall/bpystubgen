@@ -7,3 +7,4 @@ info_overview
 info_quickstart
 info_tips_and_tricks
 change_log
+bpy.data

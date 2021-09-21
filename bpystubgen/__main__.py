@@ -6,10 +6,10 @@ from pathlib import Path
 
 from docutils.frontend import OptionParser
 from docutils.parsers.rst import Parser
-from pkg_resources import resource_string
 from sphinx.application import Sphinx
 from sphinxcontrib.builders.rst import RstBuilder
 
+from bpystubgen.patches import blacklist
 from bpystubgen.tasks import ModuleTask, ParserTask, Task
 from bpystubgen.writer import StubWriter
 
@@ -73,9 +73,6 @@ writer = StubWriter(builder)
 
 total = len(tuple(root))
 done = 0
-
-blacklist = set(map(lambda b: b.decode("UTF-8"),
-                    resource_string(__name__, "patch/blacklist.txt").splitlines()))
 
 for task in root:
     done += 1
