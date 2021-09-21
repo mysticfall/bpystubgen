@@ -104,7 +104,9 @@ def parse_simple(text: str) -> Optional[str]:
 def parse_reference(text: str) -> Optional[str]:
     result = _reference_type_pattern.match(text)
 
-    return result.group("target") or result.group("name") if result else None
+    type_info = result.group("target") or result.group("name") if result else None
+
+    return "typing.Any" if type_info == "AnyType" else type_info
 
 
 def parse_qualified_list(text: str) -> Optional[str]:
