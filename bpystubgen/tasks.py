@@ -146,6 +146,10 @@ class ModuleTask(ParserTask):
         self.doctree = doctree
 
         module = next(iter(doctree.traverse(Module)))
+
+        for cls in module.traverse(Class):
+            patches.apply(cls.full_name, cls, settings, env)
+
         classes = filter(lambda c: isinstance(c, ClassTask) and c.doctree, self.values())
         submodules = filter(lambda c: isinstance(c, ModuleTask) and c.doctree, self.values())
 
