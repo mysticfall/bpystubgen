@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="bpystubgen",
-    version="0.2.0",
+    version="0.2.1",
     author="Xavier Cho",
     author_email="mysticfallband@gmail.com",
     description="A utility to generate Python API stubs from documentation files in reStructuredText format.",
@@ -13,7 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/mysticfall/bpystubgen",
     packages=["bpystubgen"],
-    package_data={"bpystubgen": ["patches/*.txt", "patches/*.rst"]},
+    package_data={"bpystubgen": ["patches/*.txt", "patches/*.rst", "patches/__init__.py"]},
     install_requires=["docutils==0.17.1", "sphinxcontrib-restbuilder==0.3"],
     classifiers=[
         "Programming Language :: Python :: 3",
