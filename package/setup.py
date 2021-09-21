@@ -18,7 +18,7 @@ if build_number:
 else:
     version = ".".join((app_version, module_version))
 
-files = glob.glob("**/*.pyi", recursive=True)
+files = glob.glob("**/__init__.pyi", recursive=True)
 packages = set(map(lambda f: f.split(os.sep)[0].replace(".pyi", ""), files))
 package_data = {pkg: ["py.typed", "*.pyi", "**/*.pyi"] for pkg in packages}
 
