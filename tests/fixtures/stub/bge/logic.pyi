@@ -18,7 +18,7 @@ Module to access logic functions, imported automatically into the python control
   # To get the game object this controller is on:
   obj = cont.owner
 
-:class:`KX_GameObject <bge.types.KX_GameObject>` and :class:`KX_Camera <bge.types.KX_Camera>` or :class:`KX_LightObject <bge.types.KX_LightObject>` methods are available depending on the type of object
+:class:`~bge.types.KX_GameObject` and :class:`~bge.types.KX_Camera` or :class:`~bge.types.KX_LightObject` methods are available depending on the type of object
 
 .. code:: python
 
@@ -34,29 +34,29 @@ Module to access logic functions, imported automatically into the python control
 
 See the sensor's reference for available methods:
 
-* :class:`SCA_MouseFocusSensor <bge.types.SCA_MouseFocusSensor>`
+* :class:`~bge.types.SCA_MouseFocusSensor`
 
-* :class:`SCA_NearSensor <bge.types.SCA_NearSensor>`
+* :class:`~bge.types.SCA_NearSensor`
 
-* :class:`KX_NetworkMessageSensor <bge.types.KX_NetworkMessageSensor>`
+* :class:`~bge.types.KX_NetworkMessageSensor`
 
-* :class:`SCA_RadarSensor <bge.types.SCA_RadarSensor>`
+* :class:`~bge.types.SCA_RadarSensor`
 
-* :class:`SCA_RaySensor <bge.types.SCA_RaySensor>`
+* :class:`~bge.types.SCA_RaySensor`
 
-* :class:`SCA_CollisionSensor <bge.types.SCA_CollisionSensor>`
+* :class:`~bge.types.SCA_CollisionSensor`
 
-* :class:`SCA_DelaySensor <bge.types.SCA_DelaySensor>`
+* :class:`~bge.types.SCA_DelaySensor`
 
-* :class:`SCA_JoystickSensor <bge.types.SCA_JoystickSensor>`
+* :class:`~bge.types.SCA_JoystickSensor`
 
-* :class:`SCA_KeyboardSensor <bge.types.SCA_KeyboardSensor>`
+* :class:`~bge.types.SCA_KeyboardSensor`
 
-* :class:`SCA_MouseSensor <bge.types.SCA_MouseSensor>`
+* :class:`~bge.types.SCA_MouseSensor`
 
-* :class:`SCA_PropertySensor <bge.types.SCA_PropertySensor>`
+* :class:`~bge.types.SCA_PropertySensor`
 
-* :class:`SCA_RandomSensor <bge.types.SCA_RandomSensor>`
+* :class:`~bge.types.SCA_RandomSensor`
 
 You can also access actuators linked to the controller
 
@@ -73,45 +73,45 @@ You can also access actuators linked to the controller
 
 See the actuator's reference for available methods
 
-* :class:`BL_ActionActuator <bge.types.BL_ActionActuator>`
+* :class:`~bge.types.BL_ActionActuator`
 
-* :class:`SCA_CameraActuator <bge.types.SCA_CameraActuator>`
+* :class:`~bge.types.SCA_CameraActuator`
 
-* :class:`SCA_ConstraintActuator <bge.types.SCA_ConstraintActuator>`
+* :class:`~bge.types.SCA_ConstraintActuator`
 
-* :class:`SCA_GameActuator <bge.types.SCA_GameActuator>`
+* :class:`~bge.types.SCA_GameActuator`
 
-* :class:`SCA_MouseActuator <bge.types.SCA_MouseActuator>`
+* :class:`~bge.types.SCA_MouseActuator`
 
-* :class:`KX_NetworkMessageActuator <bge.types.KX_NetworkMessageActuator>`
+* :class:`~bge.types.KX_NetworkMessageActuator`
 
-* :class:`SCA_ObjectActuator <bge.types.SCA_ObjectActuator>`
+* :class:`~bge.types.SCA_ObjectActuator`
 
-* :class:`SCA_ParentActuator <bge.types.SCA_ParentActuator>`
+* :class:`~bge.types.SCA_ParentActuator`
 
-* :class:`SCA_AddObjectActuator <bge.types.SCA_AddObjectActuator>`
+* :class:`~bge.types.SCA_AddObjectActuator`
 
-* :class:`SCA_DynamicActuator <bge.types.SCA_DynamicActuator>`
+* :class:`~bge.types.SCA_DynamicActuator`
 
-* :class:`SCA_EndObjectActuator <bge.types.SCA_EndObjectActuator>`
+* :class:`~bge.types.SCA_EndObjectActuator`
 
-* :class:`SCA_ReplaceMeshActuator <bge.types.SCA_ReplaceMeshActuator>`
+* :class:`~bge.types.SCA_ReplaceMeshActuator`
 
-* :class:`SCA_SceneActuator <bge.types.SCA_SceneActuator>`
+* :class:`~bge.types.SCA_SceneActuator`
 
-* :class:`SCA_SoundActuator <bge.types.SCA_SoundActuator>`
+* :class:`~bge.types.SCA_SoundActuator`
 
-* :class:`SCA_StateActuator <bge.types.SCA_StateActuator>`
+* :class:`~bge.types.SCA_StateActuator`
 
-* :class:`SCA_TrackToActuator <bge.types.SCA_TrackToActuator>`
+* :class:`~bge.types.SCA_TrackToActuator`
 
-* :class:`SCA_VisibilityActuator <bge.types.SCA_VisibilityActuator>`
+* :class:`~bge.types.SCA_VisibilityActuator`
 
-* :class:`SCA_2DFilterActuator <bge.types.SCA_2DFilterActuator>`
+* :class:`~bge.types.SCA_2DFilterActuator`
 
-* :class:`SCA_PropertyActuator <bge.types.SCA_PropertyActuator>`
+* :class:`~bge.types.SCA_PropertyActuator`
 
-* :class:`SCA_RandomActuator <bge.types.SCA_RandomActuator>`
+* :class:`~bge.types.SCA_RandomActuator`
 
 Most logic brick's methods are accessors for the properties available in the logic buttons.
 Consult the logic bricks documentation for more information on how each logic brick works.
@@ -984,7 +984,7 @@ keyboard: bge.types.SCA_PythonKeyboard = ...
 
 """
 
-The current keyboard wrapped in an :class:`SCA_PythonKeyboard <bge.types.SCA_PythonKeyboard>` object.
+The current keyboard wrapped in an :class:`~bge.types.SCA_PythonKeyboard` object.
 
 """
 
@@ -992,7 +992,7 @@ mouse: bge.types.SCA_PythonMouse = ...
 
 """
 
-The current mouse wrapped in an :class:`SCA_PythonMouse <bge.types.SCA_PythonMouse>` object.
+The current mouse wrapped in an :class:`~bge.types.SCA_PythonMouse` object.
 
 """
 
@@ -1000,7 +1000,7 @@ joysticks: typing.List[bge.types.SCA_PythonJoystick] = ...
 
 """
 
-A list of attached :class:`SCA_PythonJoystick <bge.types.SCA_PythonJoystick>`.
+A list of attached :class:`~bge.types.SCA_PythonJoystick`.
 The list size is the maximum number of supported joysticks.
 If no joystick is available for a given slot, the slot is set to None.
 

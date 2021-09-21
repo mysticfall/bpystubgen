@@ -585,14 +585,6 @@ class Reference(Inline, TextElement):
         name = super().astext()
         ref_type = self.tagname[:-3]
 
-        if name.startswith("~"):
-            title = name.split(".")[-1]
-            target = name[1:]
-
-            return "".join([":", ref_type, ":`", title, " <", target, ">`"])
-        elif name.startswith("!"):
-            return name[1:]
-
         return "".join([":", ref_type, ":`", name, "`"])
 
 

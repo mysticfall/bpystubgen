@@ -42,7 +42,7 @@ def test_parse_simple(parser: Parser, document: document):
     assert func.name == "loadGlobalDict"
     assert not func.type
     assert func.docstring and func.docstring.astext() == \
-           "Loads :class:`globalDict <bge.logic.globalDict>` from a file."
+           "Loads :class:`~bge.logic.globalDict` from a file."
 
 
 @mark.parametrize("signature", (

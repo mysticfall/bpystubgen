@@ -196,13 +196,13 @@ def test_references():
     assert ModuleRef(text="!bpy.types").target == "bpy.types"
 
     assert ModuleRef(text="bpy.types").astext() == ":mod:`bpy.types`"
-    assert ModuleRef(text="~bpy.types").astext() == ":mod:`types <bpy.types>`"
-    assert ModuleRef(text="!bpy.types").astext() == "bpy.types"
+    assert ModuleRef(text="~bpy.types").astext() == ":mod:`~bpy.types`"
+    assert ModuleRef(text="!bpy.types").astext() == ":mod:`!bpy.types`"
 
     assert ClassRef(text="bpy.types.Object").target == "bpy.types.Object"
     assert ClassRef(text="~bpy.types.Object").target == "bpy.types.Object"
     assert ClassRef(text="!bpy.types.Object").target == "bpy.types.Object"
 
     assert ClassRef(text="bpy.types.Object").astext() == ":class:`bpy.types.Object`"
-    assert ClassRef(text="~bpy.types.Object").astext() == ":class:`Object <bpy.types.Object>`"
-    assert ClassRef(text="!bpy.types.Object").astext() == "bpy.types.Object"
+    assert ClassRef(text="~bpy.types.Object").astext() == ":class:`~bpy.types.Object`"
+    assert ClassRef(text="!bpy.types.Object").astext() == ":class:`!bpy.types.Object`"

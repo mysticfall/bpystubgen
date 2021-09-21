@@ -120,8 +120,7 @@ def test_transform(parser: Parser, document: document):
 
     assert data.name == "mouse"
     assert data.docstring and data.docstring.astext() == \
-           "The current mouse wrapped in an :class:`SCA_PythonMouse " \
-           "<bge.types.SCA_PythonMouse>` object."
+           "The current mouse wrapped in an :class:`~bge.types.SCA_PythonMouse` object."
 
     assert len(r.children) == 1
 

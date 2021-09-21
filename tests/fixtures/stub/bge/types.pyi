@@ -17,7 +17,7 @@ class KX_GameObject(bge.types.SCA_IObject):
   Properties assigned to game objects are accessible as attributes of this class.
 
   Note: Calling ANY method or attribute on an object that has been removed from a scene will raise a SystemError,
-if an object may have been removed since last accessing it use the :attr:`invalid <bge.types.EXP_PyObjectPlus.invalid>` attribute to check.
+if an object may have been removed since last accessing it use the :attr:`~bge.types.EXP_PyObjectPlus.invalid` attribute to check.
 
   KX_GameObject can be subclassed to extend functionality. For example:
 
@@ -62,7 +62,7 @@ if an object may have been removed since last accessing it use the :attr:`invali
         cont.owner.update()
 
   When subclassing objects other than empties and meshes, the specific type
-should be used - e.g. inherit from :class:`BL_ArmatureObject <bge.types.BL_ArmatureObject>` when the object
+should be used - e.g. inherit from :class:`~bge.types.BL_ArmatureObject` when the object
 to mutate is an armature.
 
   """
@@ -516,7 +516,7 @@ used.
 
   """
 
-  a sequence of :class:`SCA_ISensor <bge.types.SCA_ISensor>` objects with string/index lookups and iterator support.
+  a sequence of :class:`~bge.types.SCA_ISensor` objects with string/index lookups and iterator support.
 
   Note: This attribute is experimental and may be removed (but probably wont be).
 
@@ -528,7 +528,7 @@ used.
 
   """
 
-  a sequence of :class:`SCA_IController <bge.types.SCA_IController>` objects with string/index lookups and iterator support.
+  a sequence of :class:`~bge.types.SCA_IController` objects with string/index lookups and iterator support.
 
   Note: This attribute is experimental and may be removed (but probably wont be).
 
@@ -540,7 +540,7 @@ used.
 
   """
 
-  a list of :class:`SCA_IActuator <bge.types.SCA_IActuator>` with string/index lookups and iterator support.
+  a list of :class:`~bge.types.SCA_IActuator` with string/index lookups and iterator support.
 
   Note: This attribute is experemental and may be removed (but probably wont be).
 
@@ -1056,7 +1056,7 @@ Use rayCast() if you need to retrieve the hit point
 
     Look from a point/object to another point/object and find first object hit within dist that matches prop.
 if poly is 0, returns a 3-tuple with object reference, hit point and hit normal or (None, None, None) if no hit.
-if poly is 1, returns a 4-tuple with in addition a :class:`KX_PolyProxy <bge.types.KX_PolyProxy>` as 4th element.
+if poly is 1, returns a 4-tuple with in addition a :class:`~bge.types.KX_PolyProxy` as 4th element.
 if poly is 2, returns a 5-tuple with in addition a 2D vector with the UV mapping of the hit point as 5th element.
 
     .. code:: python
@@ -1084,7 +1084,7 @@ The prop and xray parameters interact as follow.
 
     * prop on, xray on : return closest hit matching prop or no hit if there is no object matching prop on the full extend of the ray.
 
-    The :class:`KX_PolyProxy <bge.types.KX_PolyProxy>` 4th element of the return tuple when poly=1 allows to retrieve information on the polygon hit by the ray.
+    The :class:`~bge.types.KX_PolyProxy` 4th element of the return tuple when poly=1 allows to retrieve information on the polygon hit by the ray.
 If there is no hit or the hit object is not a static mesh, None is returned as 4th element.
 
     The ray ignores collision-free objects and faces that dont have the collision flag enabled, you can however use ghost objects.
@@ -1242,7 +1242,7 @@ class KX_PythonComponent(bge.types.EXP_Value):
   """
 
   Python component can be compared to python logic bricks with parameters.
-The python component is a script loaded in the UI, this script defined a component class by inheriting from :class:`KX_PythonComponent <bge.types.KX_PythonComponent>`.
+The python component is a script loaded in the UI, this script defined a component class by inheriting from :class:`~bge.types.KX_PythonComponent`.
 This class must contain a dictionary of properties: :attr:`args` and two default functions: :meth:`start` and :meth:`update`.
 
   The script must have .py extension.
@@ -1300,9 +1300,9 @@ the goal of this function is to handle and process everything.
             self.object.applyRotation((0, 0, rotate), True)
 
   Since the components are loaded for the first time outside the bge, then :attr:`bge` is a fake module that contains only the class
-:class:`KX_PythonComponent <bge.types.KX_PythonComponent>` to avoid importing all the bge modules.
+:class:`~bge.types.KX_PythonComponent` to avoid importing all the bge modules.
 This behavior is safer but creates some issues at loading when the user want to use functions or attributes from the bge modules other
-than the :class:`KX_PythonComponent <bge.types.KX_PythonComponent>` class. The way is to not call these functions at loading outside the bge. To detect it, the bge
+than the :class:`~bge.types.KX_PythonComponent` class. The way is to not call these functions at loading outside the bge. To detect it, the bge
 module contains the attribute :attr:`__component__` when it's imported outside the bge.
 
   The following component example add a "Cube" object at initialization and move it along x for each update. It shows that the user can
@@ -1543,7 +1543,7 @@ what it does!
 
     scene.active_camera = scene.objects["Camera.001"]
 
-  Note: This can be set directly from python to avoid using the :class:`KX_SceneActuator <bge.types.KX_SceneActuator>`.
+  Note: This can be set directly from python to avoid using the :class:`~bge.types.KX_SceneActuator`.
 
   """
 
@@ -1759,7 +1759,7 @@ The callbacks can take as argument the rendered camera, the camera could be temp
 
     """
 
-    Converts a bpy.types.Object into a :class:`KX_GameObject <bge.types.KX_GameObject>` during runtime.
+    Converts a bpy.types.Object into a :class:`~bge.types.KX_GameObject` during runtime.
 For example, you can append an Object from another .blend file during bge runtime
 using: bpy.ops.wm.append(...) then convert this Object into a KX_GameObject to have
 logic bricks, physics... converted. This is meant to replace libload.
@@ -1772,7 +1772,7 @@ logic bricks, physics... converted. This is meant to replace libload.
 
     """
 
-    Converts all bpy.types.Object inside a python List into its correspondent :class:`KX_GameObject <bge.types.KX_GameObject>` during runtime.
+    Converts all bpy.types.Object inside a python List into its correspondent :class:`~bge.types.KX_GameObject` during runtime.
 For example, you can append an Object List during bge runtime using: ob = object_data_add(...) and ML.append(ob) then convert the Objects
 inside the List into several KX_GameObject to have logic bricks, physics... converted. This is meant to replace libload.
 The conversion can be asynchronous or synchronous.
@@ -1785,7 +1785,7 @@ The conversion can be asynchronous or synchronous.
 
     """
 
-    Converts all bpy.types.Object inside a Collection into its correspondent :class:`KX_GameObject <bge.types.KX_GameObject>` during runtime.
+    Converts all bpy.types.Object inside a Collection into its correspondent :class:`~bge.types.KX_GameObject` during runtime.
 For example, you can append a Collection from another .blend file during bge runtime
 using: bpy.ops.wm.append(...) then convert the Objects inside the Collection into several KX_GameObject to have
 logic bricks, physics... converted. This is meant to replace libload. The conversion can be asynchronous
