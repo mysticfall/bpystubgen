@@ -22,16 +22,11 @@ def from_path(source: Path, settings: Values, env: BuildEnvironment) -> Optional
     env.project.docnames.add(source_path)
     env.prepare_settings(source_path)
 
-    fin = FileInput(source_path=source_path)
-
-    try:
-        doctree = publish_doctree(
-            fin,
-            source_class=FileInput,
-            source_path=source_path,
-            settings=settings)
-    finally:
-        fin.close()
+    doctree = publish_doctree(
+        source.open("r"),
+        source_class=FileInput,
+        source_path=source_path,
+        settings=settings)
 
     return doctree
 
