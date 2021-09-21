@@ -58,7 +58,6 @@ def test_from_path(rst_path: Path, settings: Values, env: BuildEnvironment):
     assert cls.name == "KX_GameObject"
     assert cls.docstring
     assert cls.docstring.astext().startswith("All game objects")
-    assert len(cls.docstring.astext()) == 4129
 
     members = dict(map(lambda m: (m.name, m), cls.members))
 
