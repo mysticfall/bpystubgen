@@ -35,6 +35,9 @@ _dictionary_pattern: Final = re.compile(
 _reference_type_pattern: Final = re.compile(
     "^:class:`[~!]?(?P<name>[a-zA-Z_0-9.\\s]+)(?:\\s*<(?P<target>[a-zA-Z_0-9.]+)>)?`(?:[,.\\s].*)?$")
 
+_union_pattern: Final = re.compile(
+    "^(?::class:`[~!]?[^`]+`|[a-zA-Z]+)(:?\\sor\\s(?::class:`[~!]?[^`]+`|[a-zA-Z]+))+(?:[,.\\s].*)?$")
+
 _known_types: Final = {
     "any": "typing.Any",
     "str": "str",
@@ -145,6 +148,8 @@ def parse_prop_collection_of(text: str) -> Optional[str]:
         return None
 
     base_type = result.group("base")
+
+    # noinspection DuplicatedCode
     data_type = result.group("data")
     qualifier = result.group("qualifier")
 
@@ -182,6 +187,8 @@ def parse_exp_list_value_of(text: str) -> Optional[str]:
         return None
 
     data_type = result.group("data")
+
+    # noinspection DuplicatedCode
     qualifier = result.group("qualifier")
 
     if data_type in _known_types:
@@ -314,6 +321,25 @@ def parse_dictionary(text: str) -> Optional[str]:
     return f"typing.Dict[{key}, {value}]"
 
 
+def parse_union(text: str) -> Optional[str]:
+    result = _union_pattern.match(text)
+
+    if not result:
+        return None
+
+    expressions = tuple(text.replace("\n", "").split(" or "))
+
+    if "None" in expressions:
+        return None
+
+    parsed_types = tuple(map(parse_type, expressions))
+
+    if None in parsed_types or len(expressions) != len(set(parsed_types)):
+        return None
+
+    return f"typing.Union[{', '.join(parsed_types)}]"
+
+
 def parse_special_cases(text: str) -> Optional[str]:
     text = text.lower()
 
@@ -346,6 +372,7 @@ def parse_type(text: str) -> Optional[str]:
         parse_prop_collection_of,
         parse_exp_list_value_of,
         parse_dictionary,
+        parse_union,
         parse_reference,
         parse_simple,
         parse_special_cases

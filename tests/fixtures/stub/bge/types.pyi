@@ -692,7 +692,7 @@ and can be optionally overridden as below:
 
     ...
 
-  def replaceMesh(self, mesh: bge.types.KX_MeshProxy, useDisplayMesh: bool = True, usePhysicsMesh: bool = False) -> None:
+  def replaceMesh(self, mesh: typing.Union[bge.types.KX_MeshProxy, str], useDisplayMesh: bool = True, usePhysicsMesh: bool = False) -> None:
 
     """
 
@@ -1021,11 +1021,11 @@ Control the shape status with the optional compound and ghost parameters:
 
     ...
 
-  def getDistanceTo(self, other: bge.types.KX_GameObject) -> float:
+  def getDistanceTo(self, other: typing.Union[bge.KX_GameObject, typing.List[typing.Any]]) -> float:
 
     ...
 
-  def getVectTo(self, other: bge.types.KX_GameObject) -> typing.Any:
+  def getVectTo(self, other: typing.Union[bge.KX_GameObject, typing.List[typing.Any]]) -> typing.Any:
 
     """
 
@@ -1674,7 +1674,7 @@ The callbacks can take as argument the rendered camera, the camera could be temp
 
     ...
 
-  def addObject(self, object: bge.types.KX_GameObject, reference: bge.types.KX_GameObject, time: float = 0.0, dupli: bool = False) -> bge.types.KX_GameObject:
+  def addObject(self, object: typing.Union[bge.KX_GameObject, str], reference: typing.Union[bge.KX_GameObject, str], time: float = 0.0, dupli: bool = False) -> bge.types.KX_GameObject:
 
     """
 

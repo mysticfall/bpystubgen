@@ -420,7 +420,7 @@ acting as the inverse of the decompose() method.
 
   @classmethod
 
-  def OrthoProjection(cls, axis: str, size: int) -> Matrix:
+  def OrthoProjection(cls, axis: typing.Union[str, Vector], size: int) -> Matrix:
 
     """
 
@@ -432,7 +432,7 @@ acting as the inverse of the decompose() method.
 
   @classmethod
 
-  def Rotation(cls, angle: float, size: int, axis: str) -> Matrix:
+  def Rotation(cls, angle: float, size: int, axis: typing.Union[str, Vector]) -> Matrix:
 
     """
 
@@ -1311,7 +1311,7 @@ no reference to the original data.
 
     ...
 
-  def cross(self, other: Vector) -> Vector:
+  def cross(self, other: Vector) -> typing.Union[Vector, float]:
 
     """
 

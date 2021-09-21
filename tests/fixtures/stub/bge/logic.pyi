@@ -1098,7 +1098,7 @@ def restartGame() -> None:
 
   ...
 
-def LibLoad(blend: str, type: str, data: typing.Any, load_actions: bool = False, verbose: bool = False, load_scripts: bool = True, asynchronous: bool = False, scene: bge.types.KX_Scene = None) -> bge.types.KX_LibLoadStatus:
+def LibLoad(blend: str, type: str, data: typing.Any, load_actions: bool = False, verbose: bool = False, load_scripts: bool = True, asynchronous: bool = False, scene: typing.Union[bge.types.KX_Scene, str] = None) -> bge.types.KX_LibLoadStatus:
 
   """
 

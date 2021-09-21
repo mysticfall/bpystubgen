@@ -218,3 +218,22 @@ def test_parse_simple_container():
     assert parse_type("sequence") == "typing.Sequence[typing.Any]"
     assert parse_type("Sequence") == "typing.Sequence[typing.Any]"
     assert parse_type("dict") == "typing.Dict[str, typing.Any]"
+
+
+@mark.parametrize("args", (
+        (
+                ":class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`",
+                ("mathutils.Matrix", "mathutils.Vector", "mathutils.Quaternion")
+        ),
+        (
+                ":class:`~mathutils.Matrix` or :class:`~mathutils.Vector`",
+                ("mathutils.Matrix", "mathutils.Vector")
+        ),
+        (
+                ":class:`~mathutils.Matrix` or float",
+                ("mathutils.Matrix", "float")
+        ),
+))
+def test_parse_union(args):
+    (text, types) = args
+    assert parse_type(text) == f"typing.Union[{', '.join(types)}]"
