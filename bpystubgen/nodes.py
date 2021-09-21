@@ -5,7 +5,7 @@ from enum import Enum
 from graphlib import TopologicalSorter
 from io import StringIO
 from pathlib import Path
-from typing import Final, Mapping, Optional, Sequence, Set, Tuple, cast
+from typing import Final, Mapping, Optional, Sequence, Set, TextIO, Tuple, cast
 
 from docutils.core import publish_doctree
 from docutils.frontend import Values
@@ -17,13 +17,15 @@ from bpystubgen.parser import _known_types
 
 
 def from_path(source: Path, settings: Values, env: BuildEnvironment) -> Optional[document]:
-    source_path = str(source)
+    return from_io(source.open("r"), str(source), settings, env)
 
+
+def from_io(source: TextIO, source_path: str, settings: Values, env: BuildEnvironment) -> Optional[document]:
     env.project.docnames.add(source_path)
     env.prepare_settings(source_path)
 
     doctree = publish_doctree(
-        source.open("r"),
+        source,
         source_class=FileInput,
         source_path=source_path,
         settings=settings)
