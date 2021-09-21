@@ -189,7 +189,7 @@ A value of 0.0 disables clamping; it does not stop rotation.
 
   """
 
-  groupMembers: bge.types.EXP_ListValue = ...
+  groupMembers: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -556,7 +556,7 @@ used.
 
   """
 
-  components: bge.types.EXP_ListValue = ...
+  components: typing.Union[typing.Sequence[bge.KX_PythonComponent], typing.Mapping[str, bge.KX_PythonComponent], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -564,7 +564,7 @@ used.
 
   """
 
-  children: bge.types.EXP_ListValue = ...
+  children: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -572,7 +572,7 @@ used.
 
   """
 
-  childrenRecursive: bge.types.EXP_ListValue = ...
+  childrenRecursive: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1488,7 +1488,7 @@ what it does!
 
   """
 
-  objects: bge.types.EXP_ListValue = ...
+  objects: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1496,7 +1496,7 @@ what it does!
 
   """
 
-  objectsInactive: bge.types.EXP_ListValue = ...
+  objectsInactive: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1504,7 +1504,7 @@ what it does!
 
   """
 
-  lights: bge.types.EXP_ListValue = ...
+  lights: typing.Union[typing.Sequence[bge.types.KX_LightObject], typing.Mapping[str, bge.types.KX_LightObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1512,7 +1512,7 @@ what it does!
 
   """
 
-  cameras: bge.types.EXP_ListValue = ...
+  cameras: typing.Union[typing.Sequence[bge.types.KX_Camera], typing.Mapping[str, bge.types.KX_Camera], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1520,7 +1520,7 @@ what it does!
 
   """
 
-  texts: bge.types.EXP_ListValue = ...
+  texts: typing.Union[typing.Sequence[bge.types.KX_FontObject], typing.Mapping[str, bge.types.KX_FontObject], bge.types.EXP_ListValue] = ...
 
   """
 

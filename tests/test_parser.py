@@ -137,6 +137,23 @@ def test_bpy_prop_collection():
                      "typing.Mapping[str, Screen], bpy.types.bpy_prop_collection]"
 
 
+def test_exp_list_value():
+    result = parse_type(":class:`~bge.types.EXP_ListValue` of :class:`~bge.types.KX_GameObject`")
+    assert result == "typing.Union[typing.Sequence[bge.types.KX_GameObject], " \
+                     "typing.Mapping[str, bge.types.KX_GameObject], " \
+                     "bge.types.EXP_ListValue]"
+
+    result = parse_type(":class:`~bge.types.EXP_ListValue` of :class:`~bge.types.KX_GameObject` or None")
+    assert result == "typing.Union[typing.Sequence[bge.types.KX_GameObject], " \
+                     "typing.Mapping[str, bge.types.KX_GameObject], " \
+                     "bge.types.EXP_ListValue]"
+
+    result = parse_type(":class:`~bge.types.EXP_ListValue` of :class:`~bge.types.KX_PythonComponent`'s")
+    assert result == "typing.Union[typing.Sequence[bge.types.KX_PythonComponent], " \
+                     "typing.Mapping[str, bge.types.KX_PythonComponent], " \
+                     "bge.types.EXP_ListValue]"
+
+
 @mark.parametrize("args", (
         ("int array of 4 items", "int, int, int, int"),
         ("boolean array of 3 items, default (False, False, False)", "bool, bool, bool"),

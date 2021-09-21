@@ -13,6 +13,10 @@ _prop_collection_of_pattern: Final = re.compile(
     "^(?::class:`[~!]?(?P<base>[^`]+)`\\s+)?:class:`bpy_prop_collection`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
     "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
 
+_exp_list_value_of_pattern: Final = re.compile(
+    "^:class:`[~!]?bge.types.EXP_ListValue`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
+    "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
+
 _qualified_list_pattern: Final = re.compile(
     "^list\\s*\\([a-zA-Z\\s]*vector\\sof\\s[0-9]+\\s(?P<data>[a-zA-Z]+)(?:[,.\\s][^)]*)?\\)(?:[,.\\s].*)?$")
 
@@ -171,6 +175,43 @@ def parse_prop_collection_of(text: str) -> Optional[str]:
     return f"typing.Union[{', '.join(types)}]"
 
 
+def parse_exp_list_value_of(text: str) -> Optional[str]:
+    result = _exp_list_value_of_pattern.match(text)
+
+    if not result:
+        return None
+
+    data_type = result.group("data")
+    qualifier = result.group("qualifier")
+
+    if data_type in _known_types:
+        data_type = _known_types[data_type]
+    else:
+        reference = result.group("reference")
+        data_type = parse_reference("".join((":class:`", reference, "`"))) if reference else None
+
+    if not data_type:
+        return None
+
+    if qualifier:
+        qualifier = qualifier.strip()
+
+        if qualifier.startswith("tuple"):
+            data_type = f"typing.Tuple[{data_type}, ...]"
+        elif qualifier.startswith("list"):
+            data_type = f"typing.List[{data_type}]"
+        elif qualifier.startswith("sequence"):
+            data_type = f"typing.Sequence[{data_type}]"
+
+    types = (
+        f"typing.Sequence[{data_type}]",
+        f"typing.Mapping[str, {data_type}]",
+        "bge.types.EXP_ListValue"
+    )
+
+    return f"typing.Union[{', '.join(types)}]"
+
+
 def parse_container_of(text: str) -> Optional[str]:
     result = _container_of_pattern.match(text)
 
@@ -303,6 +344,7 @@ def parse_type(text: str) -> Optional[str]:
         parse_bracket_list,
         parse_container_of,
         parse_prop_collection_of,
+        parse_exp_list_value_of,
         parse_dictionary,
         parse_reference,
         parse_simple,
