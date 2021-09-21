@@ -125,7 +125,16 @@ def test_parse_list(args):
 
 def test_bpy_prop_collection():
     result = parse_type(":class:`bpy_prop_collection` of :class:`LodLevel`")
-    assert result == f"typing.Union[typing.Sequence[LodLevel], typing.Mapping[str, LodLevel]]"
+    assert result == "typing.Union[typing.Sequence[LodLevel], typing.Mapping[str, LodLevel], " \
+                     "bpy.types.bpy_prop_collection]"
+
+    result = parse_type(":class:`bpy_prop_collection` of :class:`NodeLink`, (readonly)")
+    assert result == "typing.Union[typing.Sequence[NodeLink], typing.Mapping[str, NodeLink], " \
+                     "bpy.types.bpy_prop_collection]"
+
+    result = parse_type(":class:`BlendDataScreens` :class:`bpy_prop_collection` of :class:`Screen`, (readonly)")
+    assert result == "typing.Union[BlendDataScreens, typing.Sequence[Screen], " \
+                     "typing.Mapping[str, Screen], bpy.types.bpy_prop_collection]"
 
 
 @mark.parametrize("args", (

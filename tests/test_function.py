@@ -283,7 +283,8 @@ def test_parse_bpy_prop_collection(parser: Parser, document: document):
     assert len(func.arguments) == 1
     assert func.arguments[0].type == "typing.Union[" \
                                      "typing.Sequence[OperatorFileListElement], " \
-                                     "typing.Mapping[str, OperatorFileListElement]]"
+                                     "typing.Mapping[str, OperatorFileListElement], " \
+                                     "bpy.types.bpy_prop_collection]"
 
 
 def test_signature():

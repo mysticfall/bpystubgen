@@ -10,7 +10,7 @@ _container_of_pattern: Final = re.compile(
     "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
 
 _prop_collection_of_pattern: Final = re.compile(
-    "^:class:`bpy_prop_collection`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
+    "^(?::class:`[~!]?(?P<base>[^`]+)`\\s+)?:class:`bpy_prop_collection`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
     "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
 
 _qualified_list_pattern: Final = re.compile(
@@ -140,6 +140,7 @@ def parse_prop_collection_of(text: str) -> Optional[str]:
     if not result:
         return None
 
+    base_type = result.group("base")
     data_type = result.group("data")
     qualifier = result.group("qualifier")
 
@@ -162,7 +163,12 @@ def parse_prop_collection_of(text: str) -> Optional[str]:
         elif qualifier.startswith("sequence"):
             data_type = f"typing.Sequence[{data_type}]"
 
-    return f"typing.Union[typing.Sequence[{data_type}], typing.Mapping[str, {data_type}]]"
+    types = [base_type] if base_type else []
+    types.append(f"typing.Sequence[{data_type}]")
+    types.append(f"typing.Mapping[str, {data_type}]")
+    types.append("bpy.types.bpy_prop_collection")
+
+    return f"typing.Union[{', '.join(types)}]"
 
 
 def parse_container_of(text: str) -> Optional[str]:
