@@ -12,7 +12,7 @@ from sphinx.environment import BuildEnvironment
 
 import bpystubgen
 from bpystubgen import nodes, patches
-from bpystubgen.nodes import Class, Import, Module
+from bpystubgen.nodes import Class, DocString, Import, Module
 
 
 class Task:
@@ -141,7 +141,7 @@ class ModuleTask(ParserTask):
 
         if not doctree:
             doctree = new_document("", settings=settings)
-            doctree += patches.apply(self.name, Module(name=self.name), settings, env)
+            doctree += patches.apply(self.full_name, Module(name=self.full_name), settings, env)
 
         self.doctree = doctree
 
