@@ -1,0 +1,129 @@
+name: publish-for-blender-releases
+
+on:
+  release:
+    types: [released]
+
+env:
+  PYTHON_VERSION: "3.9"
+
+jobs:
+  build_apis:
+    name: Build API Documentation
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        blender_version:
+          ["2.80", "2.81", "2.82", "2.83", "2.90", "2.91", "2.92", "2.93"]
+
+    steps:
+    - name: Download Build
+      run: |
+        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/download_blender.sh \
+          -o download_blender.sh && \
+        bash download_blender.sh "${{matrix.blender_version}}" releases
+
+    - name: Install Tools
+      run: | 
+        sudo apt update && \
+        sudo apt install -y libtbb2 libxi6 libxxf86vm1 libxfixes3 libgl1 \
+          libavformat58 libavdevice58 libboost-locale1.71.0
+
+    - name: Install Python
+      uses: actions/setup-python@v2.2.2
+      with: 
+        python-version: "${{env.PYTHON_VERSION}}"
+
+    - name: Install Python Dependencies
+      run: | 
+        curl https://bootstrap.pypa.io/get-pip.py | python && \
+        python -m pip install sphinx yapf tqdm numpy==1.17.4
+
+    - name: Setup Python Path
+      run: |
+        sudo sh -c "echo '$pythonLocation/lib' >> /etc/ld.so.conf.d/python.conf" && \
+        sudo ldconfig
+
+    - name: Patch Blender Source
+      if: startsWith(matrix.blender_version, '2.9')
+      working-directory: releases/v${{matrix.blender_version}}/src
+      run: |
+        sed -i -e "/Hair/s/^/#/" doc/python_api/sphinx_doc_gen.py && \
+        sed -i -e "/PointCloud/s/^/#/" doc/python_api/sphinx_doc_gen.py
+
+    - name: Prepare API Documentation
+      working-directory: releases/v${{matrix.blender_version}}/bin
+      run: |
+        ./blender --background -noaudio --factory-startup \
+                --python ../src/doc/python_api/sphinx_doc_gen.py -- --output ../api
+
+    - name: Clean Up Directories
+      if: ${{ !env.ACT }}
+      run: |
+        rm -Rf releases/v${{matrix.blender_version}}/bin && \
+        rm -Rf releases/v${{matrix.blender_version}}/src
+
+    - name: Archive Documents
+      if: ${{ !env.ACT }}
+      run: tar zcvf apidocs-v${{matrix.blender_version}}.tar.gz releases
+
+    - name: Upload Documents
+      if: ${{ !env.ACT }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: apidocs-v${{matrix.blender_version}}
+        path: apidocs-v${{matrix.blender_version}}.tar.gz
+        retention-days: 3
+
+  publish_stubs:
+    name: Publish API Stubs
+    runs-on: ubuntu-latest
+    needs: [build_apis]
+    strategy:
+      fail-fast: false
+      matrix:
+        blender_version:
+          ["2.80", "2.81", "2.82", "2.83", "2.90", "2.91", "2.92", "2.93"]
+
+    steps:
+    - name: Download Documents
+      if: ${{ !env.ACT }}
+      uses: actions/download-artifact@v2
+      with:
+        name: apidocs-v${{matrix.blender_version}}
+
+    - name: Extract Documents
+      if: ${{ !env.ACT }}
+      run: tar zxvf apidocs-v${{matrix.blender_version}}.tar.gz
+
+    - name: Install Python
+      uses: actions/setup-python@v2.2.2
+      with:
+        python-version: "${{env.PYTHON_VERSION}}"
+
+    - name: Install Python Dependencies
+      run: |
+        curl https://bootstrap.pypa.io/get-pip.py | python && \
+        python -m pip install bpystubgen
+
+    - name: Build API Stubs
+      working-directory: releases/v${{matrix.blender_version}}
+      run: |
+        python -m bpystubgen --quiet api/sphinx-in blender-stub && \
+        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/setup.py -o blender-stub/setup.py && \
+        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/README.md -o blender-stub/README.md
+
+    - name: Build Python Package
+      working-directory: releases/v${{matrix.blender_version}}/blender-stub
+      run: |
+        sed -i "s/#APP_NAME#/blender/g" setup.py && \
+        sed -i "s/#APP_VERSION#/${{matrix.blender_version}}/g" setup.py && \
+        python setup.py sdist
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.PYPI_TOKEN }}
+        packages_dir: releases/v${{matrix.blender_version}}/blender-stub/dist
+        skip_existing: true
