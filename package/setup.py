@@ -13,7 +13,7 @@ name = f"{app_name.lower()}-stubs"
 
 module_version = str(sum([int(n) * 10 ** (2 - i) for i, n in enumerate(module_version.split("."))]))
 
-if build_number:
+if build_number and not build_number.startswith("#"):
     version = "".join((".".join((app_version, module_version)), "dev", build_number))
 else:
     version = ".".join((app_version, module_version))
