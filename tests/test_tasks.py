@@ -202,7 +202,7 @@ def test_parse_module(rst_path: Path, settings: Values, app: Sphinx):
     module = next(iter(types.parse(settings, app.env).traverse(Module)))
     imports = module.imports
 
-    assert set(map(lambda i: i.module, imports)) == {"logging", "bpy", "typing", "mathutils", "bge"}
+    assert set(map(lambda i: i.module, imports)) == {"logging", "bpy", "typing", "mathutils"}
 
     assert len(module.members) == 3
     assert all(map(lambda c: classes[c.name] == c, module.traverse(Class)))

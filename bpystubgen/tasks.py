@@ -145,7 +145,22 @@ class ModuleTask(ParserTask):
 
         self.doctree = doctree
 
-        module = next(iter(doctree.traverse(Module)))
+        try:
+            module = next(iter(doctree.traverse(Module)))
+        except StopIteration:
+            module = Module(name=self.full_name)
+
+            docstring = DocString()
+
+            for child in tuple(doctree.children):
+                doctree.remove(child)
+                docstring += child
+
+            module += docstring
+
+            doctree += patches.apply(self.full_name, module, settings, env)
+
+            doctree.transformer.apply_transforms()
 
         for cls in module.traverse(Class):
             patches.apply(cls.full_name, cls, settings, env)

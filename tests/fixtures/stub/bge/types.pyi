@@ -6,9 +6,7 @@ import logging
 
 import bpy
 
-import bge
-
-class KX_GameObject(bge.types.SCA_IObject):
+class KX_GameObject(SCA_IObject):
 
   """
 
@@ -181,7 +179,7 @@ A value of 0.0 disables clamping; it does not stop rotation.
 
   """
 
-  parent: bge.types.KX_GameObject = ...
+  parent: KX_GameObject = ...
 
   """
 
@@ -189,7 +187,7 @@ A value of 0.0 disables clamping; it does not stop rotation.
 
   """
 
-  groupMembers: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
+  groupMembers: typing.Union[typing.Sequence[KX_GameObject], typing.Mapping[str, KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -197,7 +195,7 @@ A value of 0.0 disables clamping; it does not stop rotation.
 
   """
 
-  groupObject: bge.types.KX_GameObject = ...
+  groupObject: KX_GameObject = ...
 
   """
 
@@ -274,7 +272,7 @@ used.
 
   """
 
-  scene: bge.types.KX_Scene = ...
+  scene: KX_Scene = ...
 
   """
 
@@ -300,7 +298,7 @@ used.
 
   """
 
-  cullingBox: bge.types.KX_BoundingBox = ...
+  cullingBox: KX_BoundingBox = ...
 
   """
 
@@ -504,7 +502,7 @@ used.
 
   """
 
-  batchGroup: bge.types.KX_BatchGroup = ...
+  batchGroup: KX_BatchGroup = ...
 
   """
 
@@ -556,7 +554,7 @@ used.
 
   """
 
-  components: typing.Union[typing.Sequence[bge.KX_PythonComponent], typing.Mapping[str, bge.KX_PythonComponent], bge.types.EXP_ListValue] = ...
+  components: typing.Union[typing.Sequence[KX_PythonComponent], typing.Mapping[str, KX_PythonComponent], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -564,7 +562,7 @@ used.
 
   """
 
-  children: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
+  children: typing.Union[typing.Sequence[KX_GameObject], typing.Mapping[str, KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -572,7 +570,7 @@ used.
 
   """
 
-  childrenRecursive: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
+  childrenRecursive: typing.Union[typing.Sequence[KX_GameObject], typing.Mapping[str, KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -612,7 +610,7 @@ used.
 
   """
 
-  lodManager: bge.types.KX_LodManager = ...
+  lodManager: KX_LodManager = ...
 
   """
 
@@ -976,7 +974,7 @@ Otherwise, only linear momentum will change.
 
     ...
 
-  def setParent(self, parent: bge.types.KX_GameObject, compound: bool = True, ghost: bool = True) -> None:
+  def setParent(self, parent: KX_GameObject, compound: bool = True, ghost: bool = True) -> None:
 
     """
 
@@ -1021,11 +1019,11 @@ Control the shape status with the optional compound and ghost parameters:
 
     ...
 
-  def getDistanceTo(self, other: typing.Union[bge.KX_GameObject, typing.List[typing.Any]]) -> float:
+  def getDistanceTo(self, other: typing.Union[KX_GameObject, typing.List[typing.Any]]) -> float:
 
     ...
 
-  def getVectTo(self, other: typing.Union[bge.KX_GameObject, typing.List[typing.Any]]) -> typing.Any:
+  def getVectTo(self, other: typing.Union[KX_GameObject, typing.List[typing.Any]]) -> typing.Any:
 
     """
 
@@ -1036,7 +1034,7 @@ The vector is normalized unless the distance is 0, in which a zero length vector
 
     ...
 
-  def rayCastTo(self, other: bge.types.KX_GameObject, dist: float = 0, prop: str = '') -> bge.types.KX_GameObject:
+  def rayCastTo(self, other: KX_GameObject, dist: float = 0, prop: str = '') -> KX_GameObject:
 
     """
 
@@ -1050,7 +1048,7 @@ Use rayCast() if you need to retrieve the hit point
 
     ...
 
-  def rayCast(self, objto: bge.types.KX_GameObject, objfrom: bge.types.KX_GameObject = None, dist: float = 0, prop: str = '', face: int = False, xray: int = False, poly: int = 0, mask: typing.Any = 65535) -> typing.Any:
+  def rayCast(self, objto: KX_GameObject, objfrom: KX_GameObject = None, dist: float = 0, prop: str = '', face: int = False, xray: int = False, poly: int = 0, mask: typing.Any = 65535) -> typing.Any:
 
     """
 
@@ -1237,7 +1235,7 @@ If there is no hit or the hit object is not a static mesh, None is returned as 4
 
     ...
 
-class KX_PythonComponent(bge.types.EXP_Value):
+class KX_PythonComponent(EXP_Value):
 
   """
 
@@ -1355,7 +1353,7 @@ show all of these property types.
 
   """
 
-  object: bge.types.KX_GameObject = ...
+  object: KX_GameObject = ...
 
   """
 
@@ -1438,7 +1436,7 @@ and can be optionally overridden as below:
 
     ...
 
-class KX_Scene(bge.types.EXP_PyObjectPlus):
+class KX_Scene(EXP_PyObjectPlus):
 
   """
 
@@ -1488,7 +1486,7 @@ what it does!
 
   """
 
-  objects: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
+  objects: typing.Union[typing.Sequence[KX_GameObject], typing.Mapping[str, KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1496,7 +1494,7 @@ what it does!
 
   """
 
-  objectsInactive: typing.Union[typing.Sequence[bge.KX_GameObject], typing.Mapping[str, bge.KX_GameObject], bge.types.EXP_ListValue] = ...
+  objectsInactive: typing.Union[typing.Sequence[KX_GameObject], typing.Mapping[str, KX_GameObject], bge.types.EXP_ListValue] = ...
 
   """
 
@@ -1528,7 +1526,7 @@ what it does!
 
   """
 
-  active_camera: bge.types.KX_Camera = ...
+  active_camera: KX_Camera = ...
 
   """
 
@@ -1547,7 +1545,7 @@ what it does!
 
   """
 
-  overrideCullingCamera: bge.types.KX_Camera = ...
+  overrideCullingCamera: KX_Camera = ...
 
   """
 
@@ -1555,7 +1553,7 @@ what it does!
 
   """
 
-  world: bge.types.KX_WorldInfo = ...
+  world: KX_WorldInfo = ...
 
   """
 
@@ -1563,7 +1561,7 @@ what it does!
 
   """
 
-  filterManager: bge.types.KX_2DFilterManager = ...
+  filterManager: KX_2DFilterManager = ...
 
   """
 
@@ -1674,7 +1672,7 @@ The callbacks can take as argument the rendered camera, the camera could be temp
 
     ...
 
-  def addObject(self, object: typing.Union[bge.KX_GameObject, str], reference: typing.Union[bge.KX_GameObject, str], time: float = 0.0, dupli: bool = False) -> bge.types.KX_GameObject:
+  def addObject(self, object: typing.Union[KX_GameObject, str], reference: typing.Union[KX_GameObject, str], time: float = 0.0, dupli: bool = False) -> KX_GameObject:
 
     """
 
