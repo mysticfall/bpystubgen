@@ -29,6 +29,14 @@ However, _bpystubgen_ has a few advantages over the others:
  * Along with its fast execution speed, the project also provides well-organised API and test 
    suites to make it easier to fix bugs or improve the output quality. 
 
+## Screenshots ##
+
+Auto-completion at work in PyCharm:
+![Screenshot in PyCharm](images/screenshot-pycharm.png?raw=true "Screenshot in PyCharm")
+
+Pop-up documentation support in VSCode:
+![Screenshot in VSCode](images/screenshot-vscode.png?raw=true "Screenshot in VSCode")
+
 ## Installation ##
 
 The library can be installed using `pip` as follows:

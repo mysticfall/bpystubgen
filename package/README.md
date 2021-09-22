@@ -8,6 +8,14 @@ This module provides type information for [Blender](https://www.blender.org) and
 It was generated using [BPY Stub Generator](https://github.com/mysticfall/bpystubgen) which 
 is also available on [PyPI](https://pypi.org/project/bpystubgen) as a separate module.
 
+## Screenshots ##
+
+Auto-completion at work in PyCharm:
+![Screenshot in PyCharm](https://github.com/mysticfall/bpystubgen/raw/main/images/screenshot-pycharm.png?raw=true "Screenshot in PyCharm")
+
+Pop-up documentation support in VSCode:
+![Screenshot in VSCode](https://github.com/mysticfall/bpystubgen/raw/main/images/screenshot-vscode.png?raw=true "Screenshot in VSCode")
+
 ## Installation ##
 
 There are two variants of the API stubs, one for Blender and the other for UPBGE. For Blender, 
