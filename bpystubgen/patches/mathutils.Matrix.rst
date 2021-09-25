@@ -85,3 +85,21 @@
    :type value: float
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`
+
+.. method:: __getitem__(index)
+
+   Get the row at given index.
+
+   :arg index: The index of the row.
+   :type index: int
+   :return: The row at the given index.
+   :rtype: :class:`~mathutils.Vector`
+
+.. method:: __setitem__(index, value)
+
+   Set the row at given index.
+
+   :arg index: The index of the row.
+   :type index: int
+   :arg value: The row to set.
+   :type value: :class:`~mathutils.Vector` or a tuple of floats.

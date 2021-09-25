@@ -178,7 +178,7 @@ def interpolate_bezier(knot1: mathutils.Vector, handle1: mathutils.Vector, handl
 
   ...
 
-def intersect_line_line(v1: mathutils.Vector, v2: mathutils.Vector, v3: mathutils.Vector, v4: mathutils.Vector) -> typing.Tuple[typing.Any, ...]:
+def intersect_line_line(v1: mathutils.Vector, v2: mathutils.Vector, v3: mathutils.Vector, v4: mathutils.Vector) -> typing.Tuple[mathutils.Vector, ...]:
 
   """
 
@@ -295,7 +295,7 @@ def intersect_ray_tri(v1: mathutils.Vector, v2: mathutils.Vector, v3: mathutils.
 
   ...
 
-def intersect_sphere_sphere_2d(p_a: mathutils.Vector, radius_a: float, p_b: mathutils.Vector, radius_b: float) -> typing.Tuple[typing.Any, ...]:
+def intersect_sphere_sphere_2d(p_a: mathutils.Vector, radius_a: float, p_b: mathutils.Vector, radius_b: float) -> typing.Tuple[mathutils.Vector, ...]:
 
   """
 

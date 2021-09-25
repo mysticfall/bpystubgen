@@ -78,3 +78,21 @@
    :type value: float
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
+
+.. method:: __getitem__(index)
+
+   Get vector component at index.
+
+   :arg index: The index of the component.
+   :type index: int
+   :return: The component value.
+   :rtype: float
+
+.. method:: __setitem__(index, value)
+
+   Set vector component at index.
+
+   :arg index: The index of the component.
+   :type index: int
+   :arg value: The value to set.
+   :type value: float

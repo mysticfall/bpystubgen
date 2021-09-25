@@ -852,7 +852,7 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
   """
 
-  def __add__(self, other: Matrix) -> Matrix:
+  def __add__(self, value: Matrix) -> Matrix:
 
     """
 
@@ -862,7 +862,7 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
     ...
 
-  def __sub__(self, other: Matrix) -> Matrix:
+  def __sub__(self, value: Matrix) -> Matrix:
 
     """
 
@@ -872,7 +872,27 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
     ...
 
-  def __mul__(self, other: typing.Union[Matrix, float]) -> Matrix:
+  def __mul__(self, value: typing.Union[Matrix, float]) -> Matrix:
+
+    """
+
+    Multiply this matrix with another one or a scala value.
+
+    """
+
+    ...
+
+  def __rmul__(self, value: float) -> Matrix:
+
+    """
+
+    Multiply this matrix with a scala value.
+
+    """
+
+    ...
+
+  def __imul__(self, value: typing.Union[Matrix, float]) -> Matrix:
 
     """
 
@@ -882,41 +902,21 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
     ...
 
-  def __rmul__(self, other: float) -> Matrix:
+  def __matmul__(self, value: typing.Union[Matrix, Vector, Quaternion]) -> typing.Union[Matrix, Vector, Quaternion]:
 
     """
 
-    Multiply this matrix by a scala value.
-
-    """
-
-    ...
-
-  def __imul__(self, other: typing.Union[Matrix, float]) -> Matrix:
-
-    """
-
-    Multiply this matrix by another one or a scala value.
+    Multiply this matrix with another matrix, a vector, or quaternion.
 
     """
 
     ...
 
-  def __matmul__(self, other: typing.Union[Matrix, Vector, Quaternion]) -> typing.Union[Matrix, Vector, Quaternion]:
+  def __imatmul__(self, value: typing.Union[Matrix, Vector, Quaternion]) -> typing.Union[Matrix, Vector, Quaternion]:
 
     """
 
-    Multiply this matrix by another one.
-
-    """
-
-    ...
-
-  def __imatmul__(self, other: typing.Union[Matrix, Vector, Quaternion]) -> typing.Union[Matrix, Vector, Quaternion]:
-
-    """
-
-    Multiply this matrix by another one.
+    Multiply this matrix with another matrix, a vector, or quaternion.
 
     """
 
@@ -927,6 +927,46 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
     """
 
     Invert this matrix.
+
+    """
+
+    ...
+
+  def __truediv__(self, value: float) -> Matrix:
+
+    """
+
+    Divide this matrix by a float value.
+
+    """
+
+    ...
+
+  def __itruediv__(self, value: float) -> Matrix:
+
+    """
+
+    Divide this matrix by a float value.
+
+    """
+
+    ...
+
+  def __getitem__(self, index: int) -> Vector:
+
+    """
+
+    Get the row at given index.
+
+    """
+
+    ...
+
+  def __setitem__(self, index: int, value: typing.Union[Vector, typing.Tuple[float, ...]]) -> None:
+
+    """
+
+    Set the row at given index.
 
     """
 
@@ -1288,7 +1328,7 @@ axis fixed at zero, and the remaining twist rotation angle.
 
   """
 
-  def __add__(self, other: Quaternion) -> Quaternion:
+  def __add__(self, value: Quaternion) -> Quaternion:
 
     """
 
@@ -1298,7 +1338,7 @@ axis fixed at zero, and the remaining twist rotation angle.
 
     ...
 
-  def __sub__(self, other: Quaternion) -> Quaternion:
+  def __sub__(self, value: Quaternion) -> Quaternion:
 
     """
 
@@ -1308,37 +1348,37 @@ axis fixed at zero, and the remaining twist rotation angle.
 
     ...
 
-  def __mul__(self, other: typing.Union[Quaternion, float]) -> Quaternion:
+  def __mul__(self, value: typing.Union[Quaternion, float]) -> Quaternion:
 
     """
 
-    Multiply this quaternion by another one or a scala value.
-
-    """
-
-    ...
-
-  def __rmul__(self, other: float) -> Quaternion:
-
-    """
-
-    Multiply this quaternion by a scala value.
+    Multiply this quaternion with another one or a scala value.
 
     """
 
     ...
 
-  def __imul__(self, other: typing.Union[Quaternion, float]) -> Quaternion:
+  def __rmul__(self, value: float) -> Quaternion:
 
     """
 
-    Multiply this quaternion by another one or a scala value.
+    Multiply this quaternion with a scala value.
 
     """
 
     ...
 
-  def __matmul__(self, other: typing.Union[Quaternion, Vector]) -> typing.Union[Quaternion, Vector]:
+  def __imul__(self, value: typing.Union[Quaternion, float]) -> Quaternion:
+
+    """
+
+    Multiply this quaternion with another one or a scala value.
+
+    """
+
+    ...
+
+  def __matmul__(self, value: typing.Union[Quaternion, Vector]) -> typing.Union[Quaternion, Vector]:
 
     """
 
@@ -1348,11 +1388,51 @@ axis fixed at zero, and the remaining twist rotation angle.
 
     ...
 
-  def __imatmul__(self, other: typing.Union[Quaternion, Vector]) -> typing.Union[Quaternion, Vector]:
+  def __imatmul__(self, value: typing.Union[Quaternion, Vector]) -> typing.Union[Quaternion, Vector]:
 
     """
 
     Multiply with another quaternion or a vector.
+
+    """
+
+    ...
+
+  def __truediv__(self, value: float) -> Quaternion:
+
+    """
+
+    Divide this quaternion by a float value.
+
+    """
+
+    ...
+
+  def __itruediv__(self, value: float) -> Quaternion:
+
+    """
+
+    Divide this quaternion by a float value.
+
+    """
+
+    ...
+
+  def __getitem__(self, index: int) -> float:
+
+    """
+
+    Get quaternion component at index.
+
+    """
+
+    ...
+
+  def __setitem__(self, index: int, value: float) -> None:
+
+    """
+
+    Set quaternion component at index.
 
     """
 
@@ -4493,7 +4573,7 @@ vector and another.
 
   """
 
-  def __add__(self, other: Vector) -> Vector:
+  def __add__(self, value: Vector) -> Vector:
 
     """
 
@@ -4503,7 +4583,7 @@ vector and another.
 
     ...
 
-  def __sub__(self, other: Vector) -> Vector:
+  def __sub__(self, value: Vector) -> Vector:
 
     """
 
@@ -4513,37 +4593,37 @@ vector and another.
 
     ...
 
-  def __mul__(self, other: typing.Union[Vector, float]) -> Vector:
+  def __mul__(self, value: typing.Union[Vector, float]) -> Vector:
 
     """
 
-    Multiply this vector by another one or a scala value.
-
-    """
-
-    ...
-
-  def __rmul__(self, other: float) -> Vector:
-
-    """
-
-    Multiply this vector by a scala value.
+    Multiply this vector with another one or a scala value.
 
     """
 
     ...
 
-  def __imul__(self, other: typing.Union[Vector, float]) -> Vector:
+  def __rmul__(self, value: float) -> Vector:
 
     """
 
-    Multiply this vector by another one or a scala value.
+    Multiply this vector with a scala value.
 
     """
 
     ...
 
-  def __matmul__(self, other: Vector) -> float:
+  def __imul__(self, value: typing.Union[Vector, float]) -> Vector:
+
+    """
+
+    Multiply this vector with another one or a scala value.
+
+    """
+
+    ...
+
+  def __matmul__(self, value: Vector) -> float:
 
     """
 
@@ -4553,11 +4633,51 @@ vector and another.
 
     ...
 
-  def __imatmul__(self, other: Vector) -> float:
+  def __imatmul__(self, value: Vector) -> float:
 
     """
 
     Scala product with another vector.
+
+    """
+
+    ...
+
+  def __truediv__(self, value: float) -> Vector:
+
+    """
+
+    Divide this vector by a float value.
+
+    """
+
+    ...
+
+  def __itruediv__(self, value: float) -> Vector:
+
+    """
+
+    Divide this vector by a float value.
+
+    """
+
+    ...
+
+  def __getitem__(self, index: int) -> float:
+
+    """
+
+    Get vector component at index.
+
+    """
+
+    ...
+
+  def __setitem__(self, index: int, value: float) -> None:
+
+    """
+
+    Set vector component at index.
 
     """
 
