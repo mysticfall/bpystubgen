@@ -236,7 +236,7 @@ def test_target_path(rst_path: Path):
     bgl = modules["bgl"]
 
     assert isinstance(bgl, ModuleTask)
-    assert bgl.target_path(dest_dir) == dest_dir / "bgl.pyi"
+    assert bgl.target_path(dest_dir) == dest_dir / "bgl" / "__init__.pyi"
 
 
 def test_generate(rst_path: Path, stub_path: Path, writer: StubWriter, settings: Values, app: Sphinx):
@@ -254,7 +254,7 @@ def test_generate(rst_path: Path, stub_path: Path, writer: StubWriter, settings:
     expected_files = set(map(lambda p: p.relative_to(stub_path), stub_path.glob("**/*")))
     generated_files = set(map(lambda p: p.relative_to(dest_dir), dest_dir.glob("**/*")))
 
-    assert len(expected_files) == 11
+    assert len(expected_files) == 12
     assert generated_files == expected_files
 
     for path in generated_files:

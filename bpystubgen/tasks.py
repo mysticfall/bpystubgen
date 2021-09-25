@@ -185,7 +185,7 @@ class ModuleTask(ParserTask):
         return doctree
 
     def target_path(self, dest_dir: Path) -> Path:
-        top_level = not any(self.ancestors)
+        top_level = not self.parent or not any(self.parent.ancestors)
         has_submodule = any(filter(lambda c: isinstance(c, ModuleTask), self.values()))
 
         if top_level or has_submodule:
