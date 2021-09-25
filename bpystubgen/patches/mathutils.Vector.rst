@@ -1,63 +1,63 @@
-.. method:: __add__(other)
+.. method:: __add__(value)
 
    Add another vector to this one.
 
-   :arg other: A vector to add.
-   :type other: :class:`~mathutils.Vector`
+   :arg value: The vector to add.
+   :type value: :class:`~mathutils.Vector`
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
 
-.. method:: __sub__(other)
+.. method:: __sub__(value)
 
    Subtract another vector from this one.
 
-   :arg other: A vector to subtract.
-   :type other: :class:`~mathutils.Vector`
+   :arg value: The vector to subtract.
+   :type value: :class:`~mathutils.Vector`
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
 
-.. method:: __mul__(other)
+.. method:: __mul__(value)
 
-   Multiply this vector by another one or a scala value.
+   Multiply this vector with another one or a scala value.
 
-   :arg other: A vector to multiply.
-   :type other: :class:`~mathutils.Vector` or float
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Vector` or float
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
 
-.. method:: __rmul__(other)
+.. method:: __rmul__(value)
 
-   Multiply this vector by a scala value.
+   Multiply this vector with a scala value.
 
-   :arg other: A vector to multiply.
-   :type other: float
+   :arg value: The multiplier value.
+   :type value: float
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
 
-.. method:: __imul__(other)
+.. method:: __imul__(value)
 
-   Multiply this vector by another one or a scala value.
+   Multiply this vector with another one or a scala value.
 
-   :arg other: A vector to multiply.
-   :type other: :class:`~mathutils.Vector` or float
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Vector` or float
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
 
-.. method:: __matmul__(other)
+.. method:: __matmul__(value)
 
    Scala product with another vector.
 
-   :arg other: A vector to multiply.
-   :type other: :class:`~mathutils.Vector`
+   :arg value: The vector to multiply with.
+   :type value: :class:`~mathutils.Vector`
    :return: The resulting product.
    :rtype: float
 
-.. method:: __imatmul__(other)
+.. method:: __imatmul__(value)
 
    Scala product with another vector.
 
-   :arg other: A vector to multiply.
-   :type other: :class:`~mathutils.Vector`
+   :arg value: The vector to multiply with.
+   :type value: :class:`~mathutils.Vector`
    :return: The resulting product.
    :rtype: float
 
@@ -65,7 +65,7 @@
 
    Divide this vector by a float value.
 
-   :arg value: A divider value.
+   :arg value: The divider value.
    :type value: float
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`
@@ -74,7 +74,7 @@
 
    Divide this vector by a float value.
 
-   :arg value: A divider value.
+   :arg value: The divider value.
    :type value: float
    :return: The resulting vector.
    :rtype: :class:`~mathutils.Vector`

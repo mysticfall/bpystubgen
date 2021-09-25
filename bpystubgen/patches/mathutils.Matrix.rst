@@ -1,63 +1,63 @@
-.. method:: __add__(other)
+.. method:: __add__(value)
 
    Add another matrix to this one.
 
-   :arg other: A matrix to add.
-   :type other: :class:`~mathutils.Matrix`
+   :arg value: The matrix to add.
+   :type value: :class:`~mathutils.Matrix`
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`
 
-.. method:: __sub__(other)
+.. method:: __sub__(value)
 
    Subtract another matrix from this one.
 
-   :arg other: A matrix to subtract.
-   :type other: :class:`~mathutils.Matrix`
+   :arg value: The matrix to subtract.
+   :type value: :class:`~mathutils.Matrix`
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`
 
-.. method:: __mul__(other)
+.. method:: __mul__(value)
+
+   Multiply this matrix with another one or a scala value.
+
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Matrix` or float
+   :return: The resulting matrix.
+   :rtype: :class:`~mathutils.Matrix`
+
+.. method:: __rmul__(value)
+
+   Multiply this matrix with a scala value.
+
+   :arg value: The multiplier value.
+   :type value: float
+   :return: The resulting matrix.
+   :rtype: :class:`~mathutils.Matrix`
+
+.. method:: __imul__(value)
 
    Multiply this matrix by another one or a scala value.
 
-   :arg other: A matrix to multiply.
-   :type other: :class:`~mathutils.Matrix` or float
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Matrix` or float
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`
 
-.. method:: __rmul__(other)
+.. method:: __matmul__(value)
 
-   Multiply this matrix by a scala value.
+   Multiply this matrix with another matrix, a vector, or quaternion.
 
-   :arg other: A value to multiply.
-   :type other: float
-   :return: The resulting matrix.
-   :rtype: :class:`~mathutils.Matrix`
-
-.. method:: __imul__(other)
-
-   Multiply this matrix by another one or a scala value.
-
-   :arg other: A matrix to multiply.
-   :type other: :class:`~mathutils.Matrix` or float
-   :return: The resulting matrix.
-   :rtype: :class:`~mathutils.Matrix`
-
-.. method:: __matmul__(other)
-
-   Multiply this matrix by another one.
-
-   :arg other: A matrix to multiply.
-   :type other: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`
 
-.. method:: __imatmul__(other)
+.. method:: __imatmul__(value)
 
-   Multiply this matrix by another one.
+   Multiply this matrix with another matrix, a vector, or quaternion.
 
-   :arg other: A matrix to multiply.
-   :type other: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`
 
@@ -72,7 +72,7 @@
 
    Divide this matrix by a float value.
 
-   :arg value: A divider value.
+   :arg value: The divider value.
    :type value: float
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`
@@ -81,7 +81,7 @@
 
    Divide this matrix by a float value.
 
-   :arg value: A divider value.
+   :arg value: The divider value.
    :type value: float
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`

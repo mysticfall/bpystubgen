@@ -1,63 +1,63 @@
-.. method:: __add__(other)
+.. method:: __add__(value)
 
    Add another quaternion to this one.
 
-   :arg other: A quaternion to add.
-   :type other: :class:`~mathutils.Quaternion`
+   :arg value: The quaternion to add.
+   :type value: :class:`~mathutils.Quaternion`
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
 
-.. method:: __sub__(other)
+.. method:: __sub__(value)
 
    Subtract another quaternion from this one.
 
-   :arg other: A quaternion to subtract.
-   :type other: :class:`~mathutils.Quaternion`
+   :arg value: The quaternion to subtract.
+   :type value: :class:`~mathutils.Quaternion`
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
 
-.. method:: __mul__(other)
+.. method:: __mul__(value)
 
-   Multiply this quaternion by another one or a scala value.
+   Multiply this quaternion with another one or a scala value.
 
-   :arg other: A quaternion to multiply.
-   :type other: :class:`~mathutils.Quaternion` or float
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Quaternion` or float
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
 
-.. method:: __rmul__(other)
+.. method:: __rmul__(value)
 
-   Multiply this quaternion by a scala value.
+   Multiply this quaternion with a scala value.
 
-   :arg other: A quaternion to multiply.
-   :type other: float
+   :arg value: The multiplier value.
+   :type value: float
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
 
-.. method:: __imul__(other)
+.. method:: __imul__(value)
 
-   Multiply this quaternion by another one or a scala value.
+   Multiply this quaternion with another one or a scala value.
 
-   :arg other: A quaternion to multiply.
-   :type other: :class:`~mathutils.Quaternion` or float
+   :arg value: The multiplier value.
+   :type value: :class:`~mathutils.Quaternion` or float
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
 
-.. method:: __matmul__(other)
+.. method:: __matmul__(value)
 
    Multiply with another quaternion or a vector.
 
-   :arg other: A quaternion to multiply.
-   :type other: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
+   :arg value: The quaternion or vector to multiply.
+   :type value: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
    :return: The resulting quaternion or vector.
    :rtype: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
 
-.. method:: __imatmul__(other)
+.. method:: __imatmul__(value)
 
    Multiply with another quaternion or a vector.
 
-   :arg other: A quaternion to multiply.
-   :type other: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
+   :arg value: The quaternion or vector to multiply.
+   :type value: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
    :return: The resulting quaternion or vector.
    :rtype: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
 
@@ -66,16 +66,16 @@
 
    Divide this quaternion by a float value.
 
-   :arg value: A divider value.
+   :arg value: The divider value.
    :type value: float
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
 
 .. method:: __itruediv__(value)
 
-   Divide this matrix by a float value.
+   Divide this quaternion by a float value.
 
-   :arg value: A divider value.
+   :arg value: The divider value.
    :type value: float
    :return: The resulting quaternion.
    :rtype: :class:`~mathutils.Quaternion`
