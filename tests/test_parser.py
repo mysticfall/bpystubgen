@@ -210,6 +210,11 @@ def test_parse_vector(text):
     assert parse_type(text) == "mathutils.Vector"
 
 
+def test_parse_tuple():
+    assert parse_type("tuple of floats.") == "typing.Tuple[float, ...]"
+    assert parse_type("a tuple of ints") == "typing.Tuple[int, ...]"
+
+
 def test_parse_simple_container():
     assert parse_type("array") == "typing.Tuple[typing.Any, ...]"
     assert parse_type("Array") == "typing.Tuple[typing.Any, ...]"

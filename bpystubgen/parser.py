@@ -87,7 +87,8 @@ _container_types: Final = {
     "list": "typing.List",
     "set": "typing.Set",
     "vector": "typing.List",
-    "sequence": "typing.Sequence"
+    "sequence": "typing.Sequence",
+    "tuple": "typing.Tuple"
 }
 
 
@@ -246,6 +247,9 @@ def parse_container_of(text: str) -> Optional[str]:
 
     if not data_type or not container_type:
         return None
+
+    if container_type == "typing.Tuple":
+        data_type += ", ..."
 
     if qualifier:
         qualifier = qualifier.strip()
