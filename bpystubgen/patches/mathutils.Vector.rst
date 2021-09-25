@@ -45,21 +45,21 @@
 
 .. method:: __matmul__(value)
 
-   Scala product with another vector.
+   Multiply this vector with a matrix or another vector.
 
-   :arg value: The vector to multiply with.
-   :type value: :class:`~mathutils.Vector`
-   :return: The resulting product.
-   :rtype: float
+   :arg value: The matrix or vector to multiply with.
+   :type value: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector`
+   :return: The resulting value.
+   :rtype: :class:`~mathutils.Vector` or float
 
 .. method:: __imatmul__(value)
 
-   Scala product with another vector.
+   Multiply this vector with a matrix or another vector.
 
-   :arg value: The vector to multiply with.
-   :type value: :class:`~mathutils.Vector`
-   :return: The resulting product.
-   :rtype: float
+   :arg value: The matrix or vector to multiply with.
+   :type value: :class:`~mathutils.Matrix` or :class:`~mathutils.Vector`
+   :return: The resulting value.
+   :rtype: :class:`~mathutils.Vector` or float
 
 .. method:: __truediv__(value)
 

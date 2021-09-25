@@ -4623,21 +4623,21 @@ vector and another.
 
     ...
 
-  def __matmul__(self, value: Vector) -> float:
+  def __matmul__(self, value: typing.Union[Matrix, Vector]) -> typing.Union[Vector, float]:
 
     """
 
-    Scala product with another vector.
+    Multiply this vector with a matrix or another vector.
 
     """
 
     ...
 
-  def __imatmul__(self, value: Vector) -> float:
+  def __imatmul__(self, value: typing.Union[Matrix, Vector]) -> typing.Union[Vector, float]:
 
     """
 
-    Scala product with another vector.
+    Multiply this vector with a matrix or another vector.
 
     """
 
