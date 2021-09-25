@@ -355,6 +355,26 @@ so interpolating between them works as intended.
 
   """
 
+  def __getitem__(self, index: int) -> float:
+
+    """
+
+    Get the angle component at index.
+
+    """
+
+    ...
+
+  def __setitem__(self, index: int, value: float) -> None:
+
+    """
+
+    Set the angle component at index.
+
+    """
+
+    ...
+
 class Matrix:
 
   """
