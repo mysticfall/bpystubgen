@@ -3181,3 +3181,14 @@
 .. data:: GL_ZERO
 
    :type: int
+
+.. function:: glDeleteBuffers(n, buffers):
+
+    Delete named buffer objects
+
+   .. seealso:: `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glDeleteBuffers.xhtml>`__
+
+   :type n: int
+   :arg n: Specifies the number of buffer objects to be deleted.
+   :type buffer: :class:`bgl.Buffer` int buffer.
+   :arg buffer: Specifies an array of buffer objects to be deleted.

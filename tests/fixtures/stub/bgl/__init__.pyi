@@ -3135,3 +3135,15 @@ GL_WRITE_ONLY: int = ...
 GL_XOR: int = ...
 
 GL_ZERO: int = ...
+
+def glDeleteBuffers(n: int, buffers: typing.Any) -> None:
+
+  """
+
+    Delete named buffer objects
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glDeleteBuffers.xhtml>`_
+
+  """
+
+  ...

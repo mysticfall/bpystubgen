@@ -50,7 +50,7 @@ def test_patch(settings: Values, env: BuildEnvironment):
 
     members = module.members
 
-    assert len(members) == 798
+    assert len(members) == 799
 
     assert members[0].name == "existing1"
     assert members[0].type == "bool"
