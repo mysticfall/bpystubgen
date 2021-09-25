@@ -6,31 +6,33 @@ _simple_pattern: Final = re.compile(
     "^(?:unsigned\\s)?(?P<type>[a-zA-Z]+)(?:\\s?\\([^)]+\\))?(?:\\sin\\s[\\[][^]]+[]])?(?:[,.\\s].*)?$")
 
 _container_of_pattern: Final = re.compile(
-    "^(?P<container>[a-zA-Z]+)\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
+    "^(?:[Aa][n]?\\s)?(?P<container>[a-zA-Z]+)\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
     "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
 
 _prop_collection_of_pattern: Final = re.compile(
-    "^(?::class:`[~!]?(?P<base>[^`]+)`\\s+)?:class:`bpy_prop_collection`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
-    "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
+    "^(?:[Aa][n]?\\s)?(?::class:`[~!]?(?P<base>[^`]+)`\\s+)?:class:`bpy_prop_collection`\\sof\\s"
+    "(?::class:`[~!]?(?P<reference>[^`]+)`|(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
 
 _exp_list_value_of_pattern: Final = re.compile(
-    "^:class:`[~!]?bge.types.EXP_ListValue`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
+    "^(?:[Aa][n]?\\s)?:class:`[~!]?bge.types.EXP_ListValue`\\sof\\s(?::class:`[~!]?(?P<reference>[^`]+)`|"
     "(?P<data>[a-zA-Z]+))(?P<qualifier>[',.\\s].*)?$")
 
 _qualified_list_pattern: Final = re.compile(
-    "^list\\s*\\([a-zA-Z\\s]*vector\\sof\\s[0-9]+\\s(?P<data>[a-zA-Z]+)(?:[,.\\s][^)]*)?\\)(?:[,.\\s].*)?$")
+    "^(?:[Aa][n]?\\s)?list\\s*\\([a-zA-Z\\s]*vector\\sof\\s[0-9]+\\s(?P<data>[a-zA-Z]+)"
+    "(?:[,.\\s][^)]*)?\\)(?:[,.\\s].*)?$")
 
 _list_bracket_pattern: Final = re.compile(
     "^list\\s*\\[(?::class:`[~!]?(?P<reference>[^`]+)`|(?P<data>[a-zA-Z]+))](?:[,.\\s].*)?$")
 
 _array_of_pattern: Final = re.compile(
-    "^(?P<data>[a-z]+)\\sarray\\sof\\s(?P<count>[0-9]+)\\sitems.*$")
+    "^(?:[Aa][n]?\\s)?(?P<data>[a-z]+)\\sarray\\sof\\s(?P<count>[0-9]+)\\sitems.*$")
 
 _multi_array_of_pattern: Final = re.compile(
-    "^(?P<data>[a-z]+)\\smulti-dimensional\\sarray\\sof\\s(?P<rows>[0-9]+)\\s*\\*\\s*(?P<cols>[0-9]+)\\sitems.*$")
+    "^(?:[Aa][n]?\\s)?(?P<data>[a-z]+)\\smulti-dimensional\\sarray\\sof\\s(?P<rows>[0-9]+)"
+    "\\s*\\*\\s*(?P<cols>[0-9]+)\\sitems.*$")
 
 _dictionary_pattern: Final = re.compile(
-    "^dict(?:ionary)?\\s*[\\[(](?P<key>[^,\\s]+)\\s*,\\s*(?P<value>[^])]+)[])].*$")
+    "^(?:[Aa]\\s)?dict(?:ionary)?\\s*[\\[(](?P<key>[^,\\s]+)\\s*,\\s*(?P<value>[^])]+)[])].*$")
 
 _reference_type_pattern: Final = re.compile(
     "^:class:`[~!]?(?P<name>[a-zA-Z_0-9.\\s]+)(?:\\s*<(?P<target>[a-zA-Z_0-9.]+)>)?`(?:[,.\\s].*)?$")

@@ -104,16 +104,16 @@ def test_parse_misc_types():
         ("list of ints.", "int"),
         ("list of floats [x, y, z]", "float"),
         ("list of :class:`~bge.types.SCA_ISensor`", "bge.types.SCA_ISensor"),
-        ("list of :class:`bge.types.KX_Scene`", "bge.types.KX_Scene"),
+        ("a list of :class:`bge.types.KX_Scene`", "bge.types.KX_Scene"),
         ("list of :class:`mathutils.Vector`'s", "mathutils.Vector"),
         ("list of :class:`!freestyle.types.ViewShape` objects", "freestyle.types.ViewShape"),
         ("list of :class:`~bge.types.KX_BlenderMaterial` type", "bge.types.KX_BlenderMaterial"),
         ("list of :class:`KX_MeshProxy <bge.types.KX_MeshProxy>`", "bge.types.KX_MeshProxy"),
-        ("list of tuples", "typing.Tuple[typing.Any, ...]"),
+        ("A list of tuples", "typing.Tuple[typing.Any, ...]"),
         ("list of :class:`BMLoop` tuples", "typing.Tuple[BMLoop, ...]"),
         ("list (vector of 3 floats)", "float"),
         ("list (normalized vector of 3 floats)", "float"),
-        ("list (vector of 2 integers from 0 to 2)", "int"),
+        ("a list (vector of 2 integers from 0 to 2)", "int"),
         ("list [str]", "str"),
         ("list [:class:`~bge.types.KX_GameObject`]", "bge.types.KX_GameObject"),
         ("list [float], len(getSpectrum()) == 512", "float")
@@ -128,7 +128,7 @@ def test_bpy_prop_collection():
     assert result == "typing.Union[typing.Sequence[LodLevel], typing.Mapping[str, LodLevel], " \
                      "bpy.types.bpy_prop_collection]"
 
-    result = parse_type(":class:`bpy_prop_collection` of :class:`NodeLink`, (readonly)")
+    result = parse_type("A :class:`bpy_prop_collection` of :class:`NodeLink`, (readonly)")
     assert result == "typing.Union[typing.Sequence[NodeLink], typing.Mapping[str, NodeLink], " \
                      "bpy.types.bpy_prop_collection]"
 
@@ -158,10 +158,10 @@ def test_exp_list_value():
         ("int array of 4 items", "int, int, int, int"),
         ("boolean array of 3 items, default (False, False, False)", "bool, bool, bool"),
         ("float array of 2 items in [-inf, inf], (optional)", "float, float"),
-        ("int array of 8 items", "int, ..."),
+        ("An int array of 8 items", "int, ..."),
         ("float multi-dimensional array of 3 * 2 items in [-1, 1]",
          "typing.Tuple[float, float], typing.Tuple[float, float], typing.Tuple[float, float]"),
-        ("float multi-dimensional array of 3 * 8 items in [-1, 1]",
+        ("a float multi-dimensional array of 3 * 8 items in [-1, 1]",
          "typing.Tuple[float, ...], typing.Tuple[float, ...], typing.Tuple[float, ...]"),
         ("float multi-dimensional array of 8 * 3 items in [-1, 1]",
          "typing.Tuple[float, float, float], ...")
