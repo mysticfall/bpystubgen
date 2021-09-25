@@ -287,6 +287,25 @@ def test_parse_bpy_prop_collection(parser: Parser, document: document):
                                      "bpy.types.bpy_prop_collection]"
 
 
+def test_parse_alias(parser: Parser, document: document):
+    source = """
+       .. function:: glEvalCoord (u,v):
+
+          B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+          glEvalCoord2dv, glEvalCoord2fv}
+
+          Evaluate enabled one- and two-dimensional maps
+    """.strip()
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    functions = set(map(lambda f: f.name, document.traverse(Function)))
+
+    assert functions == {"glEvalCoord1d", "glEvalCoord", "glEvalCoord1dv", "glEvalCoord1f", "glEvalCoord1fv",
+                         "glEvalCoord2d", "glEvalCoord2dv", "glEvalCoord2f", "glEvalCoord2fv"}
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"

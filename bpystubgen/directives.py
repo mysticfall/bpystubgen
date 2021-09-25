@@ -259,6 +259,7 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
 
 
 class FunctionDirective(FunctionLikeDirective):
+    _alias_pattern = re.compile("^B{([^}]+)}")
 
     def run(self) -> List[Node]:
         document = self.state_machine.document
@@ -310,6 +311,19 @@ class FunctionDirective(FunctionLikeDirective):
 
                 elems.append(elem)
                 elems.extend(messages)
+
+                alias_match = self._alias_pattern.match(ds.docstring.astext())
+
+                if alias_match:
+                    alias_text = alias_match.group(1)
+                    alias_text.replace(" and ", ", ")
+
+                    for alias in map(lambda a: a.strip(), alias_text.split(",")):
+                        copy = elem.deepcopy()
+                        copy.name = alias
+
+                        elems.append(copy)
+
             except SyntaxError:
                 msg = reporter.error(f"Invalid function signature: {line}", base_node=self.state.parent)
                 elems.append(msg)
@@ -359,7 +373,7 @@ class ClassDirective(FunctionLikeDirective):
 
                         ctor += docstring
 
-                    for arg in args.values():
+                    for arg in iter(args.values()):
                         ctor += arg
 
                     elem.insert(0, ctor)

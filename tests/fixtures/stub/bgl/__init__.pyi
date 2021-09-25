@@ -37,6 +37,70 @@ for example.
 
 :func:`glColor`
 
+:func:`glColor3b`
+
+:func:`glColor3d`
+
+:func:`glColor3f`
+
+:func:`glColor3i`
+
+:func:`glColor3s`
+
+:func:`glColor3ub`
+
+:func:`glColor3ui`
+
+:func:`glColor3us`
+
+:func:`glColor4b`
+
+:func:`glColor4d`
+
+:func:`glColor4f`
+
+:func:`glColor4i`
+
+:func:`glColor4s`
+
+:func:`glColor4ub`
+
+:func:`glColor4ui`
+
+:func:`glColor4us`
+
+:func:`glColor3bv`
+
+:func:`glColor3dv`
+
+:func:`glColor3fv`
+
+:func:`glColor3iv`
+
+:func:`glColor3sv`
+
+:func:`glColor3ubv`
+
+:func:`glColor3uiv`
+
+:func:`glColor3usv`
+
+:func:`glColor4bv`
+
+:func:`glColor4dv`
+
+:func:`glColor4fv`
+
+:func:`glColor4iv`
+
+:func:`glColor4sv`
+
+:func:`glColor4ubv`
+
+:func:`glColor4uiv`
+
+:func:`glColor4usv`
+
 :func:`glColorMask`
 
 :func:`glCopyTexImage2D`
@@ -57,13 +121,37 @@ for example.
 
 :func:`glEdgeFlag`
 
+:func:`glEdgeFlag`
+
+:func:`glEdgeFlagv`
+
 :func:`glEnable`
 
 :func:`glEvalCoord`
 
+:func:`glEvalCoord1d`
+
+:func:`glEvalCoord1f`
+
+:func:`glEvalCoord2d`
+
+:func:`glEvalCoord2f`
+
+:func:`glEvalCoord1dv`
+
+:func:`glEvalCoord1fv`
+
+:func:`glEvalCoord2dv`
+
+:func:`glEvalCoord2fv`
+
 :func:`glEvalMesh`
 
+:func:`glEvalMesh1 or glEvalMesh2`
+
 :func:`glEvalPoint`
+
+:func:`glEvalPoint1 and glEvalPoint2`
 
 :func:`glFeedbackBuffer`
 
@@ -73,33 +161,85 @@ for example.
 
 :func:`glFog`
 
+:func:`glFogf`
+
+:func:`glFogi`
+
+:func:`glFogfv`
+
+:func:`glFogiv`
+
 :func:`glFrontFace`
 
 :func:`glGenTextures`
 
 :func:`glGet`
 
+:func:`glGetBooleanv`
+
+:func:`glGetfloatv`
+
+:func:`glGetFloatv`
+
+:func:`glGetIntegerv`
+
 :func:`glGetError`
 
 :func:`glGetLight`
 
+:func:`glGetLightfv and glGetLightiv`
+
 :func:`glGetMap`
+
+:func:`glGetMapdv`
+
+:func:`glGetMapfv`
+
+:func:`glGetMapiv`
 
 :func:`glGetMaterial`
 
+:func:`glGetMaterialfv`
+
+:func:`glGetMaterialiv`
+
 :func:`glGetPixelMap`
+
+:func:`glGetPixelMapfv`
+
+:func:`glGetPixelMapuiv`
+
+:func:`glGetPixelMapusv`
 
 :func:`glGetString`
 
 :func:`glGetTexEnv`
 
+:func:`glGetTexEnvfv`
+
+:func:`glGetTexEnviv`
+
 :func:`glGetTexGen`
+
+:func:`glGetTexGendv`
+
+:func:`glGetTexGenfv`
+
+:func:`glGetTexGeniv`
 
 :func:`glGetTexImage`
 
 :func:`glGetTexLevelParameter`
 
+:func:`glGetTexLevelParameterfv`
+
+:func:`glGetTexLevelParameteriv`
+
 :func:`glGetTexParameter`
+
+:func:`glGetTexParameterfv`
+
+:func:`glGetTexParameteriv`
 
 :func:`glHint`
 
@@ -109,31 +249,105 @@ for example.
 
 :func:`glLight`
 
+:func:`glLightf`
+
+:func:`glLighti`
+
+:func:`glLightfv`
+
+:func:`glLightiv`
+
 :func:`glLightModel`
+
+:func:`glLightModelf`
+
+:func:`glLightModeli`
+
+:func:`glLightModelfv`
+
+:func:`glLightModeliv`
 
 :func:`glLineWidth`
 
 :func:`glLoadMatrix`
 
+:func:`glLoadMatrixd`
+
+:func:`glLoadMatixf`
+
 :func:`glLogicOp`
 
 :func:`glMap1`
 
+:func:`glMap1d`
+
+:func:`glMap1f`
+
 :func:`glMap2`
 
+:func:`glMap2d`
+
+:func:`glMap2f`
+
 :func:`glMapGrid`
+
+:func:`glMapGrid1d`
+
+:func:`glMapGrid1f`
+
+:func:`glMapGrid2d`
+
+:func:`glMapGrid2f`
 
 :func:`glMaterial`
 
 :func:`glMultMatrix`
 
+:func:`glMultMatrixd`
+
+:func:`glMultMatrixf`
+
 :func:`glNormal3`
+
+:func:`Normal3b`
+
+:func:`Normal3bv`
+
+:func:`Normal3d`
+
+:func:`Normal3dv`
+
+:func:`Normal3f`
+
+:func:`Normal3fv`
+
+:func:`Normal3i`
+
+:func:`Normal3iv`
+
+:func:`Normal3s`
+
+:func:`Normal3sv`
 
 :func:`glPixelMap`
 
+:func:`glPixelMapfv`
+
+:func:`glPixelMapuiv`
+
+:func:`glPixelMapusv`
+
 :func:`glPixelStore`
 
+:func:`glPixelStoref`
+
+:func:`glPixelStorei`
+
 :func:`glPixelTransfer`
+
+:func:`glPixelTransferf`
+
+:func:`glPixelTransferi`
 
 :func:`glPointSize`
 
@@ -143,15 +357,87 @@ for example.
 
 :func:`glRasterPos`
 
+:func:`glRasterPos2d`
+
+:func:`glRasterPos2f`
+
+:func:`glRasterPos2i`
+
+:func:`glRasterPos2s`
+
+:func:`glRasterPos3d`
+
+:func:`glRasterPos3f`
+
+:func:`glRasterPos3i`
+
+:func:`glRasterPos3s`
+
+:func:`glRasterPos4d`
+
+:func:`glRasterPos4f`
+
+:func:`glRasterPos4i`
+
+:func:`glRasterPos4s`
+
+:func:`glRasterPos2dv`
+
+:func:`glRasterPos2fv`
+
+:func:`glRasterPos2iv`
+
+:func:`glRasterPos2sv`
+
+:func:`glRasterPos3dv`
+
+:func:`glRasterPos3fv`
+
+:func:`glRasterPos3iv`
+
+:func:`glRasterPos3sv`
+
+:func:`glRasterPos4dv`
+
+:func:`glRasterPos4fv`
+
+:func:`glRasterPos4iv`
+
+:func:`glRasterPos4sv`
+
 :func:`glReadBuffer`
 
 :func:`glReadPixels`
 
 :func:`glRect`
 
+:func:`glRectd`
+
+:func:`glRectf`
+
+:func:`glRecti`
+
+:func:`glRects`
+
+:func:`glRectdv`
+
+:func:`glRectfv`
+
+:func:`glRectiv`
+
+:func:`glRectsv`
+
 :func:`glRotate`
 
+:func:`glRotated`
+
+:func:`glRotatef`
+
 :func:`glScale`
+
+:func:`glScaled`
+
+:func:`glScalef`
 
 :func:`glScissor`
 
@@ -163,9 +449,93 @@ for example.
 
 :func:`glTexCoord`
 
+:func:`glTexCoord1d`
+
+:func:`glTexCoord1f`
+
+:func:`glTexCoord1i`
+
+:func:`glTexCoord1s`
+
+:func:`glTexCoord2d`
+
+:func:`glTexCoord2f`
+
+:func:`glTexCoord2i`
+
+:func:`glTexCoord2s`
+
+:func:`glTexCoord3d`
+
+:func:`glTexCoord3f`
+
+:func:`glTexCoord3i`
+
+:func:`glTexCoord3s`
+
+:func:`glTexCoord4d`
+
+:func:`glTexCoord4f`
+
+:func:`glTexCoord4i`
+
+:func:`glTexCoord4s`
+
+:func:`glTexCoord1dv`
+
+:func:`glTexCoord1fv`
+
+:func:`glTexCoord1iv`
+
+:func:`glTexCoord1sv`
+
+:func:`glTexCoord2dv`
+
+:func:`glTexCoord2fv`
+
+:func:`glTexCoord2iv`
+
+:func:`glTexCoord2sv`
+
+:func:`glTexCoord3dv`
+
+:func:`glTexCoord3fv`
+
+:func:`glTexCoord3iv`
+
+:func:`glTexCoord3sv`
+
+:func:`glTexCoord4dv`
+
+:func:`glTexCoord4fv`
+
+:func:`glTexCoord4iv`
+
+:func:`glTexCoord4sv`
+
 :func:`glTexEnv`
 
+:func:`glTextEnvf`
+
+:func:`glTextEnvi`
+
+:func:`glTextEnvfv`
+
+:func:`glTextEnviv`
+
 :func:`glTexGen`
+
+:func:`glTexGend`
+
+:func:`glTexGenf`
+
+:func:`glTexGeni`
+
+:func:`glTexGendv`
+
+:func:`glTexGenfv`
+
+:func:`glTexGeniv`
 
 :func:`glTexImage1D`
 
@@ -173,7 +543,19 @@ for example.
 
 :func:`glTexParameter`
 
+:func:`glTexParameterf`
+
+:func:`glTexParameteri`
+
+:func:`glTexParameterfv`
+
+:func:`glTexParameteriv`
+
 :func:`glTranslate`
+
+:func:`glTranslatef`
+
+:func:`glTranslated`
 
 :func:`glViewport`
 
@@ -323,6 +705,582 @@ glColor4uiv, glColor4usv}
 
   ...
 
+def glColor3b(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3d(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3f(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3i(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3s(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3ub(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3ui(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3us(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4b(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4d(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4f(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4i(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4s(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4ub(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4ui(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4us(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3bv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3dv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3fv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3iv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3sv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3ubv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3uiv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor3usv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4bv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4dv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4fv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4iv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4sv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4ubv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4uiv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
+def glColor4usv(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
+
+  """
+
+  B{glColor3b, glColor3d, glColor3f, glColor3i, glColor3s, glColor3ub, glColor3ui, glColor3us,
+glColor4b, glColor4d, glColor4f, glColor4i, glColor4s, glColor4ub, glColor4ui, glColor4us,
+glColor3bv, glColor3dv, glColor3fv, glColor3iv, glColor3sv, glColor3ubv, glColor3uiv,
+glColor3usv, glColor4bv, glColor4dv, glColor4fv, glColor4iv, glColor4sv, glColor4ubv,
+glColor4uiv, glColor4usv}
+
+  Set a new color.
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glColor.xhtml>`_
+
+  """
+
+  ...
+
 def glColorMask(red: typing.Any, green: typing.Any, blue: typing.Any, alpha: typing.Any) -> None:
 
   """
@@ -445,6 +1403,34 @@ def glEdgeFlag(flag: typing.Any) -> None:
 
   ...
 
+def glEdgeFlag(flag: typing.Any) -> None:
+
+  """
+
+  B{glEdgeFlag, glEdgeFlagv}
+
+  Flag edges as either boundary or non-boundary
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEdgeFlag.xhtml>`_
+
+  """
+
+  ...
+
+def glEdgeFlagv(flag: typing.Any) -> None:
+
+  """
+
+  B{glEdgeFlag, glEdgeFlagv}
+
+  Flag edges as either boundary or non-boundary
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEdgeFlag.xhtml>`_
+
+  """
+
+  ...
+
 def glEnable(cap: typing.Any) -> None:
 
   """
@@ -458,6 +1444,126 @@ def glEnable(cap: typing.Any) -> None:
   ...
 
 def glEvalCoord(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord1d(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord1f(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord2d(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord2f(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord1dv(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord1fv(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord2dv(u: typing.Any, v: typing.Any) -> None:
+
+  """
+
+  B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
+glEvalCoord2dv, glEvalCoord2fv}
+
+  Evaluate enabled one- and two-dimensional maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalCoord2fv(u: typing.Any, v: typing.Any) -> None:
 
   """
 
@@ -486,7 +1592,35 @@ def glEvalMesh(mode: typing.Any, i1: typing.Any, i2: typing.Any) -> None:
 
   ...
 
+def glEvalMesh1 or glEvalMesh2(mode: typing.Any, i1: typing.Any, i2: typing.Any) -> None:
+
+  """
+
+  B{glEvalMesh1 or glEvalMesh2}
+
+  Compute a one- or two-dimensional grid of points or lines
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalMesh.xhtml>`_
+
+  """
+
+  ...
+
 def glEvalPoint(i: int, j: int) -> None:
+
+  """
+
+  B{glEvalPoint1 and glEvalPoint2}
+
+  Generate and evaluate a single point in a mesh
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalPoint.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalPoint1 and glEvalPoint2(i: int, j: int) -> None:
 
   """
 
@@ -550,6 +1684,62 @@ def glFog(pname: typing.Any, param: typing.Any) -> None:
 
   ...
 
+def glFogf(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glFogf, glFogi, glFogfv, glFogiv}
+
+  Specify fog parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glFog.xhtml>`_
+
+  """
+
+  ...
+
+def glFogi(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glFogf, glFogi, glFogfv, glFogiv}
+
+  Specify fog parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glFog.xhtml>`_
+
+  """
+
+  ...
+
+def glFogfv(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glFogf, glFogi, glFogfv, glFogiv}
+
+  Specify fog parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glFog.xhtml>`_
+
+  """
+
+  ...
+
+def glFogiv(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glFogf, glFogi, glFogfv, glFogiv}
+
+  Specify fog parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glFog.xhtml>`_
+
+  """
+
+  ...
+
 def glFrontFace(mode: typing.Any) -> None:
 
   """
@@ -575,6 +1765,62 @@ def glGenTextures(n: int, textures: Buffer) -> None:
   ...
 
 def glGet(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glGetBooleanv, glGetfloatv, glGetFloatv, glGetIntegerv}
+
+  Return the value or values of a selected parameter
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGet.xhtml>`_
+
+  """
+
+  ...
+
+def glGetBooleanv(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glGetBooleanv, glGetfloatv, glGetFloatv, glGetIntegerv}
+
+  Return the value or values of a selected parameter
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGet.xhtml>`_
+
+  """
+
+  ...
+
+def glGetfloatv(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glGetBooleanv, glGetfloatv, glGetFloatv, glGetIntegerv}
+
+  Return the value or values of a selected parameter
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGet.xhtml>`_
+
+  """
+
+  ...
+
+def glGetFloatv(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glGetBooleanv, glGetfloatv, glGetFloatv, glGetIntegerv}
+
+  Return the value or values of a selected parameter
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGet.xhtml>`_
+
+  """
+
+  ...
+
+def glGetIntegerv(pname: typing.Any, param: typing.Any) -> None:
 
   """
 
@@ -614,7 +1860,63 @@ def glGetLight(light: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   ...
 
+def glGetLightfv and glGetLightiv(light: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetLightfv and glGetLightiv}
+
+  Return light source parameter values
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetLight.xhtml>`_
+
+  """
+
+  ...
+
 def glGetMap(target: typing.Any, query: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glGetMapdv, glGetMapfv, glGetMapiv}
+
+  Return evaluator parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetMap.xhtml>`_
+
+  """
+
+  ...
+
+def glGetMapdv(target: typing.Any, query: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glGetMapdv, glGetMapfv, glGetMapiv}
+
+  Return evaluator parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetMap.xhtml>`_
+
+  """
+
+  ...
+
+def glGetMapfv(target: typing.Any, query: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glGetMapdv, glGetMapfv, glGetMapiv}
+
+  Return evaluator parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetMap.xhtml>`_
+
+  """
+
+  ...
+
+def glGetMapiv(target: typing.Any, query: typing.Any, v: Buffer) -> None:
 
   """
 
@@ -642,7 +1944,77 @@ def glGetMaterial(face: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   ...
 
+def glGetMaterialfv(face: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetMaterialfv, glGetMaterialiv}
+
+  Return material parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetMaterial.xhtml>`_
+
+  """
+
+  ...
+
+def glGetMaterialiv(face: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetMaterialfv, glGetMaterialiv}
+
+  Return material parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetMaterial.xhtml>`_
+
+  """
+
+  ...
+
 def glGetPixelMap(map: typing.Any, values: Buffer) -> None:
+
+  """
+
+  B{glGetPixelMapfv, glGetPixelMapuiv, glGetPixelMapusv}
+
+  Return the specified pixel map
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetPixelMap.xhtml>`_
+
+  """
+
+  ...
+
+def glGetPixelMapfv(map: typing.Any, values: Buffer) -> None:
+
+  """
+
+  B{glGetPixelMapfv, glGetPixelMapuiv, glGetPixelMapusv}
+
+  Return the specified pixel map
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetPixelMap.xhtml>`_
+
+  """
+
+  ...
+
+def glGetPixelMapuiv(map: typing.Any, values: Buffer) -> None:
+
+  """
+
+  B{glGetPixelMapfv, glGetPixelMapuiv, glGetPixelMapusv}
+
+  Return the specified pixel map
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetPixelMap.xhtml>`_
+
+  """
+
+  ...
+
+def glGetPixelMapusv(map: typing.Any, values: Buffer) -> None:
 
   """
 
@@ -682,7 +2054,77 @@ def glGetTexEnv(target: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   ...
 
+def glGetTexEnvfv(target: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexEnvfv, glGetTexEnviv}
+
+  Return texture environment parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexEnv.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexEnviv(target: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexEnvfv, glGetTexEnviv}
+
+  Return texture environment parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexEnv.xhtml>`_
+
+  """
+
+  ...
+
 def glGetTexGen(coord: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexGendv, glGetTexGenfv, glGetTexGeniv}
+
+  Return texture coordinate generation parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexGendv(coord: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexGendv, glGetTexGenfv, glGetTexGeniv}
+
+  Return texture coordinate generation parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexGenfv(coord: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexGendv, glGetTexGenfv, glGetTexGeniv}
+
+  Return texture coordinate generation parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexGeniv(coord: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   """
 
@@ -722,7 +2164,63 @@ def glGetTexLevelParameter(target: typing.Any, level: int, pname: typing.Any, pa
 
   ...
 
+def glGetTexLevelParameterfv(target: typing.Any, level: int, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexLevelParameterfv, glGetTexLevelParameteriv}
+
+  return texture parameter values for a specific level of detail
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexLevelParameter.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexLevelParameteriv(target: typing.Any, level: int, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexLevelParameterfv, glGetTexLevelParameteriv}
+
+  return texture parameter values for a specific level of detail
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexLevelParameter.xhtml>`_
+
+  """
+
+  ...
+
 def glGetTexParameter(target: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexParameterfv, glGetTexParameteriv}
+
+  Return texture parameter values
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexParameter.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexParameterfv(target: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetTexParameterfv, glGetTexParameteriv}
+
+  Return texture parameter values
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetTexParameter.xhtml>`_
+
+  """
+
+  ...
+
+def glGetTexParameteriv(target: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   """
 
@@ -786,7 +2284,119 @@ def glLight(light: typing.Any, pname: typing.Any, param: typing.Any) -> None:
 
   ...
 
+def glLightf(light: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightf,glLighti, glLightfv, glLightiv}
+
+  Set the light source parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLight.xhtml>`_
+
+  """
+
+  ...
+
+def glLighti(light: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightf,glLighti, glLightfv, glLightiv}
+
+  Set the light source parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLight.xhtml>`_
+
+  """
+
+  ...
+
+def glLightfv(light: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightf,glLighti, glLightfv, glLightiv}
+
+  Set the light source parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLight.xhtml>`_
+
+  """
+
+  ...
+
+def glLightiv(light: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightf,glLighti, glLightfv, glLightiv}
+
+  Set the light source parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLight.xhtml>`_
+
+  """
+
+  ...
+
 def glLightModel(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightModelf, glLightModeli, glLightModelfv, glLightModeliv}
+
+  Set the lighting model parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLightModel.xhtml>`_
+
+  """
+
+  ...
+
+def glLightModelf(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightModelf, glLightModeli, glLightModelfv, glLightModeliv}
+
+  Set the lighting model parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLightModel.xhtml>`_
+
+  """
+
+  ...
+
+def glLightModeli(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightModelf, glLightModeli, glLightModelfv, glLightModeliv}
+
+  Set the lighting model parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLightModel.xhtml>`_
+
+  """
+
+  ...
+
+def glLightModelfv(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glLightModelf, glLightModeli, glLightModelfv, glLightModeliv}
+
+  Set the lighting model parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLightModel.xhtml>`_
+
+  """
+
+  ...
+
+def glLightModeliv(pname: typing.Any, param: typing.Any) -> None:
 
   """
 
@@ -826,6 +2436,34 @@ def glLoadMatrix(m: Buffer) -> None:
 
   ...
 
+def glLoadMatrixd(m: Buffer) -> None:
+
+  """
+
+  B{glLoadMatrixd, glLoadMatixf}
+
+  Replace the current matrix with the specified matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLoadMatrix.xhtml>`_
+
+  """
+
+  ...
+
+def glLoadMatixf(m: Buffer) -> None:
+
+  """
+
+  B{glLoadMatrixd, glLoadMatixf}
+
+  Replace the current matrix with the specified matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glLoadMatrix.xhtml>`_
+
+  """
+
+  ...
+
 def glLogicOp(opcode: typing.Any) -> None:
 
   """
@@ -839,6 +2477,34 @@ def glLogicOp(opcode: typing.Any) -> None:
   ...
 
 def glMap1(target: typing.Any, u1: typing.Any, u2: typing.Any, stride: int, order: int, points: Buffer) -> None:
+
+  """
+
+  B{glMap1d, glMap1f}
+
+  Define a one-dimensional evaluator
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMap1.xhtml>`_
+
+  """
+
+  ...
+
+def glMap1d(target: typing.Any, u1: typing.Any, u2: typing.Any, stride: int, order: int, points: Buffer) -> None:
+
+  """
+
+  B{glMap1d, glMap1f}
+
+  Define a one-dimensional evaluator
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMap1.xhtml>`_
+
+  """
+
+  ...
+
+def glMap1f(target: typing.Any, u1: typing.Any, u2: typing.Any, stride: int, order: int, points: Buffer) -> None:
 
   """
 
@@ -866,7 +2532,91 @@ def glMap2(target: typing.Any, u1: typing.Any, u2: typing.Any, ustride: int, uor
 
   ...
 
+def glMap2d(target: typing.Any, u1: typing.Any, u2: typing.Any, ustride: int, uorder: int, v1: typing.Any, v2: typing.Any, vstride: int, vorder: int, points: Buffer) -> None:
+
+  """
+
+  B{glMap2d, glMap2f}
+
+  Define a two-dimensional evaluator
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMap2.xhtml>`_
+
+  """
+
+  ...
+
+def glMap2f(target: typing.Any, u1: typing.Any, u2: typing.Any, ustride: int, uorder: int, v1: typing.Any, v2: typing.Any, vstride: int, vorder: int, points: Buffer) -> None:
+
+  """
+
+  B{glMap2d, glMap2f}
+
+  Define a two-dimensional evaluator
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMap2.xhtml>`_
+
+  """
+
+  ...
+
 def glMapGrid(un: int, u1: typing.Any, u2: typing.Any, vn: int, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glMapGrid1d, glMapGrid1f, glMapGrid2d, glMapGrid2f}
+
+  Define a one- or two-dimensional mesh
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMapGrid.xhtml>`_
+
+  """
+
+  ...
+
+def glMapGrid1d(un: int, u1: typing.Any, u2: typing.Any, vn: int, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glMapGrid1d, glMapGrid1f, glMapGrid2d, glMapGrid2f}
+
+  Define a one- or two-dimensional mesh
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMapGrid.xhtml>`_
+
+  """
+
+  ...
+
+def glMapGrid1f(un: int, u1: typing.Any, u2: typing.Any, vn: int, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glMapGrid1d, glMapGrid1f, glMapGrid2d, glMapGrid2f}
+
+  Define a one- or two-dimensional mesh
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMapGrid.xhtml>`_
+
+  """
+
+  ...
+
+def glMapGrid2d(un: int, u1: typing.Any, u2: typing.Any, vn: int, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glMapGrid1d, glMapGrid1f, glMapGrid2d, glMapGrid2f}
+
+  Define a one- or two-dimensional mesh
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMapGrid.xhtml>`_
+
+  """
+
+  ...
+
+def glMapGrid2f(un: int, u1: typing.Any, u2: typing.Any, vn: int, v1: typing.Any, v2: typing.Any) -> None:
 
   """
 
@@ -906,7 +2656,185 @@ def glMultMatrix(m: Buffer) -> None:
 
   ...
 
+def glMultMatrixd(m: Buffer) -> None:
+
+  """
+
+  B{glMultMatrixd, glMultMatrixf}
+
+  Multiply the current matrix with the specified matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMultMatrix.xhtml>`_
+
+  """
+
+  ...
+
+def glMultMatrixf(m: Buffer) -> None:
+
+  """
+
+  B{glMultMatrixd, glMultMatrixf}
+
+  Multiply the current matrix with the specified matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glMultMatrix.xhtml>`_
+
+  """
+
+  ...
+
 def glNormal3(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3b(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3bv(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3d(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3dv(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3f(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3fv(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3i(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3iv(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3s(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{Normal3b, Normal3bv, Normal3d, Normal3dv, Normal3f, Normal3fv, Normal3i, Normal3iv,
+Normal3s, Normal3sv}
+
+  Set the current normal vector
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glNormal.xhtml>`_
+
+  """
+
+  ...
+
+def Normal3sv(nx: typing.Any, ny: typing.Any, nz: typing.Any, v: Buffer) -> None:
 
   """
 
@@ -935,6 +2863,48 @@ def glPixelMap(map: typing.Any, mapsize: int, values: Buffer) -> None:
 
   ...
 
+def glPixelMapfv(map: typing.Any, mapsize: int, values: Buffer) -> None:
+
+  """
+
+  B{glPixelMapfv, glPixelMapuiv, glPixelMapusv}
+
+  Set up pixel transfer maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelMap.xhtml>`_
+
+  """
+
+  ...
+
+def glPixelMapuiv(map: typing.Any, mapsize: int, values: Buffer) -> None:
+
+  """
+
+  B{glPixelMapfv, glPixelMapuiv, glPixelMapusv}
+
+  Set up pixel transfer maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelMap.xhtml>`_
+
+  """
+
+  ...
+
+def glPixelMapusv(map: typing.Any, mapsize: int, values: Buffer) -> None:
+
+  """
+
+  B{glPixelMapfv, glPixelMapuiv, glPixelMapusv}
+
+  Set up pixel transfer maps
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelMap.xhtml>`_
+
+  """
+
+  ...
+
 def glPixelStore(pname: typing.Any, param: typing.Any) -> None:
 
   """
@@ -949,7 +2919,63 @@ def glPixelStore(pname: typing.Any, param: typing.Any) -> None:
 
   ...
 
+def glPixelStoref(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glPixelStoref, glPixelStorei}
+
+  Set pixel storage modes
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelStore.xhtml>`_
+
+  """
+
+  ...
+
+def glPixelStorei(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glPixelStoref, glPixelStorei}
+
+  Set pixel storage modes
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelStore.xhtml>`_
+
+  """
+
+  ...
+
 def glPixelTransfer(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glPixelTransferf, glPixelTransferi}
+
+  Set pixel transfer modes
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelTransfer.xhtml>`_
+
+  """
+
+  ...
+
+def glPixelTransferf(pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glPixelTransferf, glPixelTransferi}
+
+  Set pixel transfer modes
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glPixelTransfer.xhtml>`_
+
+  """
+
+  ...
+
+def glPixelTransferi(pname: typing.Any, param: typing.Any) -> None:
 
   """
 
@@ -1033,6 +3059,822 @@ so a X of 10 will not always offset 10 pixels as you would expect.To work around
 
   ...
 
+def glRasterPos2d(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2f(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2i(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2s(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3d(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3f(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3i(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3s(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4d(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4f(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4i(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4s(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2dv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2fv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2iv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos2sv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3dv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3fv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3iv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos3sv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4dv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4fv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4iv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
+def glRasterPos4sv(x: typing.Any, y: typing.Any, z: typing.Any, w: typing.Any) -> None:
+
+  """
+
+  B{glRasterPos2d, glRasterPos2f, glRasterPos2i, glRasterPos2s, glRasterPos3d,
+glRasterPos3f, glRasterPos3i, glRasterPos3s, glRasterPos4d, glRasterPos4f,
+glRasterPos4i, glRasterPos4s, glRasterPos2dv, glRasterPos2fv, glRasterPos2iv,
+glRasterPos2sv, glRasterPos3dv, glRasterPos3fv, glRasterPos3iv, glRasterPos3sv,
+glRasterPos4dv, glRasterPos4fv, glRasterPos4iv, glRasterPos4sv}
+
+  Specify the raster position for pixel operations
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRasterPos.xhtml>`_
+
+  Note: If you are drawing to the 3d view with a Scriptlink of a space handler
+the zoom level of the panels will scale the glRasterPos by the view matrix.
+so a X of 10 will not always offset 10 pixels as you would expect.To work around this get the scale value of the view matrix and use it to scale your pixel values.
+
+    .. code:: python
+
+      import bgl
+      xval, yval= 100, 40
+      # Get the scale of the view matrix
+      view_matrix = bgl.Buffer(bgl.GL_FLOAT, 16)
+      bgl.glGetFloatv(bgl.GL_MODELVIEW_MATRIX, view_matrix)
+      f = 1.0 / view_matrix[0]
+
+      # Instead of the usual glRasterPos2i(xval, yval)
+      bgl.glRasterPos2f(xval * f, yval * f)
+
+  """
+
+  ...
+
 def glReadBuffer(mode: typing.Any) -> None:
 
   """
@@ -1071,6 +3913,118 @@ def glRect(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: t
 
   ...
 
+def glRectd(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRectf(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRecti(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRects(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRectdv(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRectfv(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRectiv(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
+def glRectsv(x1: typing.Any, y1: typing.Any, x2: typing.Any, y2: typing.Any, v1: typing.Any, v2: typing.Any) -> None:
+
+  """
+
+  B{glRectd, glRectf, glRecti, glRects, glRectdv, glRectfv, glRectiv, glRectsv}
+
+  Draw a rectangle
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRect.xhtml>`_
+
+  """
+
+  ...
+
 def glRotate(angle: typing.Any, x: typing.Any, y: typing.Any, z: typing.Any) -> None:
 
   """
@@ -1085,7 +4039,63 @@ def glRotate(angle: typing.Any, x: typing.Any, y: typing.Any, z: typing.Any) -> 
 
   ...
 
+def glRotated(angle: typing.Any, x: typing.Any, y: typing.Any, z: typing.Any) -> None:
+
+  """
+
+  B{glRotated, glRotatef}
+
+  Multiply the current matrix by a rotation matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRotate.xhtml>`_
+
+  """
+
+  ...
+
+def glRotatef(angle: typing.Any, x: typing.Any, y: typing.Any, z: typing.Any) -> None:
+
+  """
+
+  B{glRotated, glRotatef}
+
+  Multiply the current matrix by a rotation matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glRotate.xhtml>`_
+
+  """
+
+  ...
+
 def glScale(x: typing.Any, y: typing.Any, z: typing.Any) -> None:
+
+  """
+
+  B{glScaled, glScalef}
+
+  Multiply the current matrix by a general scaling matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glScale.xhtml>`_
+
+  """
+
+  ...
+
+def glScaled(x: typing.Any, y: typing.Any, z: typing.Any) -> None:
+
+  """
+
+  B{glScaled, glScalef}
+
+  Multiply the current matrix by a general scaling matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glScale.xhtml>`_
+
+  """
+
+  ...
+
+def glScalef(x: typing.Any, y: typing.Any, z: typing.Any) -> None:
 
   """
 
@@ -1166,6 +4176,614 @@ glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
 
   ...
 
+def glTexCoord1d(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1f(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1i(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1s(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2d(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2f(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2i(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2s(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3d(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3f(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3i(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3s(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4d(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4f(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4i(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4s(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1dv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1fv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1iv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord1sv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2dv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2fv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2iv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord2sv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3dv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3fv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3iv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord3sv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4dv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4fv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4iv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
+def glTexCoord4sv(s: typing.Any, t: typing.Any, r: typing.Any, q: typing.Any, v: Buffer) -> None:
+
+  """
+
+  B{glTexCoord1d, glTexCoord1f, glTexCoord1i, glTexCoord1s, glTexCoord2d, glTexCoord2f,
+glTexCoord2i, glTexCoord2s, glTexCoord3d, glTexCoord3f, glTexCoord3i, glTexCoord3s,
+glTexCoord4d, glTexCoord4f, glTexCoord4i, glTexCoord4s, glTexCoord1dv, glTexCoord1fv,
+glTexCoord1iv, glTexCoord1sv, glTexCoord2dv, glTexCoord2fv, glTexCoord2iv,
+glTexCoord2sv, glTexCoord3dv, glTexCoord3fv, glTexCoord3iv, glTexCoord3sv,
+glTexCoord4dv, glTexCoord4fv, glTexCoord4iv, glTexCoord4sv}
+
+  Set the current texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexCoord.xhtml>`_
+
+  """
+
+  ...
+
 def glTexEnv(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
 
   """
@@ -1180,7 +4798,147 @@ def glTexEnv(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
 
   ...
 
+def glTextEnvf(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTextEnvf, glTextEnvi, glTextEnvfv, glTextEnviv}
+
+  Set texture environment parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexEnv.xhtml>`_
+
+  """
+
+  ...
+
+def glTextEnvi(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTextEnvf, glTextEnvi, glTextEnvfv, glTextEnviv}
+
+  Set texture environment parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexEnv.xhtml>`_
+
+  """
+
+  ...
+
+def glTextEnvfv(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTextEnvf, glTextEnvi, glTextEnvfv, glTextEnviv}
+
+  Set texture environment parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexEnv.xhtml>`_
+
+  """
+
+  ...
+
+def glTextEnviv(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTextEnvf, glTextEnvi, glTextEnvfv, glTextEnviv}
+
+  Set texture environment parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexEnv.xhtml>`_
+
+  """
+
+  ...
+
 def glTexGen(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexGend, glTexGenf, glTexGeni, glTexGendv, glTexGenfv, glTexGeniv}
+
+  Control the generation of texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glTexGend(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexGend, glTexGenf, glTexGeni, glTexGendv, glTexGenfv, glTexGeniv}
+
+  Control the generation of texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glTexGenf(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexGend, glTexGenf, glTexGeni, glTexGendv, glTexGenfv, glTexGeniv}
+
+  Control the generation of texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glTexGeni(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexGend, glTexGenf, glTexGeni, glTexGendv, glTexGenfv, glTexGeniv}
+
+  Control the generation of texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glTexGendv(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexGend, glTexGenf, glTexGeni, glTexGendv, glTexGenfv, glTexGeniv}
+
+  Control the generation of texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glTexGenfv(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexGend, glTexGenf, glTexGeni, glTexGendv, glTexGenfv, glTexGeniv}
+
+  Control the generation of texture coordinates
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexGen.xhtml>`_
+
+  """
+
+  ...
+
+def glTexGeniv(coord: typing.Any, pname: typing.Any, param: typing.Any) -> None:
 
   """
 
@@ -1232,7 +4990,91 @@ def glTexParameter(target: typing.Any, pname: typing.Any, param: typing.Any) -> 
 
   ...
 
+def glTexParameterf(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexParameterf, glTexParameteri, glTexParameterfv, glTexParameteriv}
+
+  Set texture parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml>`_
+
+  """
+
+  ...
+
+def glTexParameteri(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexParameterf, glTexParameteri, glTexParameterfv, glTexParameteriv}
+
+  Set texture parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml>`_
+
+  """
+
+  ...
+
+def glTexParameterfv(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexParameterf, glTexParameteri, glTexParameterfv, glTexParameteriv}
+
+  Set texture parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml>`_
+
+  """
+
+  ...
+
+def glTexParameteriv(target: typing.Any, pname: typing.Any, param: typing.Any) -> None:
+
+  """
+
+  B{glTexParameterf, glTexParameteri, glTexParameterfv, glTexParameteriv}
+
+  Set texture parameters
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTexParameter.xhtml>`_
+
+  """
+
+  ...
+
 def glTranslate(x: typing.Any, y: typing.Any, z: typing.Any) -> None:
+
+  """
+
+  B{glTranslatef, glTranslated}
+
+  Multiply the current matrix by a translation matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTranslate.xhtml>`_
+
+  """
+
+  ...
+
+def glTranslatef(x: typing.Any, y: typing.Any, z: typing.Any) -> None:
+
+  """
+
+  B{glTranslatef, glTranslated}
+
+  Multiply the current matrix by a translation matrix
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glTranslate.xhtml>`_
+
+  """
+
+  ...
+
+def glTranslated(x: typing.Any, y: typing.Any, z: typing.Any) -> None:
 
   """
 
