@@ -60,3 +60,22 @@
    :type other: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
    :return: The resulting quaternion or vector.
    :rtype: :class:`~mathutils.Quaternion` or :class:`~mathutils.Vector`
+
+
+.. method:: __truediv__(value)
+
+   Divide this quaternion by a float value.
+
+   :arg value: A divider value.
+   :type value: float
+   :return: The resulting quaternion.
+   :rtype: :class:`~mathutils.Quaternion`
+
+.. method:: __itruediv__(value)
+
+   Divide this matrix by a float value.
+
+   :arg value: A divider value.
+   :type value: float
+   :return: The resulting quaternion.
+   :rtype: :class:`~mathutils.Quaternion`

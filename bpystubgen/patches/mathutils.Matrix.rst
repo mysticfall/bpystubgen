@@ -67,3 +67,21 @@
 
    :return: The resulting matrix.
    :rtype: :class:`~mathutils.Matrix`
+
+.. method:: __truediv__(value)
+
+   Divide this matrix by a float value.
+
+   :arg value: A divider value.
+   :type value: float
+   :return: The resulting matrix.
+   :rtype: :class:`~mathutils.Matrix`
+
+.. method:: __itruediv__(value)
+
+   Divide this matrix by a float value.
+
+   :arg value: A divider value.
+   :type value: float
+   :return: The resulting matrix.
+   :rtype: :class:`~mathutils.Matrix`

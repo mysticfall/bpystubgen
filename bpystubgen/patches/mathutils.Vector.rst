@@ -60,3 +60,21 @@
    :type other: :class:`~mathutils.Vector`
    :return: The resulting product.
    :rtype: float
+
+.. method:: __truediv__(value)
+
+   Divide this vector by a float value.
+
+   :arg value: A divider value.
+   :type value: float
+   :return: The resulting vector.
+   :rtype: :class:`~mathutils.Vector`
+
+.. method:: __itruediv__(value)
+
+   Divide this vector by a float value.
+
+   :arg value: A divider value.
+   :type value: float
+   :return: The resulting vector.
+   :rtype: :class:`~mathutils.Vector`
