@@ -215,6 +215,11 @@ def test_parse_tuple():
     assert parse_type("a tuple of ints") == "typing.Tuple[int, ...]"
 
 
+def test_parse_iterable():
+    assert parse_type("iterable of ints.") == "typing.Iterable[int]"
+    assert parse_type("an iterable of int") == "typing.Iterable[int]"
+
+
 def test_parse_simple_container():
     assert parse_type("array") == "typing.Tuple[typing.Any, ...]"
     assert parse_type("Array") == "typing.Tuple[typing.Any, ...]"

@@ -88,6 +88,7 @@ _container_types: Final = {
     "set": "typing.Set",
     "vector": "typing.List",
     "sequence": "typing.Sequence",
+    "iterable": "typing.Iterable",
     "tuple": "typing.Tuple"
 }
 
