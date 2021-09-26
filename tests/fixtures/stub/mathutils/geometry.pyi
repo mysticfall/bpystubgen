@@ -325,7 +325,7 @@ def normal(vectors: typing.Sequence[typing.Any]) -> mathutils.Vector:
 
   ...
 
-def points_in_planes(planes: typing.List[mathutils.Vector]) -> typing.Any:
+def points_in_planes(planes: typing.List[mathutils.Vector]) -> typing.Tuple[typing.List[typing.Any], typing.List[typing.Any]]:
 
   """
 

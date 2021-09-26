@@ -84,12 +84,13 @@ _known_types: Final = {
 }
 
 _container_types: Final = {
-    "list": "typing.List",
-    "set": "typing.Set",
-    "vector": "typing.List",
-    "sequence": "typing.Sequence",
-    "iterable": "typing.Iterable",
-    "tuple": "typing.Tuple"
+    "list": "typing.List[#T#]",
+    "set": "typing.Set[#T#]",
+    "vector": "typing.List[#T#]",
+    "sequence": "typing.Sequence[#T#]",
+    "iterable": "typing.Iterable[#T#]",
+    "pair": "typing.Tuple[#T#, #T#]",
+    "tuple": "typing.Tuple[#T#, ...]"
 }
 
 
@@ -232,6 +233,7 @@ def parse_container_of(text: str) -> Optional[str]:
         return None
 
     container_type = result.group("container")
+
     data_type = result.group("data")
     qualifier = result.group("qualifier")
 
@@ -249,9 +251,6 @@ def parse_container_of(text: str) -> Optional[str]:
     if not data_type or not container_type:
         return None
 
-    if container_type == "typing.Tuple":
-        data_type += ", ..."
-
     if qualifier:
         qualifier = qualifier.strip()
 
@@ -262,7 +261,7 @@ def parse_container_of(text: str) -> Optional[str]:
         elif qualifier.startswith("sequence"):
             data_type = f"typing.Sequence[{data_type}]"
 
-    return f"{container_type}[{data_type}]"
+    return container_type.replace("#T#", data_type)
 
 
 def parse_array_of(text: str) -> Optional[str]:

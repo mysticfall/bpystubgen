@@ -210,9 +210,17 @@ def test_parse_vector(text):
     assert parse_type(text) == "mathutils.Vector"
 
 
-def test_parse_tuple():
-    assert parse_type("tuple of floats.") == "typing.Tuple[float, ...]"
-    assert parse_type("a tuple of ints") == "typing.Tuple[int, ...]"
+@mark.parametrize("args", (
+        ("tuple of floats.", "float", "..."),
+        ("a tuple of ints", "int", "..."),
+        ("pair of ints", "int", "int"),
+        ("a pair of float", "float", "float"),
+        ("pair of :class:`BMVert`", "BMVert", "BMVert")
+))
+def test_parse_tuple(args):
+    (text, type1, type2) = args
+
+    assert parse_type(text) == f"typing.Tuple[{type1}, {type2}]"
 
 
 def test_parse_iterable():
