@@ -472,10 +472,11 @@ class Function(FunctionLike):
         for arg in args:
             buffer = [arg.name]
 
-            arg_type = arg.type
+            if not arg.name.startswith("*"):
+                arg_type = arg.type
 
-            buffer.append(": ")
-            buffer.append(self.localise_name(arg_type) if arg_type else "typing.Any")
+                buffer.append(": ")
+                buffer.append(self.localise_name(arg_type) if arg_type else "typing.Any")
 
             default = arg.default
 

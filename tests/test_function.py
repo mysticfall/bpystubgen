@@ -306,6 +306,121 @@ def test_parse_alias(parser: Parser, document: document):
                          "glEvalCoord2d", "glEvalCoord2dv", "glEvalCoord2f", "glEvalCoord2fv"}
 
 
+def test_parse_varargs(parser: Parser, document: document):
+    source = """
+       .. function:: app_template_paths(*, path=None)
+
+          :type path: string
+    """.strip()
+
+    parser.parse(source, document)
+
+    func = next(iter(document.traverse(Function)))
+    args = func.arguments
+
+    assert len(args) == 2
+
+    assert args[0].name == "*args"
+    assert not args[0].type
+
+    assert args[1].name == "path"
+    assert args[1].type == "str"
+
+    assert func.signature == "def app_template_paths(*args, path: str = None) -> None:"
+
+
+def test_parse_varargs_in_middle(parser: Parser, document: document):
+    source = """
+       .. method:: transform(matrix, *, scale=True, roll=True)
+
+          :type matrix: :class:`mathutils.Matrix`
+          :type scale: boolean
+          :type roll: boolean
+    """.strip()
+
+    parser.parse(source, document)
+
+    func = next(iter(document.traverse(Function)))
+    args = func.arguments
+
+    assert len(args) == 4
+
+    assert args[0].name == "matrix"
+    assert args[0].type == "mathutils.Matrix"
+
+    assert args[1].name == "*args"
+    assert not args[1].type
+
+    assert args[2].name == "scale"
+    assert args[2].type == "bool"
+    assert args[2].default == "True"
+
+    assert args[3].name == "roll"
+    assert args[3].type == "bool"
+    assert args[3].default == "True"
+
+    assert func.signature == "def transform(self, matrix: mathutils.Matrix, " \
+                             "*args, scale: bool = True, roll: bool = True) -> None:"
+
+
+def test_parse_varargs_literal(parser: Parser, document: document):
+    source = """
+       .. method:: poll_message_set(message, *args)
+
+          :type message: str
+    """.strip()
+
+    parser.parse(source, document)
+
+    func = next(iter(document.traverse(Function)))
+    args = func.arguments
+
+    assert len(args) == 2
+
+    assert args[0].name == "message"
+    assert args[0].type == "str"
+
+    assert args[1].name == "*args"
+    assert not args[1].type
+
+    assert func.signature == "def poll_message_set(self, message: str, *args) -> None:"
+
+
+def test_parse_varargs_with_kwargs(parser: Parser, document: document):
+    source = """
+       .. function:: bake_action(obj, *, action, frames, **kwargs)
+
+          :type obj: :class:`bpy.types.Object`
+          :type action: :class:`bpy.types.Action`
+          :type frames: iterable of int
+    """.strip()
+
+    parser.parse(source, document)
+
+    func = next(iter(document.traverse(Function)))
+    args = func.arguments
+
+    assert len(args) == 5
+
+    assert args[0].name == "obj"
+    assert args[0].type == "bpy.types.Object"
+
+    assert args[1].name == "*args"
+    assert not args[1].type
+
+    assert args[2].name == "action"
+    assert args[2].type == "bpy.types.Action"
+
+    assert args[3].name == "frames"
+    assert args[3].type == "typing.Iterable[int]"
+
+    assert args[4].name == "*kwargs"
+    assert not args[4].type
+
+    assert func.signature == "def bake_action(obj: bpy.types.Object, *args, action: bpy.types.Action, " \
+                             "frames: typing.Iterable[int], *kwargs) -> None:"
+
+
 def test_signature():
     func = Function(name="my_func")
     assert func.signature == "def my_func() -> None:"

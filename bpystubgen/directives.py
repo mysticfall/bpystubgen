@@ -1,7 +1,7 @@
 import ast
 import re
 from abc import ABC, abstractmethod
-from ast import AST, FunctionDef, arguments
+from ast import AST, FunctionDef
 from dataclasses import dataclass
 from itertools import chain
 from typing import Any, List, Mapping, Optional, OrderedDict, Sequence, cast
@@ -197,6 +197,8 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
 
     _optional_func_pattern = re.compile("^(\\w+)\\s*\\(\\s*\\[?([\\w\\s,]*)(\\[[^)]+])]?\\)$")
 
+    _varargs_pattern = re.compile("\\*(?!\\*|(?:kw)?args)")
+
     @classmethod
     def parse_func(cls, line: str) -> FunctionDef:
         line = str(line).strip()
@@ -212,25 +214,35 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
             args = chain(required, optional)
             line = "".join([match.group(1), "(", ", ".join(args), ")"])
 
+        line = re.sub(cls._varargs_pattern, "*args", line)
+
         source = "".join(["def ", line, "\n" if line.endswith(":") else ":\n", "   ...\n"])
 
         tree = ast.parse(source)
 
         return cast(FunctionDef, tree.body[0])
 
-    def parse_args(self, args: arguments, fields: Mapping[str, str]) -> (OrderedDict[str, Argument], Sequence[Node]):
+    def parse_args(self, func: FunctionDef, fields: Mapping[str, str]) -> (OrderedDict[str, Argument], Sequence[Node]):
         elems = OrderedDict[str, Argument]()
         messages = []
 
-        count = len(args.args)
-        offset = count - len(args.defaults)
+        args = func.args.args + func.args.kwonlyargs
+        defaults = func.args.defaults + func.args.kw_defaults
+
+        count = len(args)
+        offset = count - len(defaults)
+
+        normal_args_count = len(func.args.args)
 
         for i in range(count):
-            arg = args.args[i]
-            default: Optional[AST] = args.defaults[i - offset] if i >= offset else None
+            arg = args[i]
+            default: Optional[AST] = defaults[i - offset] if i >= offset else None
 
             if arg.arg == "self":
                 continue
+
+            if func.args.vararg and i == normal_args_count:
+                elems["*args"] = Argument(name="*args")
 
             elem = Argument(name=arg.arg)
 
@@ -254,6 +266,12 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
                 elem.default = ast.unparse(default)
 
             elems[elem.name] = elem
+
+        if func.args.vararg and count == normal_args_count:
+            elems["*args"] = Argument(name="*args")
+
+        if func.args.kwarg:
+            elems["**kwargs"] = Argument(name="*kwargs")
 
         return elems, messages
 
@@ -304,7 +322,7 @@ class FunctionDirective(FunctionLikeDirective):
                 if any(ds.docstring.children):
                     elem.insert(0, ds.docstring)
 
-                (args, messages) = self.parse_args(func.args, ds.fields)
+                (args, messages) = self.parse_args(func, ds.fields)
 
                 for arg in args.values():
                     elem += arg
@@ -357,7 +375,7 @@ class ClassDirective(FunctionLikeDirective):
                         base_types = set(map(lambda t: t.target, last_sibling.traverse(ClassRef, descend=True)))
                         elem.base_types = base_types
 
-                (args, messages) = self.parse_args(func.args, ds.fields)
+                (args, messages) = self.parse_args(func, ds.fields)
 
                 elems.extend(messages)
 
