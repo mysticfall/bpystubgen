@@ -287,14 +287,12 @@ def test_parse_bpy_prop_collection(parser: Parser, document: document):
                                      "bpy.types.bpy_prop_collection]"
 
 
-def test_parse_alias(parser: Parser, document: document):
+def test_parse_alias_comma(parser: Parser, document: document):
     source = """
        .. function:: glEvalCoord (u,v):
 
           B{glEvalCoord1d, glEvalCoord1f, glEvalCoord2d, glEvalCoord2f, glEvalCoord1dv, glEvalCoord1fv,
           glEvalCoord2dv, glEvalCoord2fv}
-
-          Evaluate enabled one- and two-dimensional maps
     """.strip()
 
     parser.parse(source, document)
@@ -304,6 +302,22 @@ def test_parse_alias(parser: Parser, document: document):
 
     assert functions == {"glEvalCoord1d", "glEvalCoord", "glEvalCoord1dv", "glEvalCoord1f", "glEvalCoord1fv",
                          "glEvalCoord2d", "glEvalCoord2dv", "glEvalCoord2f", "glEvalCoord2fv"}
+
+
+@mark.parametrize("conjunction", ("and", "or"))
+def test_parse_alias_conjunct(conjunction: str, parser: Parser, document: document):
+    source = f"""
+       .. function:: glEvalPoint (i, j):
+
+          B{{glEvalPoint1 {conjunction} glEvalPoint2}}
+    """.strip()
+
+    parser.parse(source, document)
+    document.transformer.apply_transforms()
+
+    functions = set(map(lambda f: f.name, document.traverse(Function)))
+
+    assert functions == {"glEvalPoint", "glEvalPoint1", "glEvalPoint2"}
 
 
 def test_parse_varargs(parser: Parser, document: document):

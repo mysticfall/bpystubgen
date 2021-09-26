@@ -333,8 +333,7 @@ class FunctionDirective(FunctionLikeDirective):
                 alias_match = self._alias_pattern.match(ds.docstring.astext())
 
                 if alias_match:
-                    alias_text = alias_match.group(1)
-                    alias_text.replace(" and ", ", ")
+                    alias_text = alias_match.group(1).replace(" and ", ", ").replace(" or ", ", ")
 
                     for alias in map(lambda a: a.strip(), alias_text.split(",")):
                         copy = elem.deepcopy()

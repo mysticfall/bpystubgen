@@ -147,11 +147,15 @@ for example.
 
 :func:`glEvalMesh`
 
-:func:`glEvalMesh1 or glEvalMesh2`
+:func:`glEvalMesh1`
+
+:func:`glEvalMesh2`
 
 :func:`glEvalPoint`
 
-:func:`glEvalPoint1 and glEvalPoint2`
+:func:`glEvalPoint1`
+
+:func:`glEvalPoint2`
 
 :func:`glFeedbackBuffer`
 
@@ -187,7 +191,9 @@ for example.
 
 :func:`glGetLight`
 
-:func:`glGetLightfv and glGetLightiv`
+:func:`glGetLightfv`
+
+:func:`glGetLightiv`
 
 :func:`glGetMap`
 
@@ -1592,7 +1598,21 @@ def glEvalMesh(mode: typing.Any, i1: typing.Any, i2: typing.Any) -> None:
 
   ...
 
-def glEvalMesh1 or glEvalMesh2(mode: typing.Any, i1: typing.Any, i2: typing.Any) -> None:
+def glEvalMesh1(mode: typing.Any, i1: typing.Any, i2: typing.Any) -> None:
+
+  """
+
+  B{glEvalMesh1 or glEvalMesh2}
+
+  Compute a one- or two-dimensional grid of points or lines
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalMesh.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalMesh2(mode: typing.Any, i1: typing.Any, i2: typing.Any) -> None:
 
   """
 
@@ -1620,7 +1640,21 @@ def glEvalPoint(i: int, j: int) -> None:
 
   ...
 
-def glEvalPoint1 and glEvalPoint2(i: int, j: int) -> None:
+def glEvalPoint1(i: int, j: int) -> None:
+
+  """
+
+  B{glEvalPoint1 and glEvalPoint2}
+
+  Generate and evaluate a single point in a mesh
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glEvalPoint.xhtml>`_
+
+  """
+
+  ...
+
+def glEvalPoint2(i: int, j: int) -> None:
 
   """
 
@@ -1860,7 +1894,21 @@ def glGetLight(light: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   ...
 
-def glGetLightfv and glGetLightiv(light: typing.Any, pname: typing.Any, params: Buffer) -> None:
+def glGetLightfv(light: typing.Any, pname: typing.Any, params: Buffer) -> None:
+
+  """
+
+  B{glGetLightfv and glGetLightiv}
+
+  Return light source parameter values
+
+  `OpenGL Docs <https://khronos.org/registry/OpenGL-Refpages/gl4/html/glGetLight.xhtml>`_
+
+  """
+
+  ...
+
+def glGetLightiv(light: typing.Any, pname: typing.Any, params: Buffer) -> None:
 
   """
 
