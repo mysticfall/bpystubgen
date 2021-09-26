@@ -784,7 +784,7 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
     ...
 
-  col: typing.Any = ...
+  col: Matrix = ...
 
   """
 
@@ -856,7 +856,7 @@ If tweaked matrix is still degenerated, return the identity matrix instead.
 
   """
 
-  row: typing.Any = ...
+  row: Matrix = ...
 
   """
 

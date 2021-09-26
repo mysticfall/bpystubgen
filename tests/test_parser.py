@@ -238,6 +238,19 @@ def test_parse_simple_container():
     assert parse_type("dict") == "typing.Dict[str, typing.Any]"
 
 
+@mark.parametrize("text", (
+        "matrix [4][4]",
+        "matrix[4][4]",
+        "3x3 matrix",
+        "4x4 matrix [[float]]",
+        "4x4 Matrix[[float]]",
+        "matrix (4x4 list)",
+        "Matrix(4x4 list)"
+))
+def test_parse_matrix(text):
+    assert parse_type(text) == "mathutils.Matrix"
+
+
 @mark.parametrize("args", (
         (
                 ":class:`~mathutils.Matrix` or :class:`~mathutils.Vector` or :class:`~mathutils.Quaternion`",

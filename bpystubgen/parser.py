@@ -40,6 +40,9 @@ _reference_type_pattern: Final = re.compile(
 _union_pattern: Final = re.compile(
     "^(?::class:`[~!]?[^`]+`|[a-zA-Z]+)(:?\\sor\\s(?::class:`[~!]?[^`]+`|[a-zA-Z]+))+(?:[,.\\s].*)?$")
 
+_matrix_pattern: Final = re.compile("^(?:[Aa]\\s)?(?:[0-9xX*]+\\s)?[Mm]atrix|"
+                                    "[Mm]atrix(?:\\s?[0-9a-z\\s\\[\\]()]+)?$")
+
 _known_types: Final = {
     "any": "typing.Any",
     "str": "str",
@@ -308,6 +311,13 @@ def parse_multi_array_of(text: str) -> Optional[str]:
     return make_tuple(make_tuple(data_type, cols), rows)
 
 
+def parse_matrix(text: str) -> Optional[str]:
+    if _matrix_pattern.match(text):
+        return "mathutils.Matrix"
+
+    return None
+
+
 def parse_dictionary(text: str) -> Optional[str]:
     result = _dictionary_pattern.match(text)
 
@@ -383,6 +393,7 @@ def parse_type(text: str) -> Optional[str]:
         parse_union,
         parse_reference,
         parse_simple,
+        parse_matrix,
         parse_special_cases
     )
 
