@@ -7,7 +7,7 @@ app_name = "#APP_NAME#"
 app_version = "#APP_VERSION#"
 build_number = "#BUILD_NUMBER#"
 
-module_version = "0.2.3"
+module_version = "0.2.4"
 
 name = f"{app_name.lower()}-stubs"
 
