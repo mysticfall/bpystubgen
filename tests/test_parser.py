@@ -268,3 +268,26 @@ def test_parse_matrix(text):
 def test_parse_union(args):
     (text, types) = args
     assert parse_type(text) == f"typing.Union[{', '.join(types)}]"
+
+
+@mark.parametrize("prefix", ("one of...", "integer"))
+@mark.parametrize("bullet", ("", "- "))
+@mark.parametrize("blank_lines", (True, False))
+def test_parse_union_types(prefix, bullet, blank_lines):
+    types = (
+        "bge.texture.FilterBGR24",
+        "bge.texture.FilterBlueScreen",
+        "bge.texture.FilterColor"
+    )
+
+    lines = [prefix]
+
+    for tpe in types:
+        lines.append(f"{bullet}:class:`~{tpe}`")
+
+        if blank_lines:
+            lines.append("")
+
+    text = "\n".join(lines)
+
+    assert parse_type(text) == f"typing.Union[{', '.join(types)}]"

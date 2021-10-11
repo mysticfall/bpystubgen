@@ -34,8 +34,11 @@ _multi_array_of_pattern: Final = re.compile(
 _dictionary_pattern: Final = re.compile(
     "^(?:[Aa]\\s)?dict(?:ionary)?\\s*[\\[(](?P<key>[^,\\s]+)\\s*,\\s*(?P<value>[^])]+)[])].*$")
 
-_reference_type_pattern: Final = re.compile(
+_reference_pattern: Final = re.compile(
     "^:class:`[~!]?(?P<name>[a-zA-Z_0-9.\\s]+)(?:\\s*<(?P<target>[a-zA-Z_0-9.]+)>)?`(?:[,.\\s].*)?$")
+
+_reference_item_pattern: Final = re.compile(
+    "^[-\\s]*:class:`[~!]?(?P<name>[a-zA-Z_0-9.\\s]+)(?:\\s*<(?P<target>[a-zA-Z_0-9.]+)>)?`$")
 
 _union_pattern: Final = re.compile(
     "^(?::class:`[~!]?[^`]+`|[a-zA-Z]+)(:?\\sor\\s(?::class:`[~!]?[^`]+`|[a-zA-Z]+))+(?:[,.\\s].*)?$")
@@ -110,7 +113,7 @@ def parse_simple(text: str) -> Optional[str]:
 
 
 def parse_reference(text: str) -> Optional[str]:
-    result = _reference_type_pattern.match(text)
+    result = _reference_pattern.match(text)
 
     type_info = result.group("target") or result.group("name") if result else None
 
@@ -358,6 +361,27 @@ def parse_union(text: str) -> Optional[str]:
     return f"typing.Union[{', '.join(parsed_types)}]"
 
 
+def parse_union_types(text: str) -> Optional[str]:
+    lines = text.split("\n")
+
+    if len(lines) < 3:
+        return None
+
+    parsed_types = []
+
+    for line in filter(lambda l: any(l.strip()), lines[1:]):
+        result = _reference_item_pattern.match(line)
+
+        if not result:
+            return None
+
+        type_info = result.group("target") or result.group("name") if result else None
+
+        parsed_types.append(type_info)
+
+    return f"typing.Union[{', '.join(parsed_types)}]"
+
+
 def parse_special_cases(text: str) -> Optional[str]:
     text = text.lower()
 
@@ -391,6 +415,7 @@ def parse_type(text: str) -> Optional[str]:
         parse_exp_list_value_of,
         parse_dictionary,
         parse_union,
+        parse_union_types,
         parse_reference,
         parse_simple,
         parse_matrix,
