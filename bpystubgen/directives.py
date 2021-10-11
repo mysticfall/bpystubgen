@@ -130,7 +130,7 @@ class APIMemberDirective(Directive, ABC):
 
                     fields[f_name.astext().strip()] = f_body.astext().strip()
 
-                docstring.remove(fields_elem)
+                fields_elem.parent.remove(fields_elem)
             except StopIteration:
                 pass
 
