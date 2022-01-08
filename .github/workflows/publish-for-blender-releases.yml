@@ -3,6 +3,7 @@ name: publish-for-blender-releases
 on:
   release:
     types: [released]
+  workflow_dispatch:
 
 env:
   PYTHON_VERSION: "3.9"
