@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  PYTHON_VERSION: "3.9"
+  PYTHON_VERSION: "3.10"
 
 jobs:
   build_apis:
@@ -32,14 +32,14 @@ jobs:
           libavformat58 libavdevice58 libboost-locale1.71.0
 
     - name: Install Python
-      uses: actions/setup-python@v2.2.2
+      uses: actions/setup-python@v2.3.1
       with: 
         python-version: "${{env.PYTHON_VERSION}}"
 
     - name: Install Python Dependencies
       run: | 
         curl https://bootstrap.pypa.io/get-pip.py | python && \
-        python -m pip install sphinx yapf tqdm numpy==1.17.4
+        python -m pip install sphinx yapf tqdm numpy
 
     - name: Setup Python Path
       run: |
@@ -99,7 +99,7 @@ jobs:
       run: tar zxvf apidocs-v${{matrix.blender_version}}.tar.gz
 
     - name: Install Python
-      uses: actions/setup-python@v2.2.2
+      uses: actions/setup-python@v2.3.1
       with:
         python-version: "${{env.PYTHON_VERSION}}"
 
