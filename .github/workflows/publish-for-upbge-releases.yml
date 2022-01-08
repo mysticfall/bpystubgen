@@ -1,4 +1,4 @@
-name: publish-for-blender-releases
+name: publish-for-upbge-releases
 
 on:
   release:
@@ -15,21 +15,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        blender_version:
-          ["2.80", "2.81", "2.82", "2.83", "2.90", "2.91", "2.92", "2.93", "3.00"]
+        upbge_version:
+          ["0.3.0"]
 
     steps:
-    - name: Download Build
-      run: |
-        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/download_blender.sh \
-          -o download_blender.sh && \
-        bash download_blender.sh "${{matrix.blender_version}}" releases
-
     - name: Install Tools
       run: | 
         sudo apt update && \
         sudo apt install -y libtbb2 libxi6 libxxf86vm1 libxfixes3 libgl1 \
-          libavformat58 libavdevice58 libboost-locale1.71.0
+          libavformat58 libavdevice58 libboost-locale1.71.0 unzip
+
+    - name: Download Build
+      run: |
+        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/download_upbge.sh \
+          -o download_upbge.sh && \
+        bash download_upbge.sh "${{matrix.upbge_version}}" releases
 
     - name: Install Python
       uses: actions/setup-python@v2.3.1
@@ -47,14 +47,13 @@ jobs:
         sudo ldconfig
 
     - name: Patch Blender Source
-      if: ${{ !startsWith(matrix.blender_version, '2.8') }}
-      working-directory: releases/v${{matrix.blender_version}}/src
+      working-directory: releases/v${{matrix.upbge_version}}/src
       run: |
         sed -i -e "/Hair/s/^/#/" doc/python_api/sphinx_doc_gen.py && \
         sed -i -e "/PointCloud/s/^/#/" doc/python_api/sphinx_doc_gen.py
 
     - name: Prepare API Documentation
-      working-directory: releases/v${{matrix.blender_version}}/bin
+      working-directory: releases/v${{matrix.upbge_version}}/bin
       run: |
         ./blender --background -noaudio --factory-startup \
                 --python ../src/doc/python_api/sphinx_doc_gen.py -- --output ../api
@@ -62,19 +61,19 @@ jobs:
     - name: Clean Up Directories
       if: ${{ !env.ACT }}
       run: |
-        rm -Rf releases/v${{matrix.blender_version}}/bin && \
-        rm -Rf releases/v${{matrix.blender_version}}/src
+        rm -Rf releases/v${{matrix.upbge_version}}/bin && \
+        rm -Rf releases/v${{matrix.upbge_version}}/src
 
     - name: Archive Documents
       if: ${{ !env.ACT }}
-      run: tar zcvf apidocs-v${{matrix.blender_version}}.tar.gz releases
+      run: tar zcvf apidocs-v${{matrix.upbge_version}}.tar.gz releases
 
     - name: Upload Documents
       if: ${{ !env.ACT }}
       uses: actions/upload-artifact@v2
       with:
-        name: apidocs-v${{matrix.blender_version}}
-        path: apidocs-v${{matrix.blender_version}}.tar.gz
+        name: apidocs-v${{matrix.upbge_version}}
+        path: apidocs-v${{matrix.upbge_version}}.tar.gz
         retention-days: 3
 
   publish_stubs:
@@ -84,19 +83,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        blender_version:
-          ["2.80", "2.81", "2.82", "2.83", "2.90", "2.91", "2.92", "2.93", "3.00"]
+        upbge_version:
+          ["0.3.0"]
 
     steps:
     - name: Download Documents
       if: ${{ !env.ACT }}
       uses: actions/download-artifact@v2
       with:
-        name: apidocs-v${{matrix.blender_version}}
+        name: apidocs-v${{matrix.upbge_version}}
 
     - name: Extract Documents
       if: ${{ !env.ACT }}
-      run: tar zxvf apidocs-v${{matrix.blender_version}}.tar.gz
+      run: tar zxvf apidocs-v${{matrix.upbge_version}}.tar.gz
 
     - name: Install Python
       uses: actions/setup-python@v2.3.1
@@ -109,22 +108,22 @@ jobs:
         python -m pip install bpystubgen
 
     - name: Build API Stubs
-      working-directory: releases/v${{matrix.blender_version}}
+      working-directory: releases/v${{matrix.upbge_version}}
       run: |
-        python -m bpystubgen --quiet api/sphinx-in blender-stub && \
-        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/setup.py -o blender-stub/setup.py && \
-        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/README.md -o blender-stub/README.md
+        python -m bpystubgen --quiet api/sphinx-in upbge-stub && \
+        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/setup.py -o upbge-stub/setup.py && \
+        curl https://raw.githubusercontent.com/mysticfall/bpystubgen/main/package/README.md -o upbge-stub/README.md
 
     - name: Build Python Package
-      working-directory: releases/v${{matrix.blender_version}}/blender-stub
+      working-directory: releases/v${{matrix.upbge_version}}/upbge-stub
       run: |
-        sed -i "s/#APP_NAME#/blender/g" setup.py && \
-        sed -i "s/#APP_VERSION#/${{matrix.blender_version}}/g" setup.py && \
+        sed -i "s/#APP_NAME#/upbge/g" setup.py && \
+        sed -i "s/#APP_VERSION#/${{matrix.upbge_version}}/g" setup.py && \
         python setup.py sdist
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.PYPI_TOKEN }}
-        packages_dir: releases/v${{matrix.blender_version}}/blender-stub/dist
+        packages_dir: releases/v${{matrix.upbge_version}}/upbge-stub/dist
         skip_existing: true

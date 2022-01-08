@@ -189,7 +189,7 @@ jobs:
       working-directory: python_api/blender-stub
       run: |
         sed -i "s/#APP_NAME#/blender/g" setup.py && \
-        sed -i "s/#APP_VERSION#/3.0.0/g" setup.py && \
+        sed -i "s/#APP_VERSION#/3.1.0/g" setup.py && \
         sed -i "s/#BUILD_NUMBER#/${{ github.run_id }}/g" setup.py && \
         python setup.py sdist
 
@@ -199,4 +199,3 @@ jobs:
         password: ${{ secrets.PYPI_TOKEN }}
         packages_dir: python_api/blender-stub/dist
         skip_existing: true
-

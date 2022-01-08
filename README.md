@@ -74,19 +74,25 @@ If you just want to use the API stubs, you can install them from PyPI without ha
 them yourself.
 
 There are two variants of the API stubs, one for Blender and the other for UPBGE. For Blender, 
-you can install `blender-stubs` module with appropriate version qualifier as follows: 
+you can install `blender-stubs` module with an appropriate version qualifier as follows: 
 
 ```bash
-$ pip install blender-stubs==2.93.*
+$ pip install blender-stubs==3.0.*
 ```
-This will install the latest module for Blender 2.93, and for now stubs are provided for Blender 
-2.80 and onwards. You can also specify the next unreleased version as `3.0.*` to get the latest 
+This will install the latest module for Blender 3.0, and for now stubs are provided for Blender 
+2.80 and onwards. You can also specify the next unreleased version as `3.1.*` to get the latest 
 snapshot of the module.
 
-As for UPBGE, stubs are available for the upcoming 0.3 release, which you can install as follows:
+As for UPBGE, stubs are available for the 0.3 release, which you can install as follows:
 
 ```bash
-$ pip install upbge-stubs==0.3.*
+$ pip install upbge-stubs==0.3.0.*
+```
+
+And for the latest snapshot version,
+
+```bash
+$ pip install upbge-stubs==0.3.1.*
 ```
 
 You can also install it using `Pipenv`. Note that it is required to set `allow_preleases` option 
@@ -100,10 +106,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-"upbge-stubs" = "==0.3.*"
+"upbge-stubs" = "==0.3.0.*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
 
 [pipenv]
 allow_prereleases = true
