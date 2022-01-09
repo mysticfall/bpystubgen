@@ -4,7 +4,7 @@
 # Usage: bash download_blender.sh 2.93 out
 set -eEu
 
-SUPPORTED_VERSIONS=("2.80" "2.81" "2.82" "2.83" "2.90" "2.91" "2.92" "2.93". "3.00")
+SUPPORTED_VERSIONS=("2.80" "2.81" "2.82" "2.83" "2.90" "2.91" "2.92" "2.93" "3.00")
 
 declare -A BLENDER_BINARY_URL=(
     ["v2.80"]="https://download.blender.org/release/Blender2.80/blender-2.80-linux-glibc217-x86_64.tar.bz2"
