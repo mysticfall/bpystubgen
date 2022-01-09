@@ -78,7 +78,7 @@ done
 
 if [ ${supported} -eq 0 ]; then
     echo "${version} is not supported."
-    echo "Supported version is $("${SUPPORTED_VERSIONS[@]}")."
+    echo "Supported version is ("${SUPPORTED_VERSIONS[@]}")."
     exit 1
 fi
 
