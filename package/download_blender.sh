@@ -16,6 +16,9 @@ declare -A BLENDER_BINARY_URL=(
     ["v2.92"]="https://download.blender.org/release/Blender2.92/blender-2.92.0-linux64.tar.xz"
     ["v2.93"]="https://download.blender.org/release/Blender2.93/blender-2.93.4-linux-x64.tar.xz"
     ["v3.00"]="https://download.blender.org/release/Blender3.0/blender-3.0.0-linux-x64.tar.xz"
+    ["v3.10"]="https://download.blender.org/release/Blender3.1/blender-3.1.0-linux-x64.tar.xz"
+    ["v3.11"]="https://download.blender.org/release/Blender3.1/blender-3.1.1-linux-x64.tar.xz"
+    ["v3.12"]="https://download.blender.org/release/Blender3.1/blender-3.1.2-linux-x64.tar.xz"
 )
 
 declare -A BLENDER_SOURCE_URL=(
@@ -28,6 +31,9 @@ declare -A BLENDER_SOURCE_URL=(
     ["v2.92"]="https://download.blender.org/source/blender-2.92.0.tar.xz"
     ["v2.93"]="https://download.blender.org/source/blender-2.93.4.tar.xz"
     ["v3.00"]="https://download.blender.org/source/blender-3.0.0.tar.xz"
+    ["v3.10"]="https://download.blender.org/source/blender-3.1.0.tar.xz"
+    ["v3.11"]="https://download.blender.org/source/blender-3.1.1.tar.xz"
+    ["v3.12"]="https://download.blender.org/source/blender-3.1.2.tar.xz"
 )
 
 function get_extractor() {
