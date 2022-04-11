@@ -22,7 +22,7 @@ There are two variants of the API stubs, one for Blender and the other for UPBGE
 you can install `blender-stubs` module with appropriate version qualifier as follows: 
 
 ```bash
-$ pip install blender-stubs==3.1.26
+$ pip install blender-stubs==3.1.27
 ```
 This will install the latest module for Blender 2.93, and for now stubs are provided for Blender 
 2.80 and onwards. You can also specify the next unreleased version as `3.1.*` to get the latest 
@@ -36,7 +36,7 @@ A stub module for UPBGE 0.3, as well as pre-release versions for the master bran
 available on PyPI repository. For the stable version, you can install it as follows:  
 
 ```bash
-$ pip install upbge-stubs==0.3.0.26
+$ pip install upbge-stubs==0.3.0.27
 ```
 
 And for the latest snapshot, 
