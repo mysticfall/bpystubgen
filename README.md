@@ -77,10 +77,10 @@ There are two variants of the API stubs, one for Blender and the other for UPBGE
 you can install `blender-stubs` module with an appropriate version qualifier as follows: 
 
 ```bash
-$ pip install blender-stubs==3.0.*
+$ pip install blender-stubs==3.1.*
 ```
-This will install the latest module for Blender 3.0, and for now stubs are provided for Blender 
-2.80 and onwards. You can also specify the next unreleased version as `3.1.*` to get the latest 
+This will install the latest module for Blender 3.1, and for now stubs are provided for Blender 
+2.80 and onwards. You can also specify the next unreleased version as `3.2.*` to get the latest 
 snapshot of the module.
 
 As for UPBGE, stubs are available for the 0.3 release, which you can install as follows:
@@ -106,7 +106,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-"upbge-stubs" = "==0.3.0.*"
+"upbge-stubs" = "==0.3.1.*"
 
 [requires]
 python_version = "3.10"
