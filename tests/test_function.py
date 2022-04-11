@@ -428,11 +428,11 @@ def test_parse_varargs_with_kwargs(parser: Parser, document: document):
     assert args[3].name == "frames"
     assert args[3].type == "typing.Iterable[int]"
 
-    assert args[4].name == "*kwargs"
+    assert args[4].name == "**kwargs"
     assert not args[4].type
 
     assert func.signature == "def bake_action(obj: bpy.types.Object, *args, action: bpy.types.Action, " \
-                             "frames: typing.Iterable[int], *kwargs) -> None:"
+                             "frames: typing.Iterable[int], **kwargs) -> None:"
 
 
 def test_signature():

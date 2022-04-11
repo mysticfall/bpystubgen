@@ -271,7 +271,7 @@ class FunctionLikeDirective(APIMemberDirective, ABC):
             elems["*args"] = Argument(name="*args")
 
         if func.args.kwarg:
-            elems["**kwargs"] = Argument(name="*kwargs")
+            elems["**kwargs"] = Argument(name="**kwargs")
 
         return elems, messages
 

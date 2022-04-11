@@ -205,7 +205,7 @@ class ModuleTask(ParserTask):
         with open(marker, "w"):
             pass
 
-        fout = FileOutput(destination_path=str(target))
+        fout = FileOutput(destination_path=str(target), encoding="utf-8")
 
         try:
             writer.write(self.doctree, fout)
