@@ -11,7 +11,7 @@ env:
 jobs:
   build:
     name: Build Blender
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Install Tools
@@ -19,8 +19,8 @@ jobs:
         sudo apt update && \
         sudo apt install -y build-essential cmake libembree-dev \
           libxi-dev libxxf86vm-dev libboost-dev libboost-locale-dev libgl1-mesa-dev \
-          libavformat-dev libtbb-dev libswscale-dev libavdevice-dev libblas3 \
-          libzstd-dev libopenimageio-dev
+          libavformat-dev libtbb2-dev libswscale-dev libavdevice-dev libblas3 \
+          libzstd-dev libopenimageio-dev libfreetype-dev
 
     - name: Install Python
       uses: actions/setup-python@v2.3.1
@@ -85,7 +85,7 @@ jobs:
 
   build_api:
     name: Build API Documentation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [build]
 
     steps:
@@ -103,7 +103,7 @@ jobs:
       run: | 
         sudo apt update && \
         sudo apt install -y libtbb2 libxi6 libxxf86vm1 libxfixes3 libgl1 \
-          libavformat58 libavdevice58 libboost-locale1.71.0 libopenimageio-dev
+          libavformat58 libavdevice58 libboost-locale1.74.0 libopenimageio-dev
 
     - name: Install Python
       uses: actions/setup-python@v2.3.1
@@ -145,7 +145,7 @@ jobs:
 
   publish_stubs:
     name: Publish API Stubs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [build_api]
 
     steps:
