@@ -17,6 +17,7 @@ jobs:
     - name: Install Tools
       run: | 
         sudo apt update && \
+        sudo apt install -t jammy-backports libopenimageio-dev && \
         sudo apt install -y build-essential cmake libembree-dev \
           libxi-dev libxxf86vm-dev libboost-dev libboost-locale-dev libgl1-mesa-dev \
           libavformat-dev libtbb2-dev libswscale-dev libavdevice-dev libblas3 \
