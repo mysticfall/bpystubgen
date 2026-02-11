@@ -1,18 +1,19 @@
 from typing import Final, Mapping, Union
+from importlib.resources import files
 
 from docutils.frontend import Values
 from docutils.nodes import Element
-from pkg_resources import resource_listdir, resource_stream, resource_string
 from sphinx.environment import BuildEnvironment
 
 from bpystubgen import Module, nodes
 from bpystubgen.nodes import APIMember, Class
 
 blacklist: Final = set(map(lambda b: b.decode("UTF-8"),
-                           resource_string(__name__, "blacklist.txt").splitlines()))
+                           files(__name__).joinpath("blacklist.txt").read_bytes().splitlines()))
 
 patches: Final = set(map(lambda n: n[:-4],
-                         filter(lambda f: f.endswith(".rst"), resource_listdir(__name__, "."))))
+                         filter(lambda f: f.endswith(".rst"), 
+                                [p.name for p in files(__name__).iterdir() if p.is_file()])))
 
 Patchable = Union[Module, Class]
 
@@ -22,7 +23,7 @@ def apply(name: str, target: Element, settings: Values, env: BuildEnvironment) -
         return target
 
     source_path = name + ".rst"
-    source = resource_stream(__name__, source_path)
+    source = files(__name__).joinpath(source_path).open('rb')
 
     def members_of(elem: Element) -> Mapping[str, APIMember]:
         return dict(map(lambda m: (m.name, m), elem.traverse(APIMember)))
